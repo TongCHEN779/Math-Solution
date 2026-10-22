@@ -1,0 +1,300 @@
+\documentclass[11pt]{article}
+\input{../../tools/preamble.tex}
+\title{Atiyah--Macdonald, Chapter 2: Modules\\[2pt]\large Solutions to the exercises}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Conventions.} Rings are commutative with $1$; $\otimes=\otimes_A$ unless a subscript says otherwise; $\operatorname{Im}$ is the image. From the text I use freely: Cayley--Hamilton for finitely generated modules (2.4), Nakayama's lemma (2.6, 2.7), the canonical isomorphisms of 2.14 (commutativity, associativity, distributivity over $\oplus$, $A\otimes M\cong M$) and 2.15, right exactness of $\otimes$ (2.18), $\operatorname{Hom}(M\otimes N,P)\cong\operatorname{Hom}(M,\operatorname{Hom}(N,P))$, and the flatness criteria of 2.19. For the $\Tor$ exercises (24--26) I assume the standard facts: $\Tor_n$ is symmetric, is computed from a free resolution of either variable, and has long exact sequences in each variable.
+
+This chapter covers the three in-text exercises (2.2, 2.15, 2.20) and the 28 end-of-chapter exercises. Exercises 14 and 23 as printed only introduce definitions (direct limits, tensor product of a family of algebras) and contain nothing to prove; I note this and verify the small points the text leaves to the reader.
+
+%=====================================================================
+\section*{In-text exercises}
+
+\exercise{2.2}{Let $M,N,P$ be submodules of an $A$-module. Show that (i) $\Ann(M+N)=\Ann(M)\cap\Ann(N)$; (ii) $(N:P)=\Ann\bigl((N+P)/N\bigr)$.}
+\pf
+(i) If $a(M+N)=0$ then $aM=0$ and $aN=0$ because $M,N\subseteq M+N$. Conversely if $aM=aN=0$ then $a(m+n)=am+an=0$.
+
+(ii) $a\in(N:P)\iff aP\subseteq N$. On the other hand $a\in\Ann((N+P)/N)\iff ax\in N$ for all $x\in N+P$. Writing $x=n+p$ we have $ax=an+ap$ with $an\in N$ automatically, so this is equivalent to $ap\in N$ for all $p\in P$. \hfill$\square$
+
+\exercise{2.15}{Let $A,B$ be rings, $M$ an $A$-module, $P$ a $B$-module and $N$ an $(A,B)$-bimodule (an $A$-module and a $B$-module with $a(xb)=(ax)b$). Then $M\otimes_AN$ is naturally a $B$-module, $N\otimes_BP$ an $A$-module, and $(M\otimes_AN)\otimes_BP\cong M\otimes_A(N\otimes_BP)$.}
+\pf
+\emph{Module structures.} By compatibility, multiplication $y\mapsto by$ on $N$ is $A$-linear, so $1\otimes(b\cdot):M\otimes_AN\to M\otimes_AN$ is well defined; this gives $b(x\otimes y)=x\otimes by$, and the module axioms hold on generators $x\otimes y$ and hence everywhere. Likewise $y\mapsto ay$ is $B$-linear, so $N\otimes_BP$ is an $A$-module via $a(y\otimes z)=ay\otimes z$.
+
+\emph{Isomorphism} (same method as 2.14). Fix $z\in P$. The map $(x,y)\mapsto x\otimes(y\otimes z)$ of $M\times N$ into $M\otimes_A(N\otimes_BP)$ is $A$-bilinear, hence gives $f_z:M\otimes_AN\to M\otimes_A(N\otimes_BP)$ with $f_z(x\otimes y)=x\otimes(y\otimes z)$. The map $(t,z)\mapsto f_z(t)$ is $B$-bilinear: it is additive, $f_{bz}(x\otimes y)=x\otimes(y\otimes bz)=x\otimes(by\otimes z)=f_z(x\otimes by)=f_z(b(x\otimes y))$, so it is $B$-balanced, and $f_{bz}=bf_z$. It induces $f:(M\otimes_AN)\otimes_BP\to M\otimes_A(N\otimes_BP)$, $(x\otimes y)\otimes z\mapsto x\otimes(y\otimes z)$.
+
+Conversely, fix $x\in M$; the map $(y,z)\mapsto(x\otimes y)\otimes z$ of $N\times P$ into $(M\otimes_AN)\otimes_BP$ is $B$-bilinear and $B$-balanced since $(x\otimes by)\otimes z=b(x\otimes y)\otimes z=(x\otimes y)\otimes bz$; it gives $\gamma_x:N\otimes_BP\to(M\otimes_AN)\otimes_BP$. Then $(x,t)\mapsto\gamma_x(t)$ is $A$-bilinear, giving $g:M\otimes_A(N\otimes_BP)\to(M\otimes_AN)\otimes_BP$ with $g(x\otimes(y\otimes z))=(x\otimes y)\otimes z$.
+
+$f\circ g$ and $g\circ f$ are the identity on the generators $x\otimes(y\otimes z)$, resp.\ $(x\otimes y)\otimes z$, so $f,g$ are inverse isomorphisms. \hfill$\square$
+
+\exercise{2.20}{If $f:A\to B$ is a ring homomorphism and $M$ is a flat $A$-module, then $M_B=B\otimes_AM$ is a flat $B$-module. (Use the canonical isomorphisms 2.14, 2.15.)}
+\pf
+Let $N$ be a $B$-module. Using 2.15 (with $B$ as a $(B,A)$-bimodule) and 2.14(iv),
+\[
+N\otimes_BM_B=N\otimes_B(B\otimes_AM)\cong(N\otimes_BB)\otimes_AM\cong N\otimes_AM,
+\]
+where in the last term $N$ is regarded as an $A$-module by restriction of scalars. These isomorphisms are natural in $N$.
+Let $u:N'\to N$ be an injective homomorphism of $B$-modules. It is also an injective $A$-linear map, so $u\otimes1:N'\otimes_AM\to N\otimes_AM$ is injective because $M$ is $A$-flat. By naturality, this map corresponds to $u\otimes1:N'\otimes_BM_B\to N\otimes_BM_B$, which is therefore injective. By 2.19(iii), $M_B$ is a flat $B$-module. \hfill$\square$
+
+%=====================================================================
+\section*{End-of-chapter exercises}
+
+%---------------------------------------------------------------- 1
+\exercise{1}{Show that $(\Z/m\Z)\otimes_{\Z}(\Z/n\Z)=0$ if $m,n$ are coprime.}
+\pf
+Write $1=am+bn$ with $a,b\in\Z$. For $x\in\Z/m\Z$, $y\in\Z/n\Z$ we have $mx=0$ and $ny=0$, so
+\[
+x\otimes y=(am+bn)(x\otimes y)=a\,(mx)\otimes y+b\,x\otimes(ny)=0.
+\]
+These elements generate the tensor product, so it is $0$. \hfill$\square$
+
+%---------------------------------------------------------------- 2
+\exercise{2}{Let $A$ be a ring, $\fa$ an ideal, $M$ an $A$-module. Show that $(A/\fa)\otimes_AM\cong M/\fa M$. [Tensor the exact sequence $0\to\fa\to A\to A/\fa\to0$ with $M$.]}
+\pf
+By right exactness (2.18), $\fa\otimes M\to A\otimes M\to(A/\fa)\otimes M\to0$ is exact. Under $A\otimes M\cong M$ ($a\otimes x\mapsto ax$), the image of $\fa\otimes M$ is the set of sums $\sum a_ix_i$ with $a_i\in\fa$, i.e.\ $\fa M$. Hence $(A/\fa)\otimes M\cong M/\fa M$ (via $\bar a\otimes x\mapsto\overline{ax}$). \hfill$\square$
+
+%---------------------------------------------------------------- 3
+\exercise{3}{Let $A$ be a local ring, $M$ and $N$ finitely generated $A$-modules. Prove that if $M\otimes N=0$ then $M=0$ or $N=0$. [Let $\fm$ be the maximal ideal, $k=A/\fm$, $M_k=k\otimes_AM\cong M/\fm M$ by Exercise 2. By Nakayama's lemma, $M_k=0\Rightarrow M=0$. But $M\otimes_AN=0\Rightarrow(M\otimes_AN)_k=0\Rightarrow M_k\otimes_kN_k=0\Rightarrow M_k=0$ or $N_k=0$, since $M_k,N_k$ are vector spaces over a field.]}
+\pf
+Let $\fm$ be the maximal ideal and $k=A/\fm$. By Exercise 2, $M_k=k\otimes_AM\cong M/\fm M$.
+
+\emph{Nakayama:} $M$ is finitely generated, so $M_k=0$ means $\fm M=M$ and hence $M=0$ by 2.6 (as $\fm=\Jac$ for a local ring). Likewise for $N$.
+
+\emph{Base change of the tensor product:} $M_k\otimes_kN_k\cong(M\otimes_AN)_k$. Indeed, using 2.15 (with $k$ as a $(k,A)$-bimodule) and 2.14,
+\[
+M_k\otimes_kN_k=M_k\otimes_k(k\otimes_AN)\cong(M_k\otimes_kk)\otimes_AN\cong M_k\otimes_AN=(k\otimes_AM)\otimes_AN\cong k\otimes_A(M\otimes_AN).
+\]
+
+Now suppose $M\otimes_AN=0$. Then $M_k\otimes_kN_k=0$. For vector spaces over a field, $\dim(V\otimes W)=\dim V\cdot\dim W$, so $M_k=0$ or $N_k=0$, hence $M=0$ or $N=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 4
+\exercise{4}{Let $M_i$ $(i\in I)$ be any family of $A$-modules, and let $M$ be their direct sum. Prove that $M$ is flat $\iff$ each $M_i$ is flat.}
+\pf
+Tensor product commutes with arbitrary direct sums: for every module $P$,
+$\Hom\bigl(\bigl(\bigoplus M_i\bigr)\otimes N,P\bigr)\cong\Hom\bigl(\bigoplus M_i,\Hom(N,P)\bigr)\cong\prod_i\Hom(M_i,\Hom(N,P))\cong\prod_i\Hom(M_i\otimes N,P)\cong\Hom\bigl(\bigoplus(M_i\otimes N),P\bigr)$, so $M\otimes N\cong\bigoplus_i(M_i\otimes N)$, naturally in $N$.
+
+Let $u:N'\to N$ be injective. Under these isomorphisms $1_M\otimes u$ corresponds to $\bigoplus_i(1_{M_i}\otimes u)$. A direct sum of homomorphisms is injective iff each summand is. Hence $1_M\otimes u$ is injective for all injective $u$ iff each $1_{M_i}\otimes u$ is. By 2.19(iii), $M$ is flat iff every $M_i$ is flat. \hfill$\square$
+
+%---------------------------------------------------------------- 5
+\exercise{5}{Let $A[x]$ be the ring of polynomials in one indeterminate over a ring $A$. Prove that $A[x]$ is a flat $A$-algebra. [Use Exercise 4.]}
+\pf
+As an $A$-module, $A[x]=\bigoplus_{n\ge0}Ax^n$ is a direct sum of copies of $A$. $A$ is flat since $A\otimes N\cong N$ naturally, so tensoring with $A$ preserves injections. By Exercise 4, $A[x]$ is flat. \hfill$\square$
+
+%---------------------------------------------------------------- 6
+\exercise{6}{For any $A$-module $M$, let $M[x]$ denote the set of all polynomials $m_0+m_1x+\cdots+m_rx^r$ $(m_i\in M)$. Defining the product of an element of $A[x]$ and an element of $M[x]$ in the obvious way, show that $M[x]$ is an $A[x]$-module. Show that $M[x]\cong A[x]\otimes_AM$.}
+\pf
+\emph{Module structure.} Put $\bigl(\sum a_ix^i\bigr)\bigl(\sum m_jx^j\bigr)=\sum_k\bigl(\sum_{i+j=k}a_im_j\bigr)x^k$. The axioms are the same computations as for polynomial multiplication, using the $A$-module axioms of $M$.
+
+\emph{Isomorphism.} The map $A[x]\times M\to M[x]$, $\bigl(\sum a_ix^i,m\bigr)\mapsto\sum(a_im)x^i$ is $A$-bilinear, so it induces an $A$-linear $\varphi:A[x]\otimes_AM\to M[x]$ with $\varphi(f\otimes m)=fm$. It is $A[x]$-linear: $\varphi(g(f\otimes m))=gfm=g\varphi(f\otimes m)$. Define $\psi:M[x]\to A[x]\otimes_AM$ by $\psi\bigl(\sum m_ix^i\bigr)=\sum x^i\otimes m_i$; it is additive. Then $\varphi\psi\bigl(\sum m_ix^i\bigr)=\sum m_ix^i$, and on generators $ax^i\otimes m$ of the tensor product, $\psi\varphi(ax^i\otimes m)=\psi((am)x^i)=x^i\otimes am=ax^i\otimes m$. So $\varphi$ and $\psi$ are inverse isomorphisms. \hfill$\square$
+
+%---------------------------------------------------------------- 7
+\exercise{7}{Let $\fp$ be a prime ideal in $A$. Show that $\fp[x]$ is a prime ideal in $A[x]$. If $\fm$ is a maximal ideal in $A$, is $\fm[x]$ a maximal ideal in $A[x]$?}
+\pf
+$\fp[x]$ (polynomials with all coefficients in $\fp$) is the kernel of the surjective homomorphism $A[x]\to(A/\fp)[x]$ (reduce coefficients). Since $A/\fp$ is a domain, so is $(A/\fp)[x]$; thus $\fp[x]$ is prime.
+
+For $\fm$ maximal, $A[x]/\fm[x]\cong(A/\fm)[x]$ is a polynomial ring over a field, which is not a field ($x$ is not a unit). So $\fm[x]$ is prime but \emph{not} maximal: $\fm[x]\subsetneq\fm[x]+(x)\subsetneq A[x]$. \hfill$\square$
+
+%---------------------------------------------------------------- 8
+\exercise{8}{(i) If $M$ and $N$ are flat $A$-modules, then so is $M\otimes_AN$. (ii) If $B$ is a flat $A$-algebra and $N$ is a flat $B$-module, then $N$ is flat as an $A$-module.}
+\pf
+(i) Let $u:P'\to P$ be injective. Then $1_N\otimes u:N\otimes P'\to N\otimes P$ is injective ($N$ flat), and then $1_M\otimes(1_N\otimes u)$ is injective ($M$ flat). By the natural associativity isomorphism $(M\otimes N)\otimes P\cong M\otimes(N\otimes P)$ (2.14(ii)), this is $1_{M\otimes N}\otimes u$. So $M\otimes N$ is flat.
+
+(ii) For an $A$-module $P$, $N\otimes_AP\cong N\otimes_B(B\otimes_AP)$, naturally in $P$ (2.15 and 2.14(iv): $N\otimes_B(B\otimes_AP)\cong(N\otimes_BB)\otimes_AP\cong N\otimes_AP$). Let $u:P'\to P$ be an injective $A$-linear map. Since $B$ is $A$-flat, $1_B\otimes u:B\otimes_AP'\to B\otimes_AP$ is injective, and it is $B$-linear. Since $N$ is $B$-flat, $1_N\otimes(1_B\otimes u)$ is injective. By the natural isomorphism this map is $1_N\otimes_Au$. Hence $N$ is $A$-flat. \hfill$\square$
+
+%---------------------------------------------------------------- 9
+\exercise{9}{Let $0\to M'\to M\to M''\to0$ be an exact sequence of $A$-modules. If $M'$ and $M''$ are finitely generated, then so is $M$.}
+\pf
+Let $0\to M'\xrightarrow{u}M\xrightarrow{v}M''\to0$ be exact. Let $x'_1,\dots,x'_r$ generate $M'$ and $y''_1,\dots,y''_s$ generate $M''$; choose $y_j\in M$ with $v(y_j)=y''_j$. We claim the $u(x'_i)$ and $y_j$ generate $M$. Let $z\in M$ and write $v(z)=\sum a_jy''_j=v(\sum a_jy_j)$. Then $z-\sum a_jy_j\in\Ker v=\operatorname{Im}u$, so $z-\sum a_jy_j=u(\sum b_ix'_i)=\sum b_iu(x'_i)$. \hfill$\square$
+
+%---------------------------------------------------------------- 10
+\exercise{10}{Let $A$ be a ring, $\fa$ an ideal contained in the Jacobson radical of $A$; let $M$ be an $A$-module and $N$ a finitely generated $A$-module, and let $u:M\to N$ be a homomorphism. If the induced homomorphism $M/\fa M\to N/\fa N$ is surjective, then $u$ is surjective.}
+\pf
+Surjectivity of $M/\fa M\to N/\fa N$ means $N=u(M)+\fa N$. Put $Q=N/u(M)$, a finitely generated module. Then $\fa Q=(\fa N+u(M))/u(M)=N/u(M)=Q$. Since $\fa\subseteq\Jac$, Nakayama's lemma (2.6) gives $Q=0$, i.e.\ $u$ is surjective. \hfill$\square$
+
+%---------------------------------------------------------------- 11
+\exercise{11}{Let $A$ be a ring $\ne0$. Show that $A^m\cong A^n\Rightarrow m=n$. [Let $\fm$ be a maximal ideal of $A$ and let $\phi:A^m\to A^n$ be an isomorphism. Then $1\otimes\phi:(A/\fm)\otimes A^m\to(A/\fm)\otimes A^n$ is an isomorphism between vector spaces of dimensions $m$ and $n$ over $k=A/\fm$. Hence $m=n$.] If $\phi:A^m\to A^n$ is surjective, then $m\ge n$. If $\phi:A^m\to A^n$ is injective, is it always the case that $m\le n$?}
+\pf
+Let $\fm$ be a maximal ideal and $k=A/\fm$. Tensor product commutes with finite direct sums and $k\otimes_AA\cong k$, so $k\otimes_AA^m\cong k^m$. If $\phi:A^m\to A^n$ is an isomorphism, $1\otimes\phi:k^m\to k^n$ is an isomorphism of $k$-vector spaces, so $m=n$.
+
+If $\phi$ is surjective, $1\otimes\phi:k^m\to k^n$ is surjective (right exactness), so $m\ge n$.
+
+\emph{If $\phi:A^m\to A^n$ is injective, then yes, $m\le n$ always.} Suppose $m>n$ and let $\iota:A^n\to A^m$ be the inclusion onto the first $n$ coordinates, $W=\iota(A^n)$. Then $\psi=\iota\circ\phi:A^m\to A^m$ is injective with $\operatorname{Im}\psi\subseteq W$. By 2.4 (Cayley--Hamilton, with $\fa=(1)$) $\psi$ satisfies a monic equation $r(\psi)=0$ of degree $m\ge1$. Claim: if a monic $r$ of degree $k\ge1$ satisfies $r(\psi)=0$, then $r=ts$ with $s$ monic of degree $k-1$ and $s(\psi)=0$. Indeed write $r(t)=t\,s(t)+d$ with $d\in A$ and $s$ monic. Apply $r(\psi)=0$ to the basis vector $e_m$:
+\[
+\psi\bigl(s(\psi)e_m\bigr)+d\,e_m=0 .
+\]
+The first term lies in $\operatorname{Im}\psi\subseteq W$, so $d\,e_m\in W$; as $m>n$, the $m$-th coordinate of elements of $W$ is $0$, so $d=0$. Then $\psi\circ s(\psi)=0$ and, $\psi$ being injective, $s(\psi)=0$. Repeating $m$ times we reach a monic polynomial of degree $0$, i.e.\ $1=0$ as an endomorphism of $A^m$. Thus $A^m=0$, so $A=0$, contradiction. Hence $m\le n$. \hfill$\square$
+
+%---------------------------------------------------------------- 12
+\exercise{12}{Let $M$ be a finitely generated $A$-module and $\phi:M\to A^n$ a surjective homomorphism. Show that $\Ker(\phi)$ is finitely generated. [Let $e_1,\dots,e_n$ be a basis of $A^n$ and choose $u_i\in M$ such that $\phi(u_i)=e_i$. Show that $M$ is the direct sum of $\Ker(\phi)$ and the submodule generated by $u_1,\dots,u_n$.]}
+\pf
+Let $U$ be the submodule generated by $u_1,\dots,u_n$ and $K=\Ker\phi$. For $x=\sum a_iu_i\in U$ we have $\phi(x)=(a_1,\dots,a_n)$; so $\phi|_U:U\to A^n$ is an isomorphism (surjective, and injective since $\phi(x)=0$ forces all $a_i=0$). Consequently $K\cap U=0$. For $z\in M$ write $\phi(z)=\sum a_ie_i=\phi(\sum a_iu_i)$; then $z-\sum a_iu_i\in K$, so $M=K+U$. Hence $M=K\oplus U$ and $K\cong M/U$ is a quotient of the finitely generated module $M$, so $K$ is finitely generated. \hfill$\square$
+
+%---------------------------------------------------------------- 13
+\exercise{13}{Let $f:A\to B$ be a ring homomorphism and let $N$ be a $B$-module. Regarding $N$ as an $A$-module by restriction of scalars, form the $B$-module $N_B=B\otimes_AN$. Show that the homomorphism $g:N\to N_B$ which maps $y$ to $1\otimes y$ is injective and that $g(N)$ is a direct summand of $N_B$. [Define $p:N_B\to N$ by $p(b\otimes y)=by$, and show that $N_B=\operatorname{Im}(g)\oplus\Ker(p)$.]}
+\pf
+The map $B\times N\to N$, $(b,y)\mapsto by$ is $A$-bilinear (since $(f(a)b)y=b(f(a)y)$), so $p:N_B\to N$, $p(b\otimes y)=by$ is a well-defined $B$-linear map. Also $g$ is $A$-linear ($g(ay)=1\otimes f(a)y=f(a)\otimes y=a(1\otimes y)$), and $p\circ g(y)=p(1\otimes y)=y$. Hence $g$ is injective.
+
+Moreover $N_B=\operatorname{Im}g\oplus\Ker p$: any $z\in N_B$ is $z=gp(z)+\bigl(z-gp(z)\bigr)$ with $p(z-gp(z))=p(z)-p(z)=0$, and if $g(y)\in\Ker p$ then $y=pg(y)=0$. So $g(N)$ is a direct summand of $N_B$ (as $A$-modules; $\Ker p$ is even a $B$-submodule). \hfill$\square$
+
+%---------------------------------------------------------------- 14
+\exercise{14}{(Direct limits.) A partially ordered set $I$ is \emph{directed} if for each pair $i,j$ in $I$ there exists $k\in I$ such that $i\le k$ and $j\le k$. Let $A$ be a ring, $I$ a directed set and $(M_i)_{i\in I}$ a family of $A$-modules indexed by $I$. For each pair $i\le j$ let $\mu_{ij}:M_i\to M_j$ be an $A$-homomorphism, and suppose that
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item $\mu_{ii}$ is the identity mapping of $M_i$, for all $i\in I$;
+\item $\mu_{ik}=\mu_{jk}\circ\mu_{ij}$ whenever $i\le j\le k$.
+\end{enumerate}
+Then the modules $M_i$ and homomorphisms $\mu_{ij}$ form a \emph{direct system} $\mathbf M=(M_i,\mu_{ij})$ over $I$. The \emph{direct limit} $M=\varinjlim M_i$ is constructed as follows: let $C$ be the direct sum of the $M_i$, identify each $M_i$ with its canonical image in $C$, let $D$ be the submodule of $C$ generated by all elements $x_i-\mu_{ij}(x_i)$ with $i\le j$ and $x_i\in M_i$, let $M=C/D$, let $\mu:C\to M$ be the projection and $\mu_i$ its restriction to $M_i$. From the construction it is clear that $\mu_i=\mu_j\circ\mu_{ij}$ whenever $i\le j$.}
+\pf
+As printed, this exercise only sets up the definition of the direct limit; there is nothing to prove. For completeness, the closing assertion: for $x_i\in M_i$ and $i\le j$, $x_i-\mu_{ij}(x_i)\in D$, so $\mu_i(x_i)=\mu(x_i)=\mu(\mu_{ij}(x_i))=\mu_j\mu_{ij}(x_i)$. \hfill$\square$
+
+%---------------------------------------------------------------- 15
+\exercise{15}{In the situation of Exercise 14, show that every element of $M$ can be written in the form $\mu_i(x_i)$ for some $i\in I$ and some $x_i\in M_i$. Show also that if $\mu_i(x_i)=0$ then there exists $j\ge i$ such that $\mu_{ij}(x_i)=0$ in $M_j$.}
+\pf
+\emph{First claim.} An element of $M=C/D$ is the class of a finite sum $x_{i_1}+\dots+x_{i_r}$ with $x_{i_s}\in M_{i_s}$. Since $I$ is directed there is $j\ge i_1,\dots,i_r$. Modulo $D$, $x_{i_s}\equiv\mu_{i_sj}(x_{i_s})$, so the class equals $\mu_j\bigl(\sum_s\mu_{i_sj}(x_{i_s})\bigr)$.
+
+\emph{Second claim.} Suppose $\mu_i(x_i)=0$, i.e.\ $x_i\in D$. Then $x_i=\sum_{s=1}^r\bigl(y_s-\mu_{k_sl_s}(y_s)\bigr)$ with $y_s\in M_{k_s}$, $k_s\le l_s$. Choose $j\ge i$ and $j\ge k_s,l_s$ for all $s$. Let $C_j=\bigoplus_{k\le j}M_k\subseteq C$ and define the homomorphism $\theta:C_j\to M_j$ by $\theta|_{M_k}=\mu_{kj}$. This relation takes place in $C_j$, and
+$\theta\bigl(y_s-\mu_{k_sl_s}(y_s)\bigr)=\mu_{k_sj}(y_s)-\mu_{l_sj}\mu_{k_sl_s}(y_s)=0$ by axiom (2). Therefore $\mu_{ij}(x_i)=\theta(x_i)=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 16
+\exercise{16}{Show that the direct limit is characterized (up to isomorphism) by the following property. Let $N$ be an $A$-module and for each $i\in I$ let $\alpha_i:M_i\to N$ be an $A$-module homomorphism such that $\alpha_i=\alpha_j\circ\mu_{ij}$ whenever $i\le j$. Then there exists a unique homomorphism $\alpha:M\to N$ such that $\alpha_i=\alpha\circ\mu_i$ for all $i\in I$.}
+\pf
+\emph{Existence.} Define $C\to N$ by $(x_i)\mapsto\sum\alpha_i(x_i)$. It kills the generators $x_i-\mu_{ij}(x_i)$ of $D$, since $\alpha_i(x_i)-\alpha_j\mu_{ij}(x_i)=0$. So it factors through $M=C/D$, giving $\alpha$ with $\alpha\mu_i=\alpha_i$.
+
+\emph{Uniqueness.} By Exercise 15 every element of $M$ is some $\mu_i(x_i)$, and $\alpha(\mu_i(x_i))=\alpha_i(x_i)$ is forced.
+
+\emph{Characterization.} Let $(M',\mu'_i)$ be another module with homomorphisms $\mu'_i:M_i\to M'$ satisfying $\mu'_i=\mu'_j\mu_{ij}$ and the same universal property. Applying the property of $M$ to $(M',\mu'_i)$ gives $\alpha:M\to M'$ with $\alpha\mu_i=\mu'_i$; applying the property of $M'$ to $(M,\mu_i)$ gives $\beta:M'\to M$ with $\beta\mu'_i=\mu_i$. Then $\beta\alpha\mu_i=\mu_i=1_M\mu_i$ for all $i$, so $\beta\alpha=1_M$ by uniqueness; similarly $\alpha\beta=1_{M'}$. Hence $M\cong M'$ by a unique isomorphism compatible with the maps. \hfill$\square$
+
+%---------------------------------------------------------------- 17
+\exercise{17}{Let $(M_i)_{i\in I}$ be a family of submodules of an $A$-module, such that for each pair of indices $i,j$ in $I$ there exists $k\in I$ such that $M_i+M_j\subseteq M_k$. Define $i\le j$ to mean $M_i\subseteq M_j$ and let $\mu_{ij}:M_i\to M_j$ be the embedding of $M_i$ in $M_j$. Show that $\varinjlim M_i=\sum M_i=\bigcup M_i$. In particular, any $A$-module is the direct limit of its finitely generated submodules.}
+\pf
+Let $M$ be the ambient module. $I$ is directed: given $i,j$ take $k$ with $M_i+M_j\subseteq M_k$, so $i,j\le k$. The set $\sum M_i$ equals $\bigcup M_i$: a finite sum $x_{i_1}+\dots+x_{i_r}$ lies in a single $M_k$ with $k\ge i_1,\dots,i_r$ (induction using directedness).
+
+The inclusions $\iota_i:M_i\to\sum M_i$ satisfy $\iota_i=\iota_j\mu_{ij}$, so by Exercise 16 there is $\alpha:\varinjlim M_i\to\sum M_i$ with $\alpha\mu_i=\iota_i$. It is surjective since its image contains every $M_i$. It is injective: an element of the limit is $\mu_i(x_i)$ (Exercise 15), and $\alpha(\mu_i(x_i))=x_i$; if this is $0$ then $x_i=0$ in $M_i$, so $\mu_i(x_i)=0$. Hence $\varinjlim M_i\cong\sum M_i=\bigcup M_i$.
+
+For the last statement take $I$ to be the set of finitely generated submodules of a module $M$, ordered by inclusion: the sum of two finitely generated submodules is finitely generated, and every $x\in M$ lies in $Ax$. So $M=\bigcup M_i=\varinjlim M_i$. \hfill$\square$
+
+%---------------------------------------------------------------- 18
+\exercise{18}{Let $\mathbf M=(M_i,\mu_{ij})$, $\mathbf N=(N_i,\nu_{ij})$ be direct systems of $A$-modules over the same directed set. Let $M,N$ be the direct limits and $\mu_i:M_i\to M$, $\nu_i:N_i\to N$ the associated homomorphisms. A \emph{homomorphism} $\Phi:\mathbf M\to\mathbf N$ is by definition a family of $A$-module homomorphisms $\phi_i:M_i\to N_i$ such that $\phi_j\circ\mu_{ij}=\nu_{ij}\circ\phi_i$ whenever $i\le j$. Show that $\Phi$ defines a unique homomorphism $\phi=\varinjlim\phi_i:M\to N$ such that $\phi\circ\mu_i=\nu_i\circ\phi_i$ for all $i\in I$.}
+\pf
+Put $\alpha_i=\nu_i\circ\phi_i:M_i\to N$. For $i\le j$: $\alpha_j\mu_{ij}=\nu_j\phi_j\mu_{ij}=\nu_j\nu_{ij}\phi_i=\nu_i\phi_i=\alpha_i$. By Exercise 16 there is a unique $\phi:M\to N$ with $\phi\mu_i=\alpha_i=\nu_i\phi_i$. \hfill$\square$
+
+%---------------------------------------------------------------- 19
+\exercise{19}{A sequence of direct systems and homomorphisms $\mathbf M\to\mathbf N\to\mathbf P$ is \emph{exact} if the corresponding sequence of modules and module homomorphisms is exact for each $i\in I$. Show that the sequence $M\to N\to P$ of direct limits is then exact. [Use Exercise 15.]}
+\pf
+Let $\Phi=(\phi_i):\mathbf M\to\mathbf N$, $\Psi=(\psi_i):\mathbf N\to\mathbf P$, with limits $\phi,\psi$, and write $\mu_i,\nu_i,\rho_i$ for the maps into $M,N,P$ and $\nu_{ij}$, $\pi_{ij}$ for the transition maps of $\mathbf N,\mathbf P$.
+
+\emph{$\psi\phi=0$:} $\psi\phi\mu_i=\psi\nu_i\phi_i=\rho_i\psi_i\phi_i=0$ for all $i$, and $M$ is generated by the images of the $\mu_i$ (Exercise 15), so $\psi\phi=0$.
+
+\emph{$\Ker\psi\subseteq\operatorname{Im}\phi$:} let $y\in N$ with $\psi(y)=0$. By Exercise 15, $y=\nu_i(y_i)$ for some $i$ and $y_i\in N_i$. Then $0=\psi(y)=\rho_i\psi_i(y_i)$, so by Exercise 15 there is $j\ge i$ with $\pi_{ij}\psi_i(y_i)=0$, i.e.\ $\psi_j(\nu_{ij}(y_i))=0$. By exactness at $N_j$, $\nu_{ij}(y_i)=\phi_j(x_j)$ for some $x_j\in M_j$. Then
+$y=\nu_j\nu_{ij}(y_i)=\nu_j\phi_j(x_j)=\phi\mu_j(x_j)\in\operatorname{Im}\phi$. \hfill$\square$
+
+%---------------------------------------------------------------- 20
+\exercise{20}{(Tensor products commute with direct limits.) Keeping the same notation as in Exercise 14, let $N$ be any $A$-module. Then $(M_i\otimes N,\mu_{ij}\otimes1)$ is a direct system; let $P=\varinjlim(M_i\otimes N)$ be its direct limit. For each $i\in I$ we have a homomorphism $\mu_i\otimes1:M_i\otimes N\to M\otimes N$, hence by Exercise 16 a homomorphism $\psi:P\to M\otimes N$. Show that $\psi$ is an isomorphism, so that $\varinjlim(M_i\otimes N)\cong(\varinjlim M_i)\otimes N$. [For each $i\in I$, let $g_i:M_i\times N\to M_i\otimes N$ be the canonical bilinear mapping. Passing to the limit we obtain a mapping $g:M\times N\to P$. Show that $g$ is $A$-bilinear and hence defines a homomorphism $\phi:M\otimes N\to P$. Verify that $\phi\circ\psi$ and $\psi\circ\phi$ are identity mappings.]}
+\pf
+Let $\lambda_i:M_i\otimes N\to P$ be the limit maps. The maps $\mu_i\otimes1$ satisfy $(\mu_j\otimes1)(\mu_{ij}\otimes1)=\mu_i\otimes1$, so $\psi$ exists with $\psi\lambda_i=\mu_i\otimes1$.
+
+\emph{Construction of $g$.} Two preliminary facts.
+(a) Any two (or finitely many) elements of $M$ can be written $\mu_k(x),\mu_k(x')$ with the same index $k$ (Exercise 15 and directedness: move both up to a common $k$ using $\mu_i=\mu_k\mu_{ik}$).
+(b) If $\mu_i(x_i)=\mu_j(x_j)$, then there is $l\ge i,j$ with $\mu_{il}(x_i)=\mu_{jl}(x_j)$. Indeed take $k\ge i,j$; then $\mu_k(\mu_{ik}x_i-\mu_{jk}x_j)=0$, so by Exercise 15 there is $l\ge k$ with $\mu_{kl}(\mu_{ik}x_i-\mu_{jk}x_j)=0$.
+
+Define $g(\mu_i(x),y)=\lambda_i(x\otimes y)$. It is well defined: if $\mu_i(x_i)=\mu_j(x_j)$, take $l$ as in (b); then $\lambda_i(x_i\otimes y)=\lambda_l(\mu_{il}x_i\otimes y)=\lambda_l(\mu_{jl}x_j\otimes y)=\lambda_j(x_j\otimes y)$. By (a) and the bilinearity of $\otimes$ in $M_k$, $g$ is additive in each variable and $A$-linear: $g(\mu_k(x)+\mu_k(x'),y)=\lambda_k((x+x')\otimes y)=g(\mu_k(x),y)+g(\mu_k(x'),y)$, and similarly for $y$ and scalars. So $g$ is $A$-bilinear and induces $\phi:M\otimes N\to P$ with $\phi(\mu_i(x)\otimes y)=\lambda_i(x\otimes y)$.
+
+\emph{Inverse isomorphisms.} $\phi\psi\lambda_i(x\otimes y)=\phi(\mu_i(x)\otimes y)=\lambda_i(x\otimes y)$; the elements $\lambda_i(x\otimes y)$ generate $P$ (Exercise 15), so $\phi\psi=1_P$. And $\psi\phi(\mu_i(x)\otimes y)=\psi\lambda_i(x\otimes y)=\mu_i(x)\otimes y$; these elements generate $M\otimes N$ (Exercise 15), so $\psi\phi=1$. \hfill$\square$
+
+%---------------------------------------------------------------- 21
+\exercise{21}{Let $(A_i)_{i\in I}$ be a family of rings indexed by a directed set $I$, and for each pair $i\le j$ in $I$ let $\alpha_{ij}:A_i\to A_j$ be a ring homomorphism, satisfying conditions (1) and (2) of Exercise 14. Regarding each $A_i$ as a $\Z$-module we can then form the direct limit $A=\varinjlim A_i$. Show that $A$ inherits a ring structure from the $A_i$ so that the mappings $A_i\to A$ are ring homomorphisms. The ring $A$ is the \emph{direct limit} of the system $(A_i,\alpha_{ij})$. If $A=0$ prove that $A_i=0$ for some $i\in I$. [Remember that all rings have identity elements!]}
+\pf
+Let $\alpha_i:A_i\to A$ be the canonical maps (additive, with $\alpha_i=\alpha_j\alpha_{ij}$).
+
+\emph{Multiplication.} Given $a,a'\in A$, write $a=\alpha_k(x)$, $a'=\alpha_k(x')$ with a common index $k$ (Exercise 15) and define $aa'=\alpha_k(xx')$. This is well defined: if also $a=\alpha_l(y)$, $a'=\alpha_l(y')$, use Exercise 15 (as in Exercise 20(b)) to find $m\ge k,l$ with $\alpha_{km}(x)=\alpha_{lm}(y)$ and $\alpha_{km}(x')=\alpha_{lm}(y')$ (find indices for each equation and pass to a larger one; the equalities persist since the $\alpha_{jm}$ are compatible). Then
+\[
+\alpha_k(xx')=\alpha_m(\alpha_{km}(x)\alpha_{km}(x'))=\alpha_m(\alpha_{lm}(y)\alpha_{lm}(y'))=\alpha_l(yy').
+\]
+\emph{Ring axioms.} Any finite number of elements of $A$ are of the form $\alpha_k(\cdot)$ for one $k$, and $\alpha_k$ is additive and multiplicative by definition; so associativity, commutativity and distributivity hold in $A$ because they hold in $A_k$. The element $1=\alpha_i(1_{A_i})$ is independent of $i$ (as $\alpha_{ij}(1)=1$ and $\alpha_i=\alpha_j\alpha_{ij}$), and is an identity. By construction each $\alpha_i$ is a ring homomorphism.
+
+\emph{If $A=0$:} then $\alpha_i(1_{A_i})=1_A=0$ for some (any) $i$, so by Exercise 15 there is $j\ge i$ with $\alpha_{ij}(1)=0$. But $\alpha_{ij}(1)=1_{A_j}$, so $1=0$ in $A_j$, i.e.\ $A_j=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 22
+\exercise{22}{Let $(A_i,\alpha_{ij})$ be a direct system of rings and let $\Nil_i$ be the nilradical of $A_i$. Show that $\varinjlim\Nil_i$ is the nilradical of $\varinjlim A_i$. If each $A_i$ is an integral domain, then $\varinjlim A_i$ is an integral domain.}
+\pf
+Let $A=\varinjlim A_i$, with $\alpha_i:A_i\to A$. A ring homomorphism maps nilpotents to nilpotents, so $\alpha_{ij}(\Nil_i)\subseteq\Nil_j$ and $(\Nil_i)$ is a direct system of modules; the inclusions $\Nil_i\to A_i$ induce $\varinjlim\Nil_i\to A$.
+
+\emph{Injective.} An element of $\varinjlim\Nil_i$ is $\lambda_i(x)$ with $x\in\Nil_i$ (Exercise 15). If it maps to $\alpha_i(x)=0$, then $\alpha_{ij}(x)=0$ for some $j$ (Exercise 15), so $\lambda_i(x)=\lambda_j(\alpha_{ij}x)=0$. (This is also Exercise 19 applied to $0\to\Nil\to A$.)
+
+\emph{Image is $\Nil(A)$.} If $x\in\Nil_i$, $x^n=0$, then $\alpha_i(x)^n=0$, so $\alpha_i(x)\in\Nil(A)$. Conversely if $a=\alpha_i(x)\in\Nil(A)$, $a^n=0$, then $\alpha_i(x^n)=0$, so by Exercise 15 $\alpha_{ij}(x)^n=\alpha_{ij}(x^n)=0$ for some $j\ge i$; thus $\alpha_{ij}(x)\in\Nil_j$ and $a=\alpha_j(\alpha_{ij}x)$ is in the image of $\Nil_j$. Hence $\varinjlim\Nil_i\cong\Nil(A)$.
+
+\emph{Domains.} Let each $A_i$ be a domain (so $A_i\ne0$). By Exercise 21, $A\ne0$. If $ab=0$ in $A$, write $a=\alpha_k(x)$, $b=\alpha_k(y)$; then $\alpha_k(xy)=0$, so $\alpha_{kj}(x)\alpha_{kj}(y)=\alpha_{kj}(xy)=0$ for some $j\ge k$. As $A_j$ is a domain, $\alpha_{kj}(x)=0$ or $\alpha_{kj}(y)=0$, hence $a=0$ or $b=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 23
+\exercise{23}{Let $(B_\lambda)_{\lambda\in\Lambda}$ be a family of $A$-algebras. For each finite subset $J$ of $\Lambda$ let $B_J$ denote the tensor product (over $A$) of the $B_\lambda$ for $\lambda\in J$. If $J'$ is another finite subset of $\Lambda$ and $J\subseteq J'$, there is a canonical $A$-algebra homomorphism $B_J\to B_{J'}$. Let $B$ denote the direct limit of the rings $B_J$ as $J$ runs through all finite subsets of $\Lambda$. The ring $B$ has a natural $A$-algebra structure for which the homomorphisms $B_J\to B$ are $A$-algebra homomorphisms. The $A$-algebra $B$ is the \emph{tensor product} of the family $(B_\lambda)_{\lambda\in\Lambda}$.}
+\pf
+As printed, this exercise only defines the tensor product of an arbitrary family of algebras; there is nothing to prove. The statements the text leaves to the reader are routine to check:
+the homomorphism $B_J\to B_{J'}$ ($J\subseteq J'$) is $\bigotimes_{\lambda\in J}x_\lambda\mapsto\bigotimes_{\lambda\in J'}y_\lambda$ with $y_\lambda=x_\lambda$ for $\lambda\in J$ and $y_\lambda=1$ otherwise (well defined by the universal property of the multi-tensor product 2.12$^*$, and an $A$-algebra homomorphism because it is multiplicative and sends $1$ to $1$); the finite subsets of $\Lambda$ form a directed set under inclusion ($J,J'\le J\cup J'$), and the transition maps satisfy conditions (1), (2) of Exercise 14. So $B$ is a ring by Exercise 21; the structure maps $A\to B_J$ are compatible with the transition maps, hence define a ring homomorphism $A\to B$ for which each $B_J\to B$ is an $A$-algebra homomorphism. \hfill$\square$
+
+%---------------------------------------------------------------- 24
+\exercise{24}{If $M$ is an $A$-module, the following are equivalent: (i) $M$ is flat; (ii) $\Tor_n^A(M,N)=0$ for all $n>0$ and all $A$-modules $N$; (iii) $\Tor_1^A(M,N)=0$ for all $A$-modules $N$.}
+\pf
+(i)$\Rightarrow$(ii). Take a free resolution $\cdots\to F_2\to F_1\to F_0\to N\to0$ of $N$ (exact). Since $M$ is flat, $\cdots\to M\otimes F_2\to M\otimes F_1\to M\otimes F_0\to M\otimes N\to0$ is exact. Its homology at $M\otimes F_n$ ($n>0$) is $\Tor_n(M,N)=0$.
+
+(ii)$\Rightarrow$(iii). Trivial.
+
+(iii)$\Rightarrow$(i). Let $0\to N'\to N\to N''\to0$ be exact. The Tor long exact sequence contains
+\[
+\Tor_1(M,N'')\to M\otimes N'\to M\otimes N\to M\otimes N''\to0 .
+\]
+Since $\Tor_1(M,N'')=0$, the map $M\otimes N'\to M\otimes N$ is injective. So $M\otimes-$ preserves injections, i.e.\ $M$ is flat (2.19). \hfill$\square$
+
+%---------------------------------------------------------------- 25
+\exercise{25}{Let $0\to N'\to N\to N''\to0$ be an exact sequence, with $N''$ flat. Then $N'$ is flat $\iff N$ is flat. [Use Exercise 24 and the Tor exact sequence.]}
+\pf
+For any module $L$ the Tor long exact sequence (in the second variable) gives
+\[
+\Tor_2(L,N'')\to\Tor_1(L,N')\to\Tor_1(L,N)\to\Tor_1(L,N'').
+\]
+As $N''$ is flat, $\Tor_n(L,N'')\cong\Tor_n(N'',L)=0$ for $n\ge1$ (Exercise 24 and symmetry of $\Tor$). Hence $\Tor_1(L,N')\cong\Tor_1(L,N)$ for every $L$. By Exercise 24 and symmetry, $N'$ is flat $\iff\Tor_1(N',L)=0$ for all $L\iff\Tor_1(N,L)=0$ for all $L\iff N$ is flat. \hfill$\square$
+
+%---------------------------------------------------------------- 26
+\exercise{26}{Let $N$ be an $A$-module. Then $N$ is flat $\iff\Tor_1(A/\fa,N)=0$ for all finitely generated ideals $\fa$ in $A$. [Show first that $N$ is flat if $\Tor_1(M,N)=0$ for all finitely generated $A$-modules $M$, by using (2.19). If $M$ is finitely generated, let $x_1,\dots,x_n$ be a set of generators of $M$, and let $M_i$ be the submodule generated by $x_1,\dots,x_i$. By considering the successive quotients $M_i/M_{i-1}$ and using Exercise 25, deduce that $N$ is flat if $\Tor_1(M,N)=0$ for all \emph{cyclic} $A$-modules $M$, i.e., all $M$ generated by a single element, and therefore of the form $A/\fa$ for some ideal $\fa$. Finally use (2.19) again to reduce to the case where $\fa$ is a finitely generated ideal.]}
+\pf
+($\Rightarrow$) is Exercise 24 (with symmetry of $\Tor$), since $N$ is flat.
+
+($\Leftarrow$) Assume $\Tor_1(A/\fa,N)=0$ for all finitely generated ideals $\fa$.
+
+\emph{Step 1: $\Tor_1(A/\fa,N)=0$ for every ideal $\fa$.} The sequence $0\to\fa\to A\to A/\fa\to0$ gives the exact sequence $0=\Tor_1(A,N)\to\Tor_1(A/\fa,N)\to\fa\otimes N\to A\otimes N=N$, so $\Tor_1(A/\fa,N)=\Ker(\fa\otimes N\to N)$. Let $z=\sum_{i=1}^rx_i\otimes y_i\in\fa\otimes N$ map to $\sum x_iy_i=0$. Let $\fa_0=(x_1,\dots,x_r)\subseteq\fa$ (finitely generated) and $z_0=\sum x_i\otimes y_i\in\fa_0\otimes N$. Then $z_0$ maps to $0$ in $N$, i.e.\ $z_0\in\Ker(\fa_0\otimes N\to N)=\Tor_1(A/\fa_0,N)=0$. So $z_0=0$ and hence its image $z$ in $\fa\otimes N$ is $0$.
+
+\emph{Step 2: $\Tor_1(M,N)=0$ for every finitely generated $M$.} Let $M$ be generated by $x_1,\dots,x_n$, $M_i=\sum_{j\le i}Ax_j$, $M_0=0$. Each $M_i/M_{i-1}$ is cyclic, $\cong A/\fa$, so $\Tor_1(M_i/M_{i-1},N)=0$ by Step 1. From the exact sequence
+$\Tor_1(M_{i-1},N)\to\Tor_1(M_i,N)\to\Tor_1(M_i/M_{i-1},N)$ and induction on $i$ we get $\Tor_1(M_i,N)=0$; for $i=n$ this is $\Tor_1(M,N)=0$.
+
+\emph{Step 3: $N$ is flat.} Let $u:M'\to M$ be injective with $M,M'$ finitely generated. From $0\to M'\to M\to M/M'\to0$ we get $\Tor_1(M/M',N)\to M'\otimes N\to M\otimes N$ exact, and $\Tor_1(M/M',N)=0$ by Step 2 ($M/M'$ is finitely generated). So $u\otimes1$ is injective, and $N$ is flat by 2.19(iv). \hfill$\square$
+
+%---------------------------------------------------------------- 27
+\exercise{27}{A ring $A$ is \emph{absolutely flat} if every $A$-module is flat. Prove that the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $A$ is absolutely flat.
+\item Every principal ideal is idempotent.
+\item Every finitely generated ideal is a direct summand of $A$.
+\end{enumerate}
+[(i)$\Rightarrow$(ii). Let $x\in A$. Then $A/(x)$ is a flat $A$-module, hence in the commutative square with top row $\beta:(x)\otimes A\to(x)\otimes A/(x)$, vertical maps $(x)\otimes A\to A$ and $\alpha:(x)\otimes A/(x)\to A/(x)$, and bottom row $A\to A/(x)$, the mapping $\alpha$ is injective. Hence $\operatorname{Im}(\beta)=0$, hence $(x)=(x^2)$. (ii)$\Rightarrow$(iii). Let $x\in A$. Then $x=ax^2$ for some $a\in A$, hence $e=ax$ is idempotent and we have $(e)=(x)$. Now if $e,f$ are idempotents, then $(e,f)=(e+f-ef)$. Hence every finitely generated ideal is principal, and generated by an idempotent $e$, hence is a direct summand because $A=(e)\oplus(1-e)$. (iii)$\Rightarrow$(i). Use the criterion of Exercise 26.]}
+\pf
+(i)$\Rightarrow$(ii). Let $x\in A$. $A/(x)$ is flat, so tensoring the inclusion $(x)\hookrightarrow A$ with $A/(x)$ gives an injective map $\alpha:(x)\otimes A/(x)\to A\otimes A/(x)=A/(x)$, $y\otimes\bar a\mapsto\overline{ya}$. But $y\in(x)$, so $\overline{ya}=0$: $\alpha=0$. Hence $(x)\otimes A/(x)=0$. By Exercise 2, $(x)\otimes A/(x)\cong(x)/(x)(x)=(x)/(x^2)$. So $(x)=(x^2)$.
+
+(ii)$\Rightarrow$(iii). Let $x\in A$. Then $x\in(x^2)$, say $x=ax^2$. Put $e=ax$. Then $e^2=a^2x^2=a(ax^2)=ax=e$, so $e$ is idempotent; $e\in(x)$ and $x=ax^2=xe\in(e)$, so $(e)=(x)$. For idempotents $e,f$ put $g=e+f-ef$. Then $ge=e+ef-ef=e$ and $gf=f$, hence $e,f\in(g)\subseteq(e,f)$, i.e.\ $(e,f)=(g)$; moreover $g^2=g(e+f-ef)=e+f-ef=g$, so $g$ is idempotent. By induction, every finitely generated ideal $(x_1,\dots,x_n)=(e_1,\dots,e_n)$ is generated by one idempotent $e$. Finally $A=(e)\oplus(1-e)$: $x=xe+x(1-e)$, and if $y\in(e)\cap(1-e)$ then $y=ye=0$ (from $y=y_1(1-e)$ we get $ye=0$). So $(e)$ is a direct summand.
+
+(iii)$\Rightarrow$(i). Let $N$ be any $A$-module and $\fa$ a finitely generated ideal, $A=\fa\oplus\fb$. Then $A/\fa\cong\fb$ is a direct summand of $A$, hence flat (Exercise 4; $A$ is flat). By Exercise 24, $\Tor_1(A/\fa,N)=0$. By Exercise 26, $N$ is flat. So $A$ is absolutely flat. \hfill$\square$
+
+%---------------------------------------------------------------- 28
+\exercise{28}{A Boolean ring is absolutely flat. The ring of Chapter 1, Exercise 7 is absolutely flat. Every homomorphic image of an absolutely flat ring is absolutely flat. If a local ring is absolutely flat, then it is a field. If $A$ is absolutely flat, every non-unit in $A$ is a zero-divisor.}
+\pf
+We use Exercise 27: $A$ is absolutely flat iff $(x)=(x^2)$ for all $x\in A$, i.e.\ iff for each $x$ there is $a$ with $x=ax^2$.
+
+\emph{Boolean rings.} $x=x^2=1\cdot x^2$.
+
+\emph{The ring of Chapter 1, Exercise 7} (every $x$ satisfies $x^n=x$ for some $n>1$): $x=x^n=x^{n-2}x^2$ (for $n=2$ take $a=1$). So it is absolutely flat.
+
+\emph{Homomorphic images.} Let $A\to B=A/\fa$ be surjective with $A$ absolutely flat. Each $\bar x\in B$ lifts to $x\in A$ with $x=ax^2$, so $\bar x=\bar a\bar x^2$, hence $B$ is absolutely flat.
+
+\emph{Local rings.} Let $A$ be local with maximal ideal $\fm$ and absolutely flat. If $x\in\fm$, $x=ax^2$, so $x(1-ax)=0$. Since $ax\in\fm$, $1-ax\notin\fm$ is a unit, so $x=0$. Thus $\fm=0$ and $A$ is a field.
+
+\emph{Non-units are zero-divisors.} Let $x$ be a non-unit of an absolutely flat ring $A\neq0$, $x=ax^2$, so $x(1-ax)=0$. If $1-ax=0$ then $ax=1$ and $x$ would be a unit; so $1-ax\ne0$ and $x$ is a zero-divisor. \hfill$\square$
+
+\end{document}
