@@ -229,7 +229,7 @@ Let $\Sigma$ be the set of primes, ordered by reverse inclusion; it is nonempty 
 \item every finitely generated ideal in $A$ is principal.
 \end{enumerate}}
 \pf
-(i) $2x=(x+x)^2=\ldots$: $(2x)^2=4x^2=4x$ and $(2x)^2=2x$, so $4x=2x$, hence $2x=0$.
+(i) Apply $y^2=y$ to $y=2x$: $2x=(2x)^2=4x^2=4x$, hence $2x=4x-2x=0$.
 
 (ii) Let $\fp$ be prime. In the domain $A/\fp$ every $\bar x$ satisfies $\bar x(\bar x-1)=0$, so $\bar x\in\{0,1\}$. Thus $A/\fp=\{0,1\}\cong\mathbf F_2$ is a field and $\fp$ is maximal.
 
@@ -502,7 +502,7 @@ In particular, the spectrum of a local ring is always connected (Exercise 12).}
 
 \textbf{Part 2.} For a ring $A$ we show (i)$\Rightarrow$(iii)$\Rightarrow$(ii)$\Rightarrow$(i).
 
-(i)$\Rightarrow$(iii). Let $X=V(\fa)\sqcup V(\fb)$ with both non-empty (disconnected means a disjoint union of two non-empty closed, equivalently open, sets). From $V(\fa)\cap V(\fb)=V(\fa+\fb)=\emptyset$ we get $\fa+\fb=(1)$ (else a maximal ideal contains both). From $V(\fa)\cup V(\fb)=V(\fa\fb)=X$ we get $\fa\fb\subseteq\Nil$. Write $1=x+y$ with $x\in\fa$, $y\in\fb$; then $xy\in\Nil$, say $(xy)^n=0$. Expanding $1=(x+y)^{2n}$ shows $1\in(x^n,y^n)$: write $1=e+f$, $e\in(x^n)\subseteq\fa$, $f\in(y^n)\subseteq\fb$. Then $ef\in(x^ny^n)=0$, so $e(1-e)=ef=0$: $e$ is idempotent. If $e=0$ then $1=f\in\fb$, $V(\fb)=\emptyset$, contradiction; if $e=1$ then $1\in\fa$, $V(\fa)=\emptyset$, contradiction. So $e\ne0,1$.
+(i)$\Rightarrow$(iii). Let $X=V(\fa)\sqcup V(\fb)$ with both non-empty (disconnected means a disjoint union of two non-empty closed, equivalently open, sets). From $V(\fa)\cap V(\fb)=V(\fa+\fb)=\emptyset$ we get $\fa+\fb=(1)$ (else a maximal ideal contains both). From $V(\fa)\cup V(\fb)=V(\fa\fb)=X$ we get $\fa\fb\subseteq\Nil$. Write $1=x+y$ with $x\in\fa$, $y\in\fb$; then $xy\in\Nil$, say $(xy)^n=0$. Expanding $1=(x+y)^{2n}=\sum_i\binom{2n}{i}x^iy^{2n-i}$, each term has $i\ge n$ (so lies in $(x^n)$) or $2n-i>n$ (so lies in $(y^n)$); thus $1\in(x^n,y^n)$: write $1=e+f$, $e\in(x^n)\subseteq\fa$, $f\in(y^n)\subseteq\fb$. Then $ef\in(x^ny^n)=0$, so $e(1-e)=ef=0$: $e$ is idempotent. If $e=0$ then $1=f\in\fb$, $V(\fb)=\emptyset$, contradiction; if $e=1$ then $1\in\fa$, $V(\fa)=\emptyset$, contradiction. So $e\ne0,1$.
 
 (iii)$\Rightarrow$(ii). For an idempotent $e\ne0,1$, the map $A\to Ae\times A(1-e)$, $x\mapsto(xe,x(1-e))$ is a ring isomorphism (injective: $xe=0=x(1-e)\Rightarrow x=0$; surjective: $ae+b(1-e)\mapsto(ae,b(1-e))$), where $Ae$ has identity $e\ne0$ and $A(1-e)$ has identity $1-e\ne0$; neither factor is the zero ring.
 
@@ -640,6 +640,6 @@ So $h(\phi(x))=0$ for all $x\in X$, $h\in I(Y)$; hence $\phi(x)\in Y$. Thus $\ph
 
 
 \section*{Notes}
-The textbook PDF is a scan without a text layer; I read the exercise statements from page images. Where the scan was ambiguous I noted it (Ex.~1.18, the superscript in the quotient inequality; Ex.~21(v), where I proved the general equivalence $\phi^*(Y)$ dense $\iff\Ker\phi\subseteq\Nil$, which contains the injective case).
+The textbook PDF is a scan without a text layer; I read the exercise statements from page images. In Ex.~1.18 the quotient inequalities are printed as $(\fa_1:\fa_2)^\ex\subseteq(\fa_1^\ex:\fa_2^\ex)$ and $(\fb_1:\fb_2)^\ci\subseteq(\fb_1^\ci:\fb_2^\ci)$, as stated above. In Ex.~21(v) I proved the general equivalence $\phi^*(Y)$ dense $\iff\Ker\phi\subseteq\Nil$, which contains the injective case.
 
 \end{document}

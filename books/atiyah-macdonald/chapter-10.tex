@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\input{../../tools/preamble.tex}
+\title{Atiyah--Macdonald, Chapter 10: Completions\\[2pt]\large Solutions to the exercises}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Conventions.} $\hat A$, $\hat M$ denote $\fa$-adic completions ($\hat M=\varprojlim M/\fa^nM$) and $\phi:M\to\hat M$ the natural map. From the text I use: $\operatorname{Ker}\phi=\bigcap_n\fa^nM$ (the intersection of all neighbourhoods of $0$) and $\phi$ injective iff $M$ is Hausdorff (10.1); $\varprojlim$ is left exact and is exact on surjective systems (10.2), with $\varprojlim^1A_n=\operatorname{Coker}d^A$ and the six-term sequence $0\to\varprojlim A_n\to\varprojlim B_n\to\varprojlim C_n\to\varprojlim{}^1A_n\to\varprojlim{}^1B_n\to\varprojlim{}^1C_n\to0$ coming from the snake lemma; for an exact sequence $0\to G'\to G\to G''\to0$ with the induced topologies $\{G'\cap G_n\}$ and $\{pG_n\}$, the completed sequence $0\to\hat G'\to\hat G\to\hat G''\to0$ is exact (10.3); $\hat G\cong\varprojlim G/G_n$ (10.4), and a ring or module is called \emph{complete} if $\phi$ is an isomorphism; for $A$ Noetherian and $M$ finitely generated, the Artin--Rees lemma (10.9--10.11) makes the $\fa$-adic topology of a submodule $M'$ the induced one; exactness of completion on finitely generated modules (10.12); $\hat A\otimes_AM\cong\hat M$ for $M$ finitely generated (10.13); $\hat A$ is $A$-flat (10.14); $\hat\fa=\hat A\fa$ is contained in the Jacobson radical of $\hat A$ (10.15(iv)); the completion of a Noetherian local ring is local (10.16); Krull's theorem (10.17): $\bigcap_n\fa^nM=\{x\in M:(1-\alpha)x=0\text{ for some }\alpha\in\fa\}$, and 10.19; $\hat A$ is Noetherian (10.26). Earlier chapters: Ch.~3, Ex.~16 (faithful flatness) and Ex.~17; Ch.~2, Ex.~8; Ch.~1, Ex.~5.
+
+This chapter has no numbered in-text exercises and 12 end-of-chapter exercises. In Exercises 9 and 10(i) the polynomial $f$ is monic in Hensel's lemma; for 10(i) I give a Newton-iteration proof which does not need monicity (this is needed for 10(iii)).
+
+%=====================================================================
+\section*{End-of-chapter exercises}
+
+%---------------------------------------------------------------- 1
+\exercise{1}{Let $\alpha_n:\Z/p\Z\to\Z/p^n\Z$ be the injection of abelian groups given by $\alpha_n(1)=p^{n-1}$, and let $\alpha:A\to B$ be the direct sum of all the $\alpha_n$ (where $A$ is a countable direct sum of copies of $\Z/p\Z$, and $B$ is the direct sum of the $\Z/p^n\Z$). Show that the $p$-adic completion of $A$ is just $A$ but that the completion of $A$ for the topology induced from the $p$-adic topology on $B$ is the direct \emph{product} of the $\Z/p\Z$. Deduce that $p$-adic completion is \emph{not} a right-exact functor on the category of all $\Z$-modules.}
+\pf
+Write $A=\bigoplus_{k\ge1}A_{(k)}$ with $A_{(k)}=\Z/p$, $B=\bigoplus_{k\ge1}B_{(k)}$ with $B_{(k)}=\Z/p^k$, and $\alpha=\bigoplus\alpha_k$. $\alpha$ is injective since each $\alpha_k$ is.
+
+\emph{$p$-adic completion of $A$.} $pA=0$, so $p^nA=0$ for $n\ge1$; the $p$-adic topology is discrete and $\hat A=\varprojlim A/p^nA=A$.
+
+\emph{Induced topology.} Put $A_n=\alpha^{-1}(p^nB)$ ($n\ge0$); these form the fundamental system of the induced topology. Now $p^nB=\bigoplus_kp^n\Z/p^k$. For $k\le n$, $p^n\Z/p^k=0$ so $\alpha_k(A_{(k)})\cap p^nB_{(k)}=0$; for $k\ge n+1$, $\alpha_k(1)=p^{k-1}\in p^n\Z/p^k$, so $\alpha_k(A_{(k)})\subseteq p^nB_{(k)}$. Hence
+\[
+A_n=\bigoplus_{k>n}A_{(k)},\qquad A/A_n\cong\bigoplus_{k\le n}A_{(k)},
+\]
+and the completion for this topology is $\varprojlim A/A_n=\prod_{k\ge1}\Z/p$ (a coherent sequence in $\bigoplus_{k\le n}\Z/p$ is the same as a sequence $(c_k)_{k\ge1}$ of elements of $\Z/p$). Write $A'$ for this completion.
+
+\emph{Failure of right exactness.} Let $C=B/\alpha(A)$ and consider the exact sequence $0\to A\xrightarrow{\alpha}B\to C\to0$. Give $B$ the $p$-adic topology, $\alpha(A)\cong A$ the induced topology (so $\hat{A}$ there is $A'$ by the above), and $C$ the quotient topology $\{pB_n+\alpha A/\alpha A\}$, which is the $p$-adic topology of $C$. By 10.3,
+\[
+0\to A'\to\hat B\to\hat C\to0
+\]
+is exact. Suppose $p$-adic completion were right exact. Then $\hat A\xrightarrow{\hat\alpha}\hat B\to\hat C\to0$ would be exact, where $\hat A=A$ ($p$-adic). By functoriality (10.1 ff.: $\hat g\circ\hat f=\widehat{gf}$), $\hat\alpha$ is the composite $A=\hat A\to A'\to\hat B$ where the first map is the completion of the continuous identity $A\to A$ ($p$-adic topology $\to$ induced topology), i.e.\ the inclusion $\bigoplus\Z/p\hookrightarrow\prod\Z/p$, and the second map is injective (10.3). Exactness would give $\operatorname{Im}\hat\alpha=\operatorname{Ker}(\hat B\to\hat C)=\operatorname{Im}(A'\to\hat B)$, hence $\bigoplus\Z/p=\prod\Z/p$, false since $\bigoplus_{k\ge1}\Z/p\subsetneq\prod_{k\ge1}\Z/p$ (e.g.\ $(1,1,1,\dots)$). So $p$-adic completion is not right exact on all $\Z$-modules. \hfill$\square$
+
+%---------------------------------------------------------------- 2
+\exercise{2}{In Exercise 1, let $A_n=\alpha^{-1}(p^nB)$, and consider the exact sequence $0\to A_n\to A\to A/A_n\to0$. Show that $\varprojlim$ is not right exact, and compute $\varprojlim^1A_n$.}
+\pf
+By Exercise 1, $A_n=\bigoplus_{k>n}\Z/p$ and $A/A_n=\bigoplus_{k\le n}\Z/p$. The three systems are $\{A_n\}$ (transition maps the inclusions $A_{n+1}\hookrightarrow A_n$), $\{A\}$ (constant, transition maps the identity) and $\{A/A_n\}$ (projections), and $0\to\{A_n\}\to\{A\}\to\{A/A_n\}\to0$ is an exact sequence of inverse systems. We compute
+\[
+\varprojlim A_n=\bigcap_nA_n=0,\qquad\varprojlim A=A=\bigoplus\Z/p,\qquad\varprojlim A/A_n=\prod\Z/p,
+\]
+and the map $\varprojlim A\to\varprojlim A/A_n$ is the inclusion $\bigoplus\Z/p\hookrightarrow\prod\Z/p$, which is not surjective. Thus $0\to\varprojlim A_n\to\varprojlim A\to\varprojlim A/A_n$ is exact (10.2) but $\varprojlim A\to\varprojlim A/A_n$ is not onto: $\varprojlim$ is not right exact.
+
+\emph{Computation of $\varprojlim^1A_n$.} The constant system $\{A\}$ is surjective (identity maps), so $\varprojlim^1A=\operatorname{Coker}d^A=0$ (see 10.2: to solve $x_n-x_{n+1}=a_n$ put $x_1=0$, $x_{n+1}=x_n-a_n$). The six-term sequence gives
+\[
+0\to\varprojlim A_n\to\varprojlim A\to\varprojlim A/A_n\to\varprojlim{}^1A_n\to\varprojlim{}^1A=0,
+\]
+so
+\[
+\varprojlim{}^1A_n\cong\Coker\Bigl(\bigoplus_{k\ge1}\Z/p\to\prod_{k\ge1}\Z/p\Bigr)=\Bigl(\prod_{k\ge1}\Z/p\Bigr)\Big/\Bigl(\bigoplus_{k\ge1}\Z/p\Bigr),
+\]
+a non-zero (indeed uncountable) group. \hfill$\square$
+
+%---------------------------------------------------------------- 3
+\exercise{3}{Let $A$ be a Noetherian ring, $\fa$ an ideal and $M$ a finitely generated $A$-module. Using Krull's Theorem and Exercise 14 of Chapter 3, prove that
+\[
+\bigcap_{n=1}^\infty\fa^nM=\bigcap_{\fm\supseteq\fa}\Ker(M\to M_\fm),
+\]
+where $\fm$ runs over all maximal ideals containing $\fa$. Deduce that $\hat M=0\iff\Supp(M)\cap V(\fa)=\emptyset$ (in $\Spec(A)$). [The reader should think of $\hat M$ as the ``Taylor expansion'' of $M$ transversal to the subscheme $V(\fa)$: the above result then shows that $M$ is determined in a neighborhood of $V(\fa)$ by its Taylor expansion.]}
+\pf
+Let $E=\bigcap\fa^nM$. By Krull's theorem (10.17), $E=\{x\in M:(1-\alpha)x=0\text{ for some }\alpha\in\fa\}$.
+
+($\subseteq$) Let $x\in E$, $(1-\alpha)x=0$, $\alpha\in\fa$, and let $\fm\supseteq\fa$ be maximal. Then $1-\alpha\notin\fm$ (otherwise $1\in\fm$), and $(1-\alpha)x=0$, so $x/1=0$ in $M_\fm$.
+
+($\supseteq$) Let $x\in M$ with $x/1=0$ in $M_\fm$ for all maximal $\fm\supseteq\fa$. Put $\fb=\Ann(x)$. For each such $\fm$ there is $s\notin\fm$ with $sx=0$, i.e.\ $\fb\not\subseteq\fm$. If $\fa+\fb\ne(1)$ it would lie in a maximal ideal $\fm$ containing $\fa$ and $\fb$, a contradiction. So $\fa+\fb=(1)$: $1=\alpha+b$ with $\alpha\in\fa$, $b\in\fb$, and $(1-\alpha)x=bx=0$. Hence $x\in E$. (This is the argument of Ch.~3, Ex.~14 in disguise.)
+
+\emph{Deduction.} $\ker(M\to\hat M)=E$ (10.1). If $\hat M=0$, then $E=M$, so by the displayed equality $x/1=0$ in $M_\fm$ for every $x\in M$ and every maximal $\fm\supseteq\fa$, i.e.\ $M_\fm=0$ for all maximal $\fm\supseteq\fa$. Conversely if all these $M_\fm=0$, then $E=M$, so $M=\fa^nM$ for all $n$, $M/\fa^nM=0$ and $\hat M=0$. Thus $\hat M=0\iff M_\fm=0$ for all maximal $\fm\in V(\fa)$.
+
+Finally, $M_\fm=0$ for all maximal $\fm\in V(\fa)$ $\iff\Supp(M)\cap V(\fa)=\emptyset$: ($\Leftarrow$) maximal ideals of $V(\fa)$ are not in the support. ($\Rightarrow$) if $\fp\in\Supp(M)\cap V(\fa)$, choose a maximal $\fm\supseteq\fp\supseteq\fa$; $M_\fp$ is a localization of $M_\fm$ (Ch.~3, Ex.~3), so $M_\fm=0\Rightarrow M_\fp=0$, contradicting $\fp\in\Supp M$. \hfill$\square$
+
+%---------------------------------------------------------------- 4
+\exercise{4}{Let $A$ be a Noetherian ring, $\fa$ an ideal in $A$, and $\hat A$ the $\fa$-adic completion. For any $x\in A$, let $\hat x$ be the image of $x$ in $\hat A$. Show that
+\[
+x\text{ not a zero-divisor in }A\Rightarrow\hat x\text{ not a zero-divisor in }\hat A.
+\]
+Does this imply that $A$ is an integral domain $\Rightarrow\hat A$ is an integral domain? [Apply the exactness of completion to the sequence $0\to A\xrightarrow{x}A$.]}
+\pf
+\emph{First claim.} If $x$ is not a zero-divisor, $0\to A\xrightarrow{\mu_x}A$ is an exact sequence of finitely generated modules. By 10.12 (more precisely its left-exact part, 10.2/10.12), $0\to\hat A\xrightarrow{\widehat{\mu_x}}\hat A$ is exact. The completion of $\mu_x$ is the continuous extension of multiplication by $x$, i.e.\ multiplication by $\hat x$ (both are continuous and agree on the dense image of $A$; equivalently, $\widehat{\mu_x}=\varprojlim(\mu_x\text{ on }A/\fa^n)$). So $\hat x$ is not a zero-divisor.
+
+\emph{The implication is false.} Let $k$ be a field of characteristic $\ne2$ (e.g.\ $\Q$), $B=k[x,y]$, $f=y^2-x^2(1+x)$, $A=B/(f)$ and $\fa=(x,y)A$. $f$ is irreducible in $B$ (the polynomial $y^2-x^2(1+x)$ over $k(x)$ has discriminant $4x^2(1+x)$, not a square in $k(x)$, so it is irreducible over $k(x)$; it is primitive in $y$ over $k[x]$, hence irreducible in $B$ by Gauss). So $A$ is a Noetherian domain. By 10.13 applied to the $B$-module $A$ and the ideal $(x,y)\subset B$ (whose adic topology on $A$ is the $\fa$-adic one), $\hat A\cong\hat B\otimes_BA=k[[x,y]]/(f)$, since $\hat B=\varprojlim B/(x,y)^n=k[[x,y]]$. Let $u=\sqrt{1+x}=\sum_{n\ge0}\binom{1/2}{n}x^n\in k[[x]]$ (here $2$ is invertible in $k$; the coefficients $\binom{1/2}{n}$ lie in $\Z[1/2]$, being $\pm$ Catalan numbers divided by powers of $2$), so $u^2=1+x$ and
+\[
+f=y^2-x^2u^2=(y-xu)(y+xu)\quad\text{in }k[[x,y]].
+\]
+Neither factor lies in $(f)$ (elements of $(f)$ have order $\ge2$, while $y\mp xu$ has order $1$). Hence $(y-xu)$ and $(y+xu)$ are non-zero zero-divisors of $\hat A$, and $\hat A$ is not a domain although $A$ is (the nodal cubic: completion at the node has two branches). \hfill$\square$
+
+%---------------------------------------------------------------- 5
+\exercise{5}{Let $A$ be a Noetherian ring and let $\fa,\fb$ be ideals in $A$. If $M$ is any $A$-module, let $M^\fa$, $M^\fb$ denote its $\fa$-adic and $\fb$-adic completions respectively. If $M$ is finitely generated, prove that $(M^\fa)^\fb\cong M^{\fa+\fb}$. [Take the $\fa$-adic completion of the exact sequence $0\to\fb^mM\to M\to M/\fb^mM\to0$ and apply (10.13). Then use the isomorphism $\varprojlim_m(\varprojlim_nM/(\fa^nM+\fb^mM))\cong\varprojlim_nM/(\fa^nM+\fb^nM)$ and the inclusions $(\fa+\fb)^{2n}\subseteq\fa^n+\fb^n\subseteq(\fa+\fb)^n$.]}
+\pf
+Here $(M^\fa)^\fb$ is the $\fb$-adic completion of the $A$-module $M^\fa$ (filtration $\fb^mM^\fa$).
+
+\emph{Step 1.} $\fb^mM$ and $M/\fb^mM$ are finitely generated, so by 10.12 the $\fa$-adic completion of $0\to\fb^mM\to M\to M/\fb^mM\to0$ is exact:
+\[
+0\to(\fb^mM)^\fa\to M^\fa\to(M/\fb^mM)^\fa\to0 .
+\]
+By 10.13 and flatness of $\hat A=\hat A^{\fa}$ over $A$ (10.14), $(\fb^mM)^\fa\cong\hat A\otimes\fb^mM\to\hat A\otimes M\cong M^\fa$ is injective with image the $\hat A$-submodule generated by the elements $1\otimes bx$ ($b\in\fb^m$), i.e.\ $\fb^m(\hat A\otimes M)=\fb^mM^\fa$ (naturality of the isomorphism $\hat A\otimes M\cong M^\fa$). Hence
+\[
+M^\fa/\fb^mM^\fa\cong(M/\fb^mM)^\fa=\varprojlim_nM/(\fa^nM+\fb^mM),
+\]
+because the $\fa$-adic completion of $M/\fb^mM$ is $\varprojlim_n(M/\fb^mM)/\fa^n(M/\fb^mM)=\varprojlim_nM/(\fa^nM+\fb^mM)$.
+
+\emph{Step 2.} Taking $\varprojlim_m$:
+\[
+(M^\fa)^\fb=\varprojlim_mM^\fa/\fb^mM^\fa\cong\varprojlim_m\varprojlim_nX_{m,n},\qquad X_{m,n}=M/(\fa^nM+\fb^mM),
+\]
+with surjective transition maps in each index. An element of the left side is a family $(\xi_{m,n})$ with $\xi_{m,n}\in X_{m,n}$, compatible under both families of projections. The map to $\varprojlim_nX_{n,n}$, $(\xi_{m,n})\mapsto(\xi_{n,n})$, is an isomorphism: the inverse sends $(\eta_n)$ to $\xi_{m,n}:=$ the image of $\eta_k$ for any $k\ge\max(m,n)$ (independent of $k$ by coherence). So $(M^\fa)^\fb\cong\varprojlim_nM/(\fa^n+\fb^n)M$.
+
+\emph{Step 3.} $(\fa+\fb)^{2n}\subseteq\fa^n+\fb^n$ (each monomial in $2n$ factors has $\ge n$ factors from $\fa$ or $\ge n$ from $\fb$) and $\fa^n+\fb^n\subseteq(\fa+\fb)^n$. So the filtrations $((\fa^n+\fb^n)M)$ and $((\fa+\fb)^nM)$ are interleaved, define the same topology, and have the same inverse limit: $\varprojlim M/(\fa^n+\fb^n)M\cong\varprojlim M/(\fa+\fb)^nM=M^{\fa+\fb}$. \hfill$\square$
+
+%---------------------------------------------------------------- 6
+\exercise{6}{Let $A$ be a Noetherian ring and $\fa$ an ideal in $A$. Prove that $\fa$ is contained in the Jacobson radical of $A$ if and only if every maximal ideal of $A$ is closed for the $\fa$-topology. (A Noetherian topological ring in which the topology is defined by an ideal contained in the Jacobson radical is called a \emph{Zariski ring}. Examples are local rings and (by (10.15)(iv)) $\fa$-adic completions.)}
+\pf
+For an ideal $\fb$ of $A$, the closure of $\fb$ in the $\fa$-topology is $\bar\fb=\bigcap_n(\fb+\fa^n)$: $x\in\bar\fb$ iff every neighbourhood $x+\fa^n$ meets $\fb$ iff $x\in\fb+\fa^n$ for all $n$.
+
+($\Rightarrow$) Let $\fa\subseteq\Jac$ and $\fm$ maximal. Then $\fa\subseteq\fm$, so $\fa^n\subseteq\fm$ and $\fm+\fa^n=\fm$ for all $n$; hence $\bar\fm=\fm$.
+
+($\Leftarrow$) Suppose every maximal $\fm$ is closed. If $\fa\not\subseteq\fm$ for some maximal $\fm$, then $\fm+\fa=A$ by maximality, and $1\in(\fm+\fa)^n\subseteq\fm+\fa^n$ for all $n$, so $\bar\fm=A\ne\fm$, a contradiction. Hence $\fa\subseteq\fm$ for every maximal $\fm$, i.e.\ $\fa\subseteq\Jac$. (Noetherianity is not needed.) \hfill$\square$
+
+%---------------------------------------------------------------- 7
+\exercise{7}{Let $A$ be a Noetherian ring, $\fa$ an ideal of $A$, and $\hat A$ the $\fa$-adic completion. Prove that $\hat A$ is faithfully flat over $A$ (Chapter 3, Exercise 16) if and only if $A$ is a Zariski ring (for the $\fa$-topology). [Since $\hat A$ is flat over $A$, it is enough to show that $M\to\hat M$ is injective for all finitely generated $M\iff A$ is Zariski; now use (10.19) and Exercise 6.]}
+\pf
+$\hat A$ is $A$-flat by 10.14. By Exercise 6, $A$ is Zariski iff $\fa\subseteq\Jac(A)$.
+
+($\Rightarrow$) Suppose $\hat A$ is faithfully flat but $\fa\not\subseteq\fm$ for some maximal $\fm$. Let $M=A/\fm\ne0$. Then $\fa+\fm=A$ gives $\fa M=M$, so $\fa^nM=M$ and $\hat M=\varprojlim M/\fa^nM=0$. But by 10.13 ($M$ finitely generated) $\hat A\otimes_AM\cong\hat M=0$, contradicting Ch.~3, Ex.~16(iv) (for a faithfully flat algebra $B$, $M\ne0\Rightarrow B\otimes M\ne0$). Hence $\fa\subseteq\Jac$. (Equivalently: faithful flatness forces $M\to\hat M=\hat A\otimes M$ to be injective for all finitely generated $M$, i.e.\ $\bigcap\fa^nM=0$, which for $M=A/\fm$ says $\fa\subseteq\fm$.)
+
+($\Leftarrow$) Let $\fa\subseteq\Jac$. By Ch.~3, Ex.~16 ((iii)$\Rightarrow$ faithfully flat) it suffices to show $\fm\hat A\ne\hat A$ for each maximal $\fm$ of $A$. By 10.13, $\hat A/\fm\hat A\cong\hat A\otimes_A(A/\fm)\cong(A/\fm)^\wedge$; since $\fa\subseteq\Jac\subseteq\fm$, $\fa(A/\fm)=0$ and the $\fa$-adic completion of $A/\fm$ is $A/\fm\ne0$. Hence $\fm\hat A\ne\hat A$, and $\hat A$ is faithfully flat over $A$. (Alternatively: for $M$ finitely generated $M\to\hat M$ is injective by 10.19, as $\fa\subseteq\Jac$.) \hfill$\square$
+
+%---------------------------------------------------------------- 8
+\exercise{8}{Let $A$ be the local ring of the origin in $\C^n$ (i.e., the ring of all rational functions $f/g\in\C(z_1,\dots,z_n)$ with $g(0)\ne0$), let $B$ be the ring of power series in $z_1,\dots,z_n$ which converge in some neighborhood of the origin, and let $C$ be the ring of formal power series in $z_1,\dots,z_n$, so that $A\subset B\subset C$. Show that $B$ is a local ring and that its completion for the $\fm$-adic topology is $C$. Assuming that $B$ is Noetherian, prove that $B$ is $A$-flat. [Use Chapter 3, Exercise 17, and Exercise 7 above.]}
+\pf
+\emph{$B$ is local.} The evaluation $B\to\C$, $f\mapsto f(0)$ is a surjective ring homomorphism; its kernel $\fm_B$ is a maximal ideal. If $f(0)\ne0$ then $1/f$ is holomorphic (hence given by a convergent power series) near $0$, so $f$ is a unit of $B$. Hence every element outside $\fm_B$ is a unit and $B$ is local with maximal ideal $\fm_B$.
+
+\emph{Powers of $\fm_B$.} Clearly $\fm_B^k\subseteq\{f\in B:\text{all monomials of }f\text{ have degree}\ge k\}$ (the right side is an ideal containing the generators of $\fm_B^k$ once we know $\fm_B=(z_1,\dots,z_n)B$, which is the case $k=1$ below). Conversely let $f=\sum c_\alpha z^\alpha\in B$ have only monomials of degree $\ge k$, and let $r>0$ with $\sum|c_\alpha|r^{|\alpha|}<\infty$ (absolute convergence at $(r,\dots,r)$). For every $\alpha$ fix $\beta(\alpha)\le\alpha$ (componentwise) with $|\beta(\alpha)|=k$. Put $f_\beta=\sum_{\beta(\alpha)=\beta}c_\alpha z^{\alpha-\beta}$. Then $\sum|c_\alpha|r^{|\alpha|-k}<\infty$, so each $f_\beta$ converges on the polydisc $|z_j|\le r$, i.e.\ $f_\beta\in B$, and $f=\sum_{|\beta|=k}z^\beta f_\beta\in\fm_B^k$ (using $k=1$ first to see $\fm_B=(z_1,\dots,z_n)B$, since $f(0)=0$ means all monomials have degree $\ge1$, and then $\fm_B^k=(z^\beta:|\beta|=k)B$). Hence $\fm_B^k=\{f\in B:\text{all monomials have degree}\ge k\}$.
+
+\emph{Completion.} The truncation map $B\to\C[z]/(z)^k$ (take terms of degree $<k$) is surjective (polynomials lie in $B$) with kernel $\fm_B^k$ by the above. So $B/\fm_B^k\cong C/\fm_C^k$ compatibly in $k$, where $\fm_C=(z_1,\dots,z_n)C$, hence $\hat B=\varprojlim B/\fm_B^k=\varprojlim C/\fm_C^k=C$.
+
+\emph{Flatness of $A\to B$.} $A=S^{-1}\C[z]$ with $S=\C[z]\setminus(z_1,\dots,z_n)$ is Noetherian and local with maximal ideal $\fm_A=A\cap\fm_B$, and $A/\fm_A^k\cong\C[z]/(z)^k\cong C/\fm_C^k$ (localization at the maximal ideal $(z)$ does not change $\C[z]/(z)^k$). So the $\fm_A$-adic completion of $A$ is $\hat A=C$, with natural map $A\to C$ the Taylor expansion at $0$; it equals the composite $A\to B\to\hat B=C$. Now:
+\begin{itemize}[leftmargin=*]
+\item $A\to\hat A=C$ is flat by 10.14 ($A$ Noetherian).
+\item $B\to\hat B=C$ is faithfully flat by Exercise 7: $B$ is Noetherian (assumed) and local, so $\fm_B\subseteq\Jac(B)$ and $B$ is a Zariski ring.
+\end{itemize}
+By Ch.~3, Ex.~17 applied to $A\to B\to C$ (the composite $A\to C$ is flat, $B\to C$ faithfully flat), $A\to B$ is flat. \hfill$\square$
+
+%---------------------------------------------------------------- 9
+\exercise{9}{Let $A$ be a local ring, $\fm$ its maximal ideal. Assume that $A$ is $\fm$-adically complete. For any polynomial $f(x)\in A[x]$, let $\bar f(x)\in(A/\fm)[x]$ denote its reduction mod $\fm$. Prove \emph{Hensel's lemma}: if $f(x)$ is monic of degree $n$ and if there exist coprime monic polynomials $\bar g(x),\bar h(x)\in(A/\fm)[x]$ of degrees $r,n-r$ with $\bar f(x)=\bar g(x)\bar h(x)$, then we can lift $\bar g(x),\bar h(x)$ back to monic polynomials $g(x),h(x)\in A[x]$ such that $f(x)=g(x)h(x)$. [Assume inductively that we have constructed $g_k(x),h_k(x)\in A[x]$ such that $g_k(x)h_k(x)-f(x)\in\fm^k[x]$. Then use the fact that since $\bar g(x)$ and $\bar h(x)$ are coprime we can find $\bar a_p(x),\bar b_p(x)$, of degrees $\le n-r$, $r$ respectively, such that $x^p=\bar a_p(x)\bar g_k(x)+\bar b_p(x)\bar h_k(x)$, where $p$ is any integer such that $1\le p\le n$. Finally, use the completeness of $A$ to show that the sequences $g_k(x),h_k(x)$ converge to the required $g(x),h(x)$.]}
+\pf
+Let $\kappa=A/\fm$.
+
+\emph{Linear algebra over $\kappa$.} Since $\bar g,\bar h$ are coprime of degrees $r$ and $n-r$, the $\kappa$-linear map $(a,b)\mapsto a\bar g+b\bar h$ from $\{\deg a<n-r\}\times\{\deg b<r\}$ (dimension $n$) to $\{\deg<n\}$ (dimension $n$) is injective: if $a\bar g=-b\bar h$ then $\bar h\mid a\bar g$, so $\bar h\mid a$ by coprimality, whence $a=0$ as $\deg a<\deg\bar h$, and then $b=0$. So it is bijective: for each $0\le p\le n-1$ there are $\bar a_p,\bar b_p$ with $\deg\bar a_p<n-r$, $\deg\bar b_p<r$ and $x^p=\bar a_p\bar g+\bar b_p\bar h$.
+
+\emph{Inductive construction.} Choose monic lifts $g_1,h_1\in A[x]$ of $\bar g,\bar h$ of degrees $r$, $n-r$; then $g_1h_1-f\in\fm[x]$ (the reductions agree). Suppose $g_k,h_k$ monic of degrees $r,n-r$, reducing to $\bar g,\bar h$, with $e:=f-g_kh_k\in\fm^k[x]$. Both $f$ and $g_kh_k$ are monic of degree $n$, so $\deg e\le n-1$; write $e=\sum_{p=0}^{n-1}e_px^p$, $e_p\in\fm^k$. Lift $\bar a_p,\bar b_p$ to $a_p,b_p\in A[x]$ with $\deg a_p<n-r$, $\deg b_p<r$ (the reductions of $g_k,h_k$ are $\bar g,\bar h$), so that $x^p-a_pg_k-b_ph_k\in\fm[x]$. Put
+\[
+g_{k+1}=g_k+\sum_pe_pb_p,\qquad h_{k+1}=h_k+\sum_pe_pa_p .
+\]
+These are monic of degrees $r$, $n-r$ (we added polynomials of degrees $<r$, $<n-r$), congruent to $g_k,h_k$ mod $\fm^k[x]$, and
+\[
+g_{k+1}h_{k+1}=g_kh_k+\sum_pe_p(a_pg_k+b_ph_k)+\Bigl(\sum e_pb_p\Bigr)\Bigl(\sum e_pa_p\Bigr).
+\]
+Now $\sum_pe_p(a_pg_k+b_ph_k)=\sum e_px^p-\sum e_p(x^p-a_pg_k-b_ph_k)\in e+\fm^{k+1}[x]$, and the last term lies in $\fm^{2k}[x]\subseteq\fm^{k+1}[x]$. So $g_{k+1}h_{k+1}-f=g_kh_k+e-f+(\fm^{k+1}[x])=0+\fm^{k+1}[x]$.
+
+\emph{Convergence.} The coefficients of $g_k$ (resp.\ $h_k$) form Cauchy sequences, since $g_{k+1}-g_k\in\fm^k[x]$. As $A$ is complete, they converge to $g,h\in A[x]$ monic of degrees $r$, $n-r$, with $g-g_k,h-h_k\in\fm^k[x]$ (the $\fm^k$ are closed), and $\bar g,\bar h$ are the given reductions. Then $gh-f\equiv g_kh_k-f\equiv0\pmod{\fm^k[x]}$ for all $k$, so the coefficients of $gh-f$ lie in $\bigcap_k\fm^k=0$ (complete rings are Hausdorff). Thus $f=gh$. \hfill$\square$
+
+%---------------------------------------------------------------- 10
+\exercise{10}{\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item With the notation of Exercise 9, deduce from Hensel's lemma that if $\bar f(x)$ has a simple root $\alpha\in A/\fm$, then $f(x)$ has a simple root $a\in A$ such that $\alpha=a\bmod\fm$.
+\item Show that $2$ is a square in the ring of $7$-adic integers.
+\item Let $f(x,y)\in k[x,y]$, where $k$ is a field, and assume that $f(0,y)$ has $y=a_0$ as a simple root. Prove that there exists a formal power series $y(x)=\sum_{n=0}^\infty a_nx^n$ such that $f(x,y(x))=0$. (This gives the ``analytic branch'' of the curve $f=0$ through the point $(0,a_0)$.)
+\end{enumerate}}
+\pf
+(i) \emph{Monic case, from Hensel.} If $f$ is monic and $\bar f=(x-\alpha)\bar h$ with $\bar h(\alpha)\ne0$ (simple root), then $x-\alpha$ is irreducible and does not divide $\bar h$, so $x-\alpha$ and $\bar h$ are coprime monic polynomials of degrees $1,n-1$. Hensel gives $f=(x-a)h$ with $a\equiv\alpha$ and $h\in A[x]$ monic; $a$ is a root, and $h(a)\equiv\bar h(\alpha)\ne0\pmod\fm$, so $h(a)$ is a unit, in particular non-zero: the root is simple.
+
+\emph{General $f$ (no monicity), by Newton iteration.} Let $\bar f(\alpha)=0$, $\bar f'(\alpha)\ne0$ (this is what ``simple root'' means: $\bar f=(x-\alpha)\bar q$, $\bar q(\alpha)=\bar f'(\alpha)\ne0$). Pick a lift $a_1\in A$ of $\alpha$; then $f(a_1)\in\fm$ and $f'(a_1)\notin\fm$ is a unit of the local ring $A$. Define recursively $a_{k+1}=a_k-f(a_k)/f'(a_k)$, and check by induction: $f(a_k)\in\fm^k$, $a_{k+1}-a_k\in\fm^k$ (so $f'(a_k)\equiv f'(a_1)$ mod $\fm$ is a unit). Taylor's formula in $A[t]$ gives $f(a+t)=f(a)+f'(a)t+t^2c$ with $c\in A$; with $a=a_k$, $t=-f(a_k)/f'(a_k)\in\fm^k$:
+\[
+f(a_{k+1})=t^2c\in\fm^{2k}\subseteq\fm^{k+1}.
+\]
+The sequence $(a_k)$ is Cauchy, so converges (completeness) to $a\in A$ with $a\equiv a_1\equiv\alpha$ (mod $\fm$), and $f(a)\equiv f(a_k)\equiv0$ mod $\fm^k$ for all $k$, so $f(a)=0$. Also $f'(a)\equiv f'(a_1)\not\equiv0$ mod $\fm$, so writing $f=(x-a)q$ we get $q(a)=f'(a)$ a unit: $a$ is a simple root.
+
+(ii) Let $A=\Z_7$, the $7$-adic integers: the completion of $\Z$ (equivalently of the local ring $\Z_{(7)}$) at $(7)$; it is local with maximal ideal $7\Z_7$ and residue field $\Z/7$ (10.16), and complete (10.5). Take $f=x^2-2$. Modulo $7$, $\bar f(3)=9-2=0$ and $\bar f'(3)=6\ne0$, so $3$ is a simple root of $\bar f$. By (i) there is $a\in\Z_7$ with $a^2=2$.
+
+(iii) Take $A=k[[x]]$, a complete local ring with maximal ideal $(x)$ and residue field $k$. View $f(x,y)\in k[x][y]\subseteq A[y]$, a polynomial in the variable $y$ with coefficients in $A$. Its reduction mod $(x)$ is $\bar f(y)=f(0,y)$, which has the simple root $a_0\in k$. By (i) (general form) there is $y(x)\in A=k[[x]]$ with $f(x,y(x))=0$ and $y(0)=a_0$. \hfill$\square$
+
+%---------------------------------------------------------------- 11
+\exercise{11}{Show that the converse of (10.26) is false, even if we assume that $A$ is local and that $\hat A$ is a finitely-generated $A$-module. [Take $A$ to be the ring of germs of $C^\infty$ functions of $x$ at $x=0$, and use Borel's Theorem that every power series occurs as the Taylor expansion of some $C^\infty$ function.]}
+\pf
+(10.26: $A$ Noetherian $\Rightarrow\hat A$ Noetherian.) Let $A$ be the ring of germs at $0$ of real-valued $C^\infty$ functions on $\R$.
+
+\emph{$A$ is local with $\fm=(x)$.} If $f(0)\ne0$, then $1/f$ is $C^\infty$ near $0$, so $f$ is a unit of $A$; hence $\fm=\{f:f(0)=0\}$ is the unique maximal ideal. By Taylor's formula with integral remainder, for $f\in A$ and $n\ge1$,
+\[
+f(x)=\sum_{j<n}\frac{f^{(j)}(0)}{j!}x^j+x^ng_n(x),\qquad g_n(x)=\int_0^1\frac{(1-t)^{n-1}}{(n-1)!}f^{(n)}(tx)\,dt\in A.
+\]
+So $f\in x^nA\iff f^{(j)}(0)=0$ for all $j<n$ (``$\Rightarrow$'' by Leibniz). In particular $\fm=xA$ and $\fm^n=x^nA=\{f:f^{(j)}(0)=0,\ j<n\}$.
+
+\emph{The completion.} The Taylor map $T:A\to\R[[x]]$ is a ring homomorphism, with $T(f)\bmod x^n$ the Taylor polynomial of degree $<n$. By the above, $A/\fm^n\cong\R[x]/(x^n)$ via the Taylor polynomial (onto, as polynomials are in $A$). Hence $\hat A=\varprojlim A/\fm^n=\R[[x]]$, and the natural map $A\to\hat A$ is $T$. By Borel's theorem $T$ is surjective, so $\hat A=A\cdot1$ is a finitely generated $A$-module (and a Noetherian ring: $\R[[x]]$ is, by 10.27).
+
+\emph{$A$ is not Noetherian.} Suppose it were. Then Krull's theorem (10.17) applied to $M=A$ and $\fa=\fm$ gives $\bigcap_n\fm^n=\{f:(1-\alpha)f=0\text{ for some }\alpha\in\fm\}$. But $1-\alpha$ is a unit (since $\alpha\in\fm$, $A$ local), so the right side is $0$. However $\bigcap_n\fm^n=\Ker T$ is the ideal of flat germs, and contains the non-zero germ $e^{-1/x^2}$ (extended by $0$ at $0$), all of whose derivatives vanish at $0$. This contradiction shows $A$ is not Noetherian, although $A$ is local and $\hat A$ is a Noetherian, finitely generated $A$-module. \hfill$\square$
+
+%---------------------------------------------------------------- 12
+\exercise{12}{If $A$ is Noetherian, then $A[[x_1,\dots,x_n]]$ is a faithfully flat $A$-algebra. [Express $A\to A[[x_1,\dots,x_n]]$ as a composition of flat extensions, and use Exercise 5(v) of Chapter 1.]}
+\pf
+Write $A\to P=A[x_1,\dots,x_n]\to\hat P=A[[x_1,\dots,x_n]]$.
+
+\emph{Flatness.} $P=\bigoplus_\alpha Ax^\alpha$ is a free $A$-module, hence flat. $P$ is Noetherian (Hilbert basis theorem), and $\hat P$ is its $(x_1,\dots,x_n)$-adic completion: $P/(x)^k$ is the set of polynomials of degree $<k$, so $\varprojlim P/(x)^k=A[[x_1,\dots,x_n]]$. By 10.14, $\hat P$ is $P$-flat. A composite of flat homomorphisms is flat (Ch.~2, Ex.~8(ii)), so $A[[x_1,\dots,x_n]]$ is a flat $A$-algebra.
+
+\emph{Faithfulness.} Let $\fp$ be a prime of $A$ and $\varepsilon:A[[x_1,\dots,x_n]]\to A$ the evaluation $x_i\mapsto0$ (constant term). Then $\varepsilon^{-1}(\fp)$ is a prime of $A[[x_1,\dots,x_n]]$ (the quotient embeds in $A/\fp$: it is $\cong A/\fp$, a domain), and its contraction to $A$ is $\varepsilon^{-1}(\fp)\cap A=\fp$ (for $a\in A$, $\varepsilon(a)=a$). (For $n=1$ this is Ch.~1, Ex.~5(v); the general case is the same, or iterate $A[[x_1,\dots,x_n]]=A[[x_1,\dots,x_{n-1}]][[x_n]]$.) Thus $\Spec A[[x_1,\dots,x_n]]\to\Spec A$ is surjective, and a flat algebra with this property is faithfully flat (Ch.~3, Ex.~16: condition (ii) is one of the equivalent conditions defining faithful flatness). \hfill$\square$
+
+\end{document}

@@ -263,7 +263,7 @@ which agree (both send $y\mapsto1\otimes(1\otimes u)(y)$). The map $N'\to C\otim
 \pf
 Let $S=A-\fp$. Since $\fq^c=\fp$, $f(S)\cap\fq=\emptyset$, so $B_\fq$ is a localization of $B_\fp=S^{-1}B$ (at the prime $\fq B_\fp$) and $A_\fp\to B_\fq$ is defined.
 
-$B_\fp\cong A_\fp\otimes_AB$ is a flat $A_\fp$-algebra (Ch.~2, Ex.~20: base change of the flat $A$-module $B$). $B_\fq$ is a flat $B_\fp$-module (3.6, a localization), so by Ch.~2, Ex.~8(ii), $B_\fq$ is a flat $A_\fp$-algebra. The maximal ideal of $A_\fp$ is $\fp A_\fp$, and its extension to $B_\fq$ is contained in $\fq B_\fq\ne(1)$ since $f(\fp)\subseteq\fq$. So condition (iii) of Ex.~16 holds for the flat $A_\fp$-algebra $B_\fq$, hence (Ex.~16) $\Spec(B_\fq)\to\Spec(A_\fp)$ is surjective. \hfill$\square$
+$B_\fp\cong A_\fp\otimes_AB$ is a flat $A_\fp$-algebra (3.10 applied to the flat $A$-module $B$; or Prop.~2.20, base change of a flat module). $B_\fq$ is a flat $B_\fp$-module (3.6, a localization), so by Ch.~2, Ex.~8(ii), $B_\fq$ is a flat $A_\fp$-algebra. The maximal ideal of $A_\fp$ is $\fp A_\fp$, and its extension to $B_\fq$ is contained in $\fq B_\fq\ne(1)$ since $f(\fp)\subseteq\fq$. So condition (iii) of Ex.~16 holds for the flat $A_\fp$-algebra $B_\fq$, hence (Ex.~16) $\Spec(B_\fq)\to\Spec(A_\fp)$ is surjective. \hfill$\square$
 
 %---------------------------------------------------------------- 19
 \exercise{19}{Let $A$ be a ring, $M$ an $A$-module. The \emph{support} of $M$ is defined to be the set $\Supp(M)$ of prime ideals $\fp$ of $A$ such that $M_\fp\ne0$. Prove the following results:
@@ -372,7 +372,7 @@ so the image of $s$ in $A_{f_i}$ is $b'_i/h_i=s_i$. Now let $i\in I$ be arbitrar
 %---------------------------------------------------------------- 25
 \exercise{25}{Let $f:A\to B$, $g:A\to C$ be ring homomorphisms and let $h:A\to B\otimes_AC$ be defined by $h(x)=f(x)\otimes g(x)$. Let $X,Y,Z,T$ be the prime spectra of $A,B,C,B\otimes_AC$ respectively. Then $h^*(T)=f^*(Y)\cap g^*(Z)$. [Let $\fp\in X$, and let $k=k(\fp)$ be the residue field at $\fp$. By Exercise 21, the fiber $h^{*-1}(\fp)$ is the spectrum of $(B\otimes_AC)\otimes_Ak\cong(B\otimes_Ak)\otimes_k(C\otimes_Ak)$. Hence $\fp\in h^*(T)\iff(B\otimes_Ak)\otimes_k(C\otimes_Ak)\ne0\iff B\otimes_Ak\ne0$ and $C\otimes_Ak\ne0\iff\fp\in f^*(Y)\cap g^*(Z)$.]}
 \pf
-\emph{Remark on the formula for $h$.} In $B\otimes_AC$ one has $f(x)\otimes1=1\otimes g(x)=x\cdot(1\otimes1)$, so $f(x)\otimes g(x)=x^2(1\otimes1)$, which is not additive. The intended homomorphism is $h(x)=f(x)\otimes1=1\otimes g(x)$ (this is the structure map of the $A$-algebra $B\otimes_AC$), and that is what I use.
+\emph{Remark on the formula for $h$.} In $B\otimes_AC$ one has $f(x)\otimes1=1\otimes g(x)=x\cdot(1\otimes1)$, so $f(x)\otimes g(x)=x^2(1\otimes1)$, which is not additive in general (e.g.\ $(x+y)^2\ne x^2+y^2$ in $A=\Z$ with $B=C=\Z$). The same formula is printed in the text on p.~31. The intended homomorphism is $h(x)=f(x)\otimes1=1\otimes g(x)$ (this is the structure map of the $A$-algebra $B\otimes_AC$), and that is what I use.
 
 Let $\fp\in X$, $k=k(\fp)$. By Ex.~21(iv) the fibres are
 \[

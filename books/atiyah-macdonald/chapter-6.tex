@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\input{../../tools/preamble.tex}
+\title{Atiyah--Macdonald, Chapter 6: Chain Conditions\\[2pt]\large Solutions to the exercises}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Conventions.} Rings are commutative with $1$. A module is \emph{Noetherian} (resp.\ \emph{Artinian}) if it satisfies the ascending (resp.\ descending) chain condition on submodules. From the text I use: the equivalence of a.c.c.\ and the maximal condition (6.1); a module is Noetherian iff all its submodules are finitely generated (6.2); for an exact sequence $0\to M'\to M\to M''\to0$, $M$ is Noetherian (resp.\ Artinian) iff $M'$ and $M''$ are (6.3), hence finite direct sums (6.4); in particular submodules and quotients of Noetherian (Artinian) modules are Noetherian (Artinian), and $A/\fa$ is a Noetherian (Artinian) ring if $A$ is (6.6). Example 3 on p.~75: the subgroup $G\subseteq\Q/\Z$ of elements of $p$-power order is Artinian but not Noetherian as a $\Z$-module (its only proper subgroups are the chain $G_n$). From earlier chapters: $V(\fa)=V(\fb)\iff r(\fa)=r(\fb)$ and $V(\fa)\supseteq V(\fb)\iff r(\fa)\subseteq r(\fb)$ (Ch.~1, Ex.~15, 17); the closure of $\{x\}$ is $V(\fp_x)$ (Ch.~1, Ex.~18); irreducible closed sets of $\Spec A$ are the $V(\fp)$, $\fp$ prime, and the irreducible components are the $V(\fp)$ with $\fp$ minimal (Ch.~1, Ex.~20); $V(\fa)\cong\Spec(A/\fa)$ (Ch.~1, Ex.~21(iv)); $\Supp(M)=V(\Ann M)$ for $M$ finitely generated (Ch.~3, Ex.~19(v)). A topological space is \emph{irreducible} if it is non-empty and any two non-empty open subsets meet.
+
+Chapter 6 has no numbered in-text exercises (the ``Exercise 2 before (6.2)'' mentioned in the text refers to Example 2 on p.~74). There are 12 end-of-chapter exercises. In Exercise 11, ``the going-up property'' (Ch.~5, Ex.~10) is taken in its usual form, stated explicitly in the solution.
+
+%=====================================================================
+\section*{End-of-chapter exercises}
+
+%---------------------------------------------------------------- 1
+\exercise{1}{(i) Let $M$ be a Noetherian $A$-module and $u:M\to M$ a module homomorphism. If $u$ is surjective, then $u$ is an isomorphism.
+
+(ii) If $M$ is Artinian and $u$ is injective, then again $u$ is an isomorphism.
+
+[For (i), consider the submodules $\Ker(u^n)$; for (ii), the quotient modules $\Coker(u^n)$.]}
+\pf
+(i) $\Ker(u)\subseteq\Ker(u^2)\subseteq\cdots$ is an ascending chain, so $\Ker(u^n)=\Ker(u^{2n})$ for some $n$. Let $x\in\Ker u$. Since $u^n$ is surjective, $x=u^n(y)$ for some $y$. Then $u^{2n}(y)=u^n(x)=0$ (as $ux=0$), so $y\in\Ker(u^{2n})=\Ker(u^n)$ and $x=u^n(y)=0$. Hence $u$ is injective, so an isomorphism.
+
+(ii) $u(M)\supseteq u^2(M)\supseteq\cdots$ is a descending chain (equivalently, the quotients $\Coker(u^n)=M/u^n(M)$ form an ascending chain), so $u^n(M)=u^{n+1}(M)$ for some $n$. Let $x\in M$. Then $u^n(x)\in u^n(M)=u^{n+1}(M)$, so $u^n(x)=u^{n+1}(y)=u^n(u(y))$ for some $y$. Since $u$ is injective so is $u^n$, hence $x=u(y)$. Thus $u$ is surjective, so an isomorphism. \hfill$\square$
+
+%---------------------------------------------------------------- 2
+\exercise{2}{Let $M$ be an $A$-module. If every non-empty set of finitely generated submodules of $M$ has a maximal element, then $M$ is Noetherian.}
+\pf
+Let $N$ be a submodule of $M$ and let $\Sigma$ be the set of finitely generated submodules of $N$; $\Sigma\ne\emptyset$ since $0\in\Sigma$. By hypothesis $\Sigma$ has a maximal element $N_0$. If $N_0\ne N$, pick $x\in N-N_0$; then $N_0+Ax$ is finitely generated, lies in $N$ and strictly contains $N_0$, contradicting maximality. So $N=N_0$ is finitely generated. Every submodule of $M$ is finitely generated, so $M$ is Noetherian by 6.2. \hfill$\square$
+
+%---------------------------------------------------------------- 3
+\exercise{3}{Let $M$ be an $A$-module and let $N_1,N_2$ be submodules of $M$. If $M/N_1$ and $M/N_2$ are Noetherian, so is $M/(N_1\cap N_2)$. Similarly with Artinian in place of Noetherian.}
+\pf
+The homomorphism $M\to M/N_1\oplus M/N_2$, $x\mapsto(x+N_1,x+N_2)$ has kernel $N_1\cap N_2$. So $M/(N_1\cap N_2)$ is isomorphic to a submodule of $M/N_1\oplus M/N_2$. The direct sum is Noetherian (6.4), hence so is each of its submodules (6.3). The Artinian case is identical, using the Artinian parts of 6.3 and 6.4. \hfill$\square$
+
+%---------------------------------------------------------------- 4
+\exercise{4}{Let $M$ be a Noetherian $A$-module and let $\fa$ be the annihilator of $M$ in $A$. Prove that $A/\fa$ is a Noetherian ring.
+
+If we replace ``Noetherian'' by ``Artinian'' in this result, is it still true?}
+\pf
+$M$ is finitely generated (6.2), say by $x_1,\dots,x_n$. Consider $\theta:A\to M^n$, $a\mapsto(ax_1,\dots,ax_n)$. Then $\Ker\theta=\bigcap_i\Ann(x_i)=\Ann(M)=\fa$, because $a$ kills $M$ iff it kills every generator. So $A/\fa$ is isomorphic, as an $A$-module, to a submodule of $M^n$. By 6.4, $M^n$ is Noetherian, and by 6.3 so is $A/\fa$ as an $A$-module. The $A$-submodules of $A/\fa$ are exactly its ideals, so $A/\fa$ is a Noetherian ring.
+
+\emph{For Artinian modules the statement is false.} Let $M=G\subseteq\Q/\Z$ be the $p$-primary part (Example 3, p.~75); it is an Artinian $\Z$-module. Its annihilator is $0$ (the element of order $p^n$ is killed only by multiples of $p^n$, for every $n$), so $A/\Ann(M)=\Z$, which is not Artinian ($(2)\supsetneq(4)\supsetneq(8)\supsetneq\cdots$). \hfill$\square$
+
+%---------------------------------------------------------------- 5
+\exercise{5}{A topological space $X$ is said to be \emph{Noetherian} if the open subsets of $X$ satisfy the ascending chain condition (or, equivalently, the maximal condition). Since closed subsets are complements of open subsets, it comes to the same thing to say that the closed subsets of $X$ satisfy the descending chain condition (or, equivalently, the minimal condition). Show that, if $X$ is Noetherian, then every subspace of $X$ is Noetherian, and that $X$ is quasi-compact.}
+\pf
+\emph{Subspaces.} Let $Y\subseteq X$ and let $V_1\subseteq V_2\subseteq\cdots$ be open subsets of $Y$; write $V_i=U_i\cap Y$ with $U_i$ open in $X$. Put $W_i=U_1\cup\cdots\cup U_i$, an ascending chain of open subsets of $X$, so $W_n=W_{n+1}=\cdots$ for some $n$. Now $W_i\cap Y=(U_1\cap Y)\cup\cdots\cup(U_i\cap Y)=V_1\cup\cdots\cup V_i=V_i$. Hence $V_n=V_{n+1}=\cdots$, and $Y$ is Noetherian.
+
+\emph{Quasi-compactness.} Let $\{U_\alpha\}$ be an open cover of $X$. The set of finite unions of members of the cover is a non-empty set of open sets, so it has a maximal element $W=U_{\alpha_1}\cup\cdots\cup U_{\alpha_n}$. For any $\alpha$, $W\cup U_\alpha$ is again a finite union and contains $W$, so equals $W$; thus $U_\alpha\subseteq W$ for all $\alpha$, hence $W=X$ and $\{U_{\alpha_i}\}$ is a finite subcover. \hfill$\square$
+
+%---------------------------------------------------------------- 6
+\exercise{6}{Prove that the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $X$ is Noetherian.
+\item Every open subspace of $X$ is quasi-compact.
+\item Every subspace of $X$ is quasi-compact.
+\end{enumerate}}
+\pf
+(i)$\Rightarrow$(iii): by Exercise 5, every subspace of $X$ is Noetherian, hence quasi-compact (Exercise 5 applied to that subspace).
+
+(iii)$\Rightarrow$(ii): trivial.
+
+(ii)$\Rightarrow$(i): Let $U_1\subseteq U_2\subseteq\cdots$ be open in $X$ and $U=\bigcup U_i$. The open subspace $U$ is quasi-compact and covered by the $U_i$, so $U=U_{i_1}\cup\cdots\cup U_{i_r}=U_n$ with $n=\max i_j$ (the chain is increasing). Then $U_n=U_{n+1}=\cdots=U$, so the chain is stationary. \hfill$\square$
+
+%---------------------------------------------------------------- 7
+\exercise{7}{A Noetherian space is a finite union of irreducible closed subspaces. [Consider the set $\Sigma$ of closed subsets of $X$ which are not finite unions of irreducible closed subspaces.] Hence the set of irreducible components of a Noetherian space is finite.}
+\pf
+Suppose $\Sigma\ne\emptyset$. Since closed sets satisfy the minimal condition, $\Sigma$ has a minimal element $Y$. $Y\ne\emptyset$ (the empty set is the empty union). $Y$ is not irreducible, for otherwise it would be a union of one irreducible closed set. So there are non-empty open subsets $U_1,U_2$ of $Y$ with $U_1\cap U_2=\emptyset$. Put $Y_i=Y-U_i$: these are closed in $Y$, hence in $X$, are proper subsets of $Y$, and $Y_1\cup Y_2=Y-(U_1\cap U_2)=Y$. By minimality $Y_1,Y_2\notin\Sigma$, so each is a finite union of irreducible closed subspaces, hence so is $Y$, a contradiction. Thus $\Sigma=\emptyset$, and $X=Y_1\cup\cdots\cup Y_n$ with $Y_i$ irreducible and closed; discarding any $Y_i$ contained in another $Y_j$, we may assume none is contained in another.
+
+\emph{Components.} An irreducible space is not a union of two proper closed subsets: if $Z=C_1\cup C_2$ with $C_i\ne Z$ closed, then $Z-C_1$, $Z-C_2$ are non-empty open sets with empty intersection. Inductively, an irreducible space is not a finite union of proper closed subsets. Now let $Z\subseteq X$ be irreducible. Then $Z=\bigcup_i(Z\cap Y_i)$ is a finite union of closed subsets of $Z$, so $Z=Z\cap Y_i$, i.e.\ $Z\subseteq Y_i$ for some $i$. If $Z$ is a maximal irreducible subspace, then $Z\subseteq Y_i$ with $Y_i$ irreducible forces $Z=Y_i$. So every irreducible component is one of $Y_1,\dots,Y_n$, and there are finitely many. \hfill$\square$
+
+%---------------------------------------------------------------- 8
+\exercise{8}{If $A$ is a Noetherian ring then $\Spec(A)$ is a Noetherian topological space. Is the converse true?}
+\pf
+Let $V(\fa_1)\supseteq V(\fa_2)\supseteq\cdots$ be a descending chain of closed subsets of $\Spec A$. Then $r(\fa_1)\subseteq r(\fa_2)\subseteq\cdots$ (Ch.~1, Ex.~15 and 1.14), an ascending chain of ideals, which is stationary since $A$ is Noetherian. Hence $V(\fa_n)=V(r(\fa_n))$ is stationary, and $\Spec A$ is a Noetherian space.
+
+\emph{The converse is false.} Let $k$ be a field, $B=k[x_1,x_2,\dots]$ and $A=B/(x_1^2,x_2^2,\dots)$; write $x_i$ also for the images in $A$. Put $I=(x_1,x_2,\dots)\subseteq A$. Then $A/I\cong k$, so $I$ is maximal; each $x_i$ is nilpotent, so $I\subseteq\Nil(A)$, and $\Nil(A)\ne A$. Thus $I=\Nil(A)$ is contained in every prime and is itself maximal, so $\Spec A=\{I\}$ is a single point, a Noetherian space. But $A$ is not Noetherian: $A/(x_1,\dots,x_n)\cong k[x_{n+1},x_{n+2},\dots]/(x_{n+1}^2,x_{n+2}^2,\dots)$, in which the class of $x_{n+1}$ is non-zero, so $x_{n+1}\notin(x_1,\dots,x_n)$ and $(x_1)\subsetneq(x_1,x_2)\subsetneq\cdots$ is a strictly ascending chain of ideals. \hfill$\square$
+
+%---------------------------------------------------------------- 9
+\exercise{9}{Deduce from Exercise 8 that the set of minimal prime ideals in a Noetherian ring is finite.}
+\pf
+By Exercise 8, $X=\Spec A$ is a Noetherian space, so it has finitely many irreducible components (Exercise 7). By Ch.~1, Ex.~20(iv) these are the sets $V(\fp)$ with $\fp$ a minimal prime ideal. Distinct minimal primes give distinct components: $V(\fp)=V(\fp')$ implies $\fp\in V(\fp')$ and $\fp'\in V(\fp)$, so $\fp'\subseteq\fp\subseteq\fp'$. Hence the set of minimal primes is finite. \hfill$\square$
+
+%---------------------------------------------------------------- 10
+\exercise{10}{If $M$ is a Noetherian module (over an arbitrary ring $A$) then $\Supp(M)$ is a closed Noetherian subspace of $\Spec(A)$.}
+\pf
+$M$ is finitely generated (6.2), so $\Supp(M)=V(\Ann M)$ (Ch.~3, Ex.~19(v)), which is closed. Put $\fa=\Ann M$. By Exercise 4, $A/\fa$ is a Noetherian ring, so $\Spec(A/\fa)$ is a Noetherian space (Exercise 8). By Ch.~1, Ex.~21(iv), $\Spec(A/\fa)$ is homeomorphic to the subspace $V(\fa)=\Supp(M)$ of $\Spec A$. Hence $\Supp(M)$ is a Noetherian space. \hfill$\square$
+
+%---------------------------------------------------------------- 11
+\exercise{11}{Let $f:A\to B$ be a ring homomorphism and suppose that $\Spec(B)$ is a Noetherian space (Exercise 5). Prove that $f^*:\Spec(B)\to\Spec(A)$ is a closed mapping if and only if $f$ has the going-up property (Chapter 5, Exercise 10).}
+\pf
+\emph{Going-up property:} if $\fp_1\subseteq\fp_2$ are primes of $A$ and $\fq_1$ is a prime of $B$ with $\fq_1^c=\fp_1$, then there is a prime $\fq_2\supseteq\fq_1$ of $B$ with $\fq_2^c=\fp_2$.
+
+($\Rightarrow$) Suppose $f^*$ is closed (this direction does not use the Noetherian hypothesis). Let $\fp_1\subseteq\fp_2$ and $\fq_1^c=\fp_1$. The set $F=V(\fq_1)$ is closed in $\Spec B$, so $f^*(F)$ is closed in $\Spec A$. It contains $f^*(\fq_1)=\fp_1$, hence contains the closure of $\{\fp_1\}$, which is $V(\fp_1)\ni\fp_2$ (Ch.~1, Ex.~18). So $\fp_2=f^*(\fq_2)=\fq_2^c$ for some $\fq_2\in V(\fq_1)$, i.e.\ $\fq_2\supseteq\fq_1$.
+
+($\Leftarrow$) Suppose $f$ has the going-up property. \emph{Claim:} for a prime $\fq$ of $B$, $f^*(V(\fq))=V(\fq^c)$. The inclusion $\subseteq$ is clear (if $\fq'\supseteq\fq$ then $\fq'^c\supseteq\fq^c$). Conversely, let $\fp\supseteq\fq^c$ be prime. Going-up applied to $\fq^c\subseteq\fp$ and $\fq$ (with $\fq^c$ the contraction of $\fq$) gives $\fq'\supseteq\fq$ with $\fq'^c=\fp$, so $\fp\in f^*(V(\fq))$.
+
+Now let $F\subseteq\Spec B$ be closed. As a closed subspace of a Noetherian space, $F$ is Noetherian (Exercise 5) and hence, by Exercise 7, a finite union $F=F_1\cup\cdots\cup F_r$ of irreducible closed subsets. Each $F_j$ is of the form $V(\fq_j)$ with $\fq_j$ prime (Ch.~1, Ex.~20(iv)). By the claim, $f^*(F)=\bigcup_jf^*(V(\fq_j))=\bigcup_jV(\fq_j^c)$, a finite union of closed sets, hence closed. So $f^*$ is a closed mapping. \hfill$\square$
+
+%---------------------------------------------------------------- 12
+\exercise{12}{Let $A$ be a ring such that $\Spec(A)$ is a Noetherian space. Show that the set of prime ideals of $A$ satisfies the ascending chain condition. Is the converse true?}
+\pf
+Let $\fp_1\subseteq\fp_2\subseteq\cdots$ be prime ideals. Then $V(\fp_1)\supseteq V(\fp_2)\supseteq\cdots$ is a descending chain of closed sets, so $V(\fp_n)=V(\fp_{n+1})$ for $n$ large. Then $\fp_n\in V(\fp_n)=V(\fp_{n+1})$ gives $\fp_{n+1}\subseteq\fp_n$, hence $\fp_n=\fp_{n+1}$. So the chain is stationary.
+
+\emph{The converse is false.} Let $A=\prod_{i\ge1}\mathbf F_2$, a Boolean ring. By Ch.~1, Ex.~11(ii) every prime ideal of $A$ is maximal, so every chain of prime ideals has length $0$ and the a.c.c.\ on primes holds trivially. But $\Spec A$ is not a Noetherian space. Let $e_i\in A$ be the element with $1$ in position $i$ and $0$ elsewhere, $f_n=e_1+\cdots+e_n$, and $\fm_i=\{a:a_i=0\}$ (a prime, the kernel of the $i$-th projection $A\to\mathbf F_2$). Then $f_nf_{n+1}=f_n$, so $f_n\in(f_{n+1})$ and $V(f_{n+1})\subseteq V(f_n)$, i.e.\ $X_{f_n}\subseteq X_{f_{n+1}}$ (notation of Ch.~1, Ex.~17). The inclusion is strict: $f_{n+1}\notin\fm_{n+1}$ (its $(n{+}1)$-th coordinate is $1$) so $\fm_{n+1}\in X_{f_{n+1}}$, while $f_n\in\fm_{n+1}$ so $\fm_{n+1}\notin X_{f_n}$. Thus $X_{f_1}\subsetneq X_{f_2}\subsetneq\cdots$ is a strictly ascending chain of open subsets, and $\Spec A$ is not Noetherian. \hfill$\square$
+
+\end{document}

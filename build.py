@@ -3,6 +3,7 @@
 
     python3 build.py            # build every book into docs/
     python3 build.py --no-pdf   # skip LaTeX->PDF (HTML only; reuses cached SVG figures)
+    python3 build.py --chapter N  # build only chapter N (its HTML + PDF), no index pages
 
 Source layout (see README.md):
     books/<slug>/book.json      metadata + chapter list
@@ -480,13 +481,22 @@ def build_chapter(book, ch, macros, do_pdf):
     return n_ex
 
 
-def build_book(book, macros, do_pdf):
+def build_book(book, macros, do_pdf, only=None):
     slug = book["slug"]
     bdir = DOCS / "books" / slug
     bdir.mkdir(parents=True, exist_ok=True)
+    if only is not None:
+        for ch in book["chapters"]:
+            if ch["n"] == only:
+                n = build_chapter(book, ch, macros, do_pdf)
+                print("built chapter %d (%d exercises) into %s" % (only, n, bdir / ("chapter-%d" % only)))
+        return
     shutil.copy(BOOKS / slug / "book.pdf", bdir / book["pdf"])
     rows, solved = [], 0
     for ch in book["chapters"]:
+        if ch.get("tex") and not (BOOKS / slug / ch["tex"]).exists():
+            print("warning: %s listed but missing; showing as coming soon" % ch["tex"])
+            ch = dict(ch, tex=None)
         if ch.get("tex"):
             build_chapter(book, ch, macros, do_pdf)
             solved += 1
@@ -508,16 +518,20 @@ def build_book(book, macros, do_pdf):
 
 def main():
     do_pdf = "--no-pdf" not in sys.argv
+    only = int(sys.argv[sys.argv.index("--chapter") + 1]) if "--chapter" in sys.argv else None
     macros = mathjax_macros()
-    (DOCS / "assets").mkdir(parents=True, exist_ok=True)
-    (DOCS / "assets" / "style.css").write_text(CSS)
-    (DOCS / ".nojekyll").write_text("")
     books = []
+    if only is None:
+        (DOCS / "assets").mkdir(parents=True, exist_ok=True)
+        (DOCS / "assets" / "style.css").write_text(CSS)
+        (DOCS / ".nojekyll").write_text("")
     for bj in sorted(BOOKS.glob("*/book.json")):
         book = json.loads(bj.read_text())
         book["slug"] = bj.parent.name
-        build_book(book, macros, do_pdf)
+        build_book(book, macros, do_pdf, only)
         books.append(book)
+    if only is not None:
+        return
     cards = "".join(
         '<a class="card" href="books/%s/"><h3>%s</h3><div class="meta">%s</div><p class="meta">%s</p><span class="pill">%d of %d chapters</span></a>'
         % (b["slug"], html.escape(b["title"]), html.escape(b["authors"]), html.escape(b["description"]), b["_solved"], len(b["chapters"]))

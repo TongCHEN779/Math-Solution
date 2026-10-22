@@ -1,0 +1,125 @@
+\documentclass[11pt]{article}
+\input{../../tools/preamble.tex}
+\title{Atiyah--Macdonald, Chapter 8: Artin Rings\\[2pt]\large Solutions to the exercises}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Conventions.} Rings are commutative with $1$. From the text I use: every prime of an Artin ring is maximal (8.1); an Artin ring has finitely many maximal ideals (8.3); a ring $A\ne0$ is Artin iff $A$ is Noetherian and $\dim A=0$ (8.5), in particular an Artin ring is Noetherian; for a Noetherian local ring $(A,\fm)$ either $\fm^n\ne\fm^{n+1}$ for all $n$, or $\fm^n=0$ for some $n$ and $A$ is Artin (8.6); the structure theorem 8.7. Also: a module has finite length iff it is Noetherian and Artinian, and all composition series have the same length, and every chain of submodules has length at most the length of the module (6.7, 6.8); finitely generated algebras over a Noetherian ring are Noetherian (7.6, 7.7); in a Noetherian ring $r(\fa)^n\subseteq\fa$ for some $n$ (7.14); the Nullstellensatz: a field which is a finitely generated $k$-algebra is a finite extension of $k$ (7.9, Ch.~5, Ex.~18); integrality results 5.1, 5.2, 5.10; Ch.~3, Ex.~21(iv) (the fibre $f^{*-1}(\fp)$ is $\Spec(B\otimes_Ak(\fp))$); Ch.~4, 4.8, 4.9, Ex.~11 and Ex.~13 (symbolic powers).
+
+This chapter has 6 end-of-chapter exercises and no numbered in-text exercises. The statement of Exercise 1 on the scan contains, after the first sentence, further assertions (about isolated and embedded components); I prove all of them. In Exercise 4 the last question is ambiguous as printed; I answer both readings. Rings are assumed non-zero where dimension is discussed.
+
+%=====================================================================
+\section*{End-of-chapter exercises}
+
+%---------------------------------------------------------------- 1
+\exercise{1}{Let $\fq_1\cap\cdots\cap\fq_n=0$ be a minimal primary decomposition of the zero ideal in a Noetherian ring, and let $\fq_i$ be $\fp_i$-primary. Let $\fp_i^{(r)}$ be the $r$th symbolic power of $\fp_i$ (Chapter 4, Exercise 13). Show that for each $i=1,\dots,n$ there exists an integer $r_i$ such that $\fp_i^{(r_i)}\subseteq\fq_i$.
+
+Suppose $\fq_i$ is an isolated primary component. Then $A_{\fp_i}$ is an Artin local ring, hence if $\fm_i$ is its maximal ideal we have $\fm_i^r=0$ for all sufficiently large $r$, hence $\fq_i=\fp_i^{(r)}$ for all large $r$.
+
+If $\fq_i$ is an embedded primary component, then $A_{\fp_i}$ is \emph{not} Artinian, hence the powers $\fm_i^r$ are all distinct, and so the $\fp_i^{(r)}$ are all distinct. Hence in the given primary decomposition we can replace $\fq_i$ by any of the infinite set of $\fp_i$-primary ideals $\fp_i^{(r)}$ where $r\ge r_i$, and so there are infinitely many minimal primary decompositions of $0$ which differ only in the $\fp_i$-component.}
+\pf
+Recall $\fp^{(r)}=S_\fp(\fp^r)=(\fp^rA_\fp)^c$, $S_\fp=A-\fp$, and $\fp^rA_\fp=(\fp A_\fp)^r$ (extension commutes with products, 1.18). Also $\fp^{(r)}\supseteq\fp^{(r+1)}$ since $\fp^r\supseteq\fp^{r+1}$.
+
+\emph{Existence of $r_i$.} $A$ is Noetherian and $r(\fq_i)=\fp_i$, so $\fp_i^s\subseteq\fq_i$ for some $s$ (7.14). Then $\fp_i^{(s)}=S_{\fp_i}(\fp_i^s)\subseteq S_{\fp_i}(\fq_i)=\fq_i$, the last equality by 4.8(ii) ($\fq_i$ is $\fp_i$-primary and $S_{\fp_i}\cap\fp_i=\emptyset$). Put $r_i=s$. Since the $\fp_i^{(r)}$ decrease, $\fp_i^{(r)}\subseteq\fq_i$ for all $r\ge r_i$.
+
+\emph{Isolated components.} Let $\fp_i$ be minimal among $\fp_1,\dots,\fp_n$ and $S=A-\fp_i$. Then $S\cap\fp_j=\emptyset\iff\fp_j\subseteq\fp_i\iff j=i$. By 4.9, $S(0)=\fq_i$, i.e.\ $\fq_i=S_{\fp_i}(0)=\Ker(A\to A_{\fp_i})$. By 3.13 the primes of $A_{\fp_i}$ correspond to the primes of $A$ contained in $\fp_i$; $\fp_i$ is a minimal prime of $A$ (4.6), so $A_{\fp_i}$ has only one prime ideal, $\fm_i=\fp_iA_{\fp_i}$. $A_{\fp_i}$ is Noetherian (a ring of fractions of a Noetherian ring) of dimension $0$, hence Artin by 8.5, so $\fm_i$ is nilpotent (8.4): $\fm_i^r=0$ for $r\ge r_0$. For such $r$,
+\[
+\fp_i^{(r)}=(\fm_i^r)^c=0^c=\Ker(A\to A_{\fp_i})=\fq_i .
+\]
+
+\emph{Embedded components.} Now suppose $\fp_i$ properly contains some $\fp_j$ belonging to $0$. Then $\fp_i$ is not a minimal prime of $A$ (it contains $\fp_j$ strictly, and $\fp_j$ contains a minimal prime), so $A_{\fp_i}$ has a prime strictly contained in its maximal ideal $\fm_i$ (3.13); thus $\dim A_{\fp_i}\ge1$ and $A_{\fp_i}$ is not Artin (8.1/8.5). By 8.6, $\fm_i^r\ne\fm_i^{r+1}$ for all $r$, so $\fm_i\supsetneq\fm_i^2\supsetneq\cdots$ and the $\fm_i^r$ are pairwise distinct. Since every ideal of $A_{\fp_i}$ is extended (3.11(i)), $J^{ce}=J$ for every ideal $J$ of $A_{\fp_i}$; hence $\fp_i^{(r)}=(\fm_i^r)^c$ determines $\fm_i^r=(\fp_i^{(r)})^e$, and so the ideals $\fp_i^{(r)}$ ($r\ge1$) are pairwise distinct. Each is $\fp_i$-primary (Ch.~4, Ex.~13(i)).
+
+\emph{Infinitely many decompositions.} For $r\ge r_i$ let $\fq_i'=\fp_i^{(r)}\subseteq\fq_i$ and replace $\fq_i$ by $\fq_i'$. The new intersection is contained in the old one (which is $0$) so it is $0$, and it is a primary decomposition with the same distinct radicals $\fp_1,\dots,\fp_n$. It is automatically minimal: if some component were redundant, discarding redundant components successively would give a minimal primary decomposition of $0$ whose set of radicals is a proper subset of $\{\fp_1,\dots,\fp_n\}$ (the radicals stay distinct), contradicting the first uniqueness theorem 4.5 (the set of associated primes does not depend on the minimal decomposition). Different $r$ give different $\fp_i$-components, hence different decompositions, which differ only in the $\fp_i$-component. \hfill$\square$
+
+%---------------------------------------------------------------- 2
+\exercise{2}{Let $A$ be a Noetherian ring. Prove that the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $A$ is Artinian;
+\item $\Spec(A)$ is discrete and finite;
+\item $\Spec(A)$ is discrete.
+\end{enumerate}}
+\pf
+Assume $A\ne0$ (for $A=0$ all three hold trivially).
+
+(i)$\Rightarrow$(ii). By 8.1 every prime of $A$ is maximal and by 8.3 there are finitely many, so $X=\Spec A$ is finite and every point is closed (Ch.~1, Ex.~18(i)). Every subset of $X$ is a finite union of closed points, hence closed; so every subset is also open, i.e.\ $X$ is discrete.
+
+(ii)$\Rightarrow$(iii). Trivial.
+
+(iii)$\Rightarrow$(i). If $X$ is discrete, each point is closed, so every prime ideal is maximal (Ch.~1, Ex.~18(i)), i.e.\ $\dim A=0$. Since $A$ is Noetherian, $A$ is Artin by 8.5. \hfill$\square$
+
+%---------------------------------------------------------------- 3
+\exercise{3}{Let $k$ be a field and $A$ a finitely generated $k$-algebra. Prove that the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $A$ is Artinian;
+\item $A$ is a finite $k$-algebra.
+\end{enumerate}
+[To prove that (i)$\Rightarrow$(ii), use (8.7) to reduce to the case where $A$ is an Artin local ring. By the Nullstellensatz, the residue field of $A$ is a finite extension of $k$. Now use the fact that $A$ is of finite length as an $A$-module. To prove (ii)$\Rightarrow$(i), observe that the ideals of $A$ are $k$-vector subspaces and therefore satisfy d.c.c.]}
+\pf
+(ii)$\Rightarrow$(i). Every ideal of $A$ is stable under multiplication by $k\cdot1$, hence is a $k$-vector subspace of $A$. A strictly descending chain of subspaces of the finite-dimensional space $A$ has strictly decreasing dimension, so it is finite. Hence $A$ satisfies d.c.c.\ on ideals.
+
+(i)$\Rightarrow$(ii). Let $A$ be Artin. By 8.7, $A\cong A_1\times\cdots\times A_n$ with $A_i$ Artin local; each $A_i$ is a quotient of $A$, hence a finitely generated $k$-algebra, and $A$ is finite over $k$ iff each $A_i$ is. So assume $A$ is local with maximal ideal $\fm$ and residue field $K=A/\fm$. $K$ is a field which is a finitely generated $k$-algebra (a quotient of $A$), so $[K:k]<\infty$ by the Nullstellensatz (7.9). $A$ is Artinian and Noetherian (8.5), hence of finite length $\ell$ as an $A$-module (6.8): there is a composition series $0=M_0\subset M_1\subset\cdots\subset M_\ell=A$ with each $M_j/M_{j-1}$ a simple $A$-module, i.e.\ $\cong A/\fm=K$. Each quotient is a $k$-vector space of dimension $[K:k]$, so
+\[
+\dim_kA=\sum_{j=1}^\ell\dim_k(M_j/M_{j-1})=\ell\,[K:k]<\infty .
+\]
+\hfill$\square$
+
+%---------------------------------------------------------------- 4
+\exercise{4}{Let $f:A\to B$ be a ring homomorphism of finite type. Consider the following statements:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $f$ is finite;
+\item the fibres of $f^*$ are discrete subspaces of $\Spec(B)$;
+\item for each prime ideal $\fp$ of $A$, the ring $B\otimes_Ak(\fp)$ is a finite $k(\fp)$-algebra ($k(\fp)$ is the residue field of $A_\fp$);
+\item the fibres of $f^*$ are finite.
+\end{enumerate}
+Prove that (i)$\Rightarrow$(ii)$\Leftrightarrow$(iii)$\Rightarrow$(iv). [Use Exercises 2 and 3.]
+
+If $f$ is integral and the fibres of $f^*$ are finite, is $f$ necessarily finite?}
+\pf
+For $\fp\in\Spec A$ put $F_\fp=B\otimes_Ak(\fp)$. By Ch.~3, Ex.~21(iv) the fibre $f^{*-1}(\fp)$ is homeomorphic (as a subspace of $\Spec B$) to $\Spec F_\fp$. If $b_1,\dots,b_s$ generate $B$ as an $A$-algebra, then $b_j\otimes1$ generate $F_\fp$ as a $k(\fp)$-algebra, so $F_\fp$ is a finitely generated $k(\fp)$-algebra, hence Noetherian (7.7). (If $F_\fp=0$ the fibre is empty and everything below is trivial.)
+
+(i)$\Rightarrow$(iii). Let $B=Ab_1+\cdots+Ab_m$ be finitely generated as an $A$-module. Then $A^m\to B\to0$ is exact, so by right exactness of $\otimes$, $k(\fp)^m\to F_\fp\to0$ is exact, i.e.\ $F_\fp$ is generated by $m$ elements as a $k(\fp)$-module.
+
+(iii)$\Rightarrow$(ii). $F_\fp$ is a finite, hence finitely generated, $k(\fp)$-algebra, so it is Artinian (Ex.~3). It is Noetherian, so Ex.~2 shows that $\Spec F_\fp$ is discrete. Hence the fibre is a discrete subspace of $\Spec B$.
+
+(ii)$\Rightarrow$(iii). The fibre is discrete, so $\Spec F_\fp$ is discrete. $F_\fp$ is Noetherian, so it is Artinian by Ex.~2, and a finitely generated Artinian $k(\fp)$-algebra is a finite $k(\fp)$-algebra by Ex.~3.
+
+(iii)$\Rightarrow$(iv). $F_\fp$ is Artinian by Ex.~3, so it has finitely many maximal ideals (8.3) and every prime is maximal (8.1); hence $\Spec F_\fp$, i.e.\ the fibre, is finite.
+
+\emph{The last question.} The standing hypothesis is that $f$ is of finite type. In that case the answer is \emph{yes}: if $f$ is integral then $B$ is integral over $f(A)$ and finitely generated as an $f(A)$-algebra, so $B$ is a finitely generated $f(A)$-module (5.2), hence a finitely generated $A$-module, i.e.\ $f$ is finite (the finiteness of the fibres is then automatic by (i)$\Rightarrow$(iv)).
+
+\emph{If $f$ is not assumed to be of finite type} the answer is \emph{no}: take $A=\Q$, $B=\overline{\Q}$ (algebraic closure), $f$ the inclusion. $B$ is integral over $A$ and $\Spec B$, $\Spec A$ are single points, so all fibres are finite; but $\dim_\Q\overline{\Q}=\infty$, so $B$ is not a finitely generated $A$-module. (This $f$ is not of finite type: a field which is a finitely generated $\Q$-algebra is a finite extension of $\Q$ by the Nullstellensatz.) \hfill$\square$
+
+%---------------------------------------------------------------- 5
+\exercise{5}{In Chapter 5, Exercise 16, show that $X$ is a finite covering of $L$ (i.e., the number of points of $X$ lying over a given point of $L$ is finite and bounded).}
+\pf
+\emph{Setting (Ch.~5, Ex.~16 with its geometric interpretation).} $k$ is algebraically closed, $X\subseteq k^n$ is an affine algebraic variety with coordinate ring $A=P(X)\ne0$, generated as a $k$-algebra by the coordinate functions $\xi_1,\dots,\xi_n$. By Ch.~5, Ex.~16 there are elements $y_1,\dots,y_r\in A$, which may be chosen to be $k$-linear combinations of $\xi_1,\dots,\xi_n$ (images of linear forms), algebraically independent over $k$, with $A$ integral over $B=k[y_1,\dots,y_r]$. The linear map $\pi:k^n\to L=k^r$, $x\mapsto(y_1(x),\dots,y_r(x))$ is onto, and $\pi|_X:X\to L$ is the map in question. (Here $r$ is the integer of Ch.~5, Ex.~16 and $L\cong k^r$ is the linear subspace.)
+
+\emph{Finite generation.} $A=B[\xi_1,\dots,\xi_n]$ is generated as a $B$-algebra by the elements $\xi_j$, each integral over $B$, so $A$ is a finitely generated $B$-module (5.1, 5.2); say generated by $m$ elements.
+
+\emph{Points over $a\in L$.} Let $a=(a_1,\dots,a_r)\in k^r$ and $\fp_a=(y_1-a_1,\dots,y_r-a_r)\subseteq B$; since $B/\fp_a\cong k$ (the $y_i$ are independent, so $B\cong k[t_1,\dots,t_r]$), $\fp_a$ is maximal and $k(\fp_a)=k$. Because $k$ is algebraically closed, $x\mapsto\fm_x=\{g\in A:g(x)=0\}$ is a bijection from $X$ onto the set of maximal ideals of $A$ (Ch.~1, Ex.~27). Now $\fm_x\cap B=\{g\in B:g(x)=0\}$ is a maximal ideal of $B$ which contains $y_i-a_i$ iff $y_i(x)=a_i$; so $\fm_x\cap B=\fp_a\iff\pi(x)=a$. Hence $\{x\in X:\pi(x)=a\}$ is in bijection with the set of maximal ideals $\fm$ of $A$ with $\fm\cap B=\fp_a$; these are among the primes of the fibre of $B\to A$ over $\fp_a$, which is $\Spec(A\otimes_Bk)=\Spec(A/\fp_aA)$ (Ch.~3, Ex.~21(iv)).
+
+\emph{Finiteness and bound.} $A_a:=A/\fp_aA$ is generated as a $k$-vector space by the images of the $m$ module generators, so $\dim_kA_a\le m$. A $k$-algebra $A_a\ne0$ of finite dimension $d$ is Artinian, with finitely many primes, all maximal, say $\fn_1,\dots,\fn_s$, pairwise comaximal; by the Chinese remainder theorem (1.10) $A_a\to\prod A_a/\fn_i$ is surjective, so $s\le\sum\dim_k(A_a/\fn_i)\le d$. Therefore the number of points of $X$ over $a$ is at most $m$, a bound independent of $a$.
+
+\emph{Non-emptiness.} Since $B\subseteq A$ is integral, $\Spec A\to\Spec B$ is surjective (5.10), so every $\fp_a$ is the contraction of a (maximal) prime of $A$ and every fibre has at least one point: $\pi(X)=L$. So $X\to L$ is onto with every fibre of cardinality between $1$ and $m$: $X$ is a finite covering of $L$. \hfill$\square$
+
+%---------------------------------------------------------------- 6
+\exercise{6}{Let $A$ be a Noetherian ring and $\fq$ a $\fp$-primary ideal in $A$. Consider chains of primary ideals from $\fq$ to $\fp$. Show that all such chains are of finite bounded length, and that all maximal chains have the same length.}
+\pf
+By a chain from $\fq$ to $\fp$ I mean $\fq=\fq_0\subsetneq\fq_1\subsetneq\cdots\subsetneq\fq_l=\fp$ with every $\fq_i$ primary (its length is $l$); a chain is \emph{maximal} if no primary ideal can be inserted between two consecutive terms.
+
+\emph{Each $\fq_i$ is $\fp$-primary:} $\fq\subseteq\fq_i\subseteq\fp$ gives $\fp=r(\fq)\subseteq r(\fq_i)\subseteq\fp$.
+
+\emph{Translation to $A_\fp$.} Let $S=A-\fp$, $\fm=\fp A_\fp$ and $R=A_\fp/\fq A_\fp$. By 4.8(ii) the maps $\fq'\mapsto\fq'A_\fp$ and $J\mapsto J^c$ are mutually inverse, inclusion-preserving bijections between $\fp$-primary ideals of $A$ and $\fm$-primary ideals of $A_\fp$ (for $\fp$-primary $\fq'$: $\fq'^{ec}=\fq'$; for $J$ an extended ideal: $J^{ce}=J$, 3.11(i)). Moreover, $\fq A_\fp\subseteq J\subseteq\fm$ implies $\fm=r(\fq A_\fp)\subseteq r(J)\subseteq\fm$ (4.8(ii) gives $r(\fq A_\fp)=\fm$), so every ideal $J$ of $A_\fp$ with $\fq A_\fp\subseteq J\subseteq\fm$ is $\fm$-primary (4.2, $\fm$ maximal), and then $J^c$ is $\fp$-primary with $\fq\subseteq J^c\subseteq\fp$. Consequently chains from $\fq$ to $\fp$ correspond bijectively, preserving strict inclusions and length, to chains of ideals
+\[
+\fq A_\fp=J_0\subsetneq J_1\subsetneq\cdots\subsetneq J_l=\fm
+\]
+of $A_\fp$ (arbitrary ideals, not nec.\ primary), and a chain is maximal iff no ideal of $A_\fp$ can be inserted between consecutive $J_{i-1}\subsetneq J_i$ (an ideal $J$ strictly between gives the primary ideal $J^c$ strictly between $\fq_{i-1}$ and $\fq_i$, and conversely).
+
+\emph{The ring $R$.} $R$ is Noetherian local, and its only prime is $\fm/\fq A_\fp$ (a prime of $A_\fp$ containing $\fq A_\fp$ contains $r(\fq A_\fp)=\fm$). So $\dim R=0$ and $R$ is Artin (8.5), hence of finite length as an $R$-module (6.8). The module $N=\fm/J_0$ is a submodule of $R$, so it has finite length $\ell(N)$ (6.8). The chain $J_0/J_0\subsetneq J_1/J_0\subsetneq\cdots\subsetneq J_l/J_0=N$ is a strictly increasing chain of submodules of $N$.
+
+\emph{Bounded length.} Any strictly increasing chain of submodules of a module of finite length $\ell(N)$ has length at most $\ell(N)$ (6.7). Hence $l\le\ell(N)$ for every chain from $\fq$ to $\fp$, and this bound depends only on $\fq,\fp$; in particular all chains are finite.
+
+\emph{Maximal chains.} A chain from $\fq$ to $\fp$ is maximal iff the corresponding chain of submodules $0=N_0\subsetneq N_1\subsetneq\cdots\subsetneq N_l=N$ cannot be refined, i.e.\ each $N_i/N_{i-1}$ is simple; that is, iff it is a composition series of $N$. By the Jordan--Holder theorem (6.7) all composition series have the same length $\ell(N)$. Hence all maximal chains of primary ideals from $\fq$ to $\fp$ have the same length $\ell\bigl(\fp A_\fp/\fq A_\fp\bigr)$. (If $\fq=\fp$ the only chain is the trivial one, of length $0$.) \hfill$\square$
+
+\end{document}
