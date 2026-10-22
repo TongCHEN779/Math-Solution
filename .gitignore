@@ -1,0 +1,6 @@
+build/
+*.aux
+*.log
+*.out
+*.dvi
+.DS_Store

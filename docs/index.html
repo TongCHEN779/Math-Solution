@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Math Solutions</title>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+<div class="top"><div class="in"><div class="crumbs"><b>Math Solutions</b></div><button onclick="toggleTheme()" title="Toggle light/dark">◐</button></div></div>
+<div class="wrap"><div class="hero"><h1>Math Solutions</h1>
+<p>Worked solutions to exercises from mathematics textbooks. Every exercise is restated, followed by its solution; each chapter is also available as a PDF.</p></div>
+<div class="cards"><a class="card" href="books/atiyah-macdonald/"><h3>Introduction to Commutative Algebra</h3><div class="meta">M. F. Atiyah, I. G. Macdonald</div><p class="meta">The classic short course on commutative algebra: rings and ideals, modules, localization, primary decomposition, integral dependence, Noetherian and Artin rings, completions and dimension theory.</p><span class="pill">1 of 11 chapters</span></a></div></div>
+<div class="wrap"><footer>Solutions written with LaTeX; math rendered by MathJax. Source on <a href="https://github.com/TongCHEN779/Math-Solution">GitHub</a>.</footer></div>
+<script>
+function setAll(o){document.querySelectorAll('details.solution').forEach(function(d){d.open=o})}
+function toggleTheme(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+var t=dark?'light':'dark';r.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}}
+if(location.hash){var e=document.querySelector(location.hash);if(e&&e.closest('details'))e.closest('details').open=true}
+</script>
+</body></html>

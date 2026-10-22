@@ -1,0 +1,21 @@
+{
+  "title": "Introduction to Commutative Algebra",
+  "short": "Atiyah–Macdonald",
+  "authors": "M. F. Atiyah, I. G. Macdonald",
+  "year": 1969,
+  "description": "The classic short course on commutative algebra: rings and ideals, modules, localization, primary decomposition, integral dependence, Noetherian and Artin rings, completions and dimension theory.",
+  "pdf": "atiyah-macdonald.pdf",
+  "chapters": [
+    {"n": 1, "title": "Rings and Ideals", "tex": "chapter-1.tex"},
+    {"n": 2, "title": "Modules"},
+    {"n": 3, "title": "Rings and Modules of Fractions"},
+    {"n": 4, "title": "Primary Decomposition"},
+    {"n": 5, "title": "Integral Dependence and Valuations"},
+    {"n": 6, "title": "Chain Conditions"},
+    {"n": 7, "title": "Noetherian Rings"},
+    {"n": 8, "title": "Artin Rings"},
+    {"n": 9, "title": "Discrete Valuation Rings and Dedekind Domains"},
+    {"n": 10, "title": "Completions"},
+    {"n": 11, "title": "Dimension Theory"}
+  ]
+}
