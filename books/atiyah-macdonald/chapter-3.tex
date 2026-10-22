@@ -1,0 +1,455 @@
+\documentclass[11pt]{article}
+\input{../../tools/preamble.tex}
+\title{Atiyah--Macdonald, Chapter 3: Rings and Modules of Fractions\\[2pt]\large Solutions to the exercises}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textbf{Conventions.} $S$ is a multiplicatively closed subset of $A$, $f:A\to S^{-1}A$, $a\mapsto a/1$ is the canonical map, and $A_\fp=S^{-1}A$ for $S=A-\fp$, $A_f=S^{-1}A$ for $S=\{f^n\}_{n\ge0}$. From the text I use: the universal property (3.1, 3.2); exactness of $S^{-1}$ (3.3) and its consequences 3.4; $S^{-1}A\otimes_AM\cong S^{-1}M$ (3.5) and flatness of $S^{-1}A$ (3.6); $S^{-1}M\otimes_{S^{-1}A}S^{-1}N\cong S^{-1}(M\otimes N)$ (3.7); the local properties 3.8, 3.9, 3.10; the description of ideals and primes of $S^{-1}A$ (3.11: every ideal of $S^{-1}A$ is extended; $\fa^e=(1)\iff\fa\cap S\ne\emptyset$; primes of $S^{-1}A\leftrightarrow$ primes of $A$ not meeting $S$), 3.12, 3.13 (primes of $A_\fp\leftrightarrow$ primes contained in $\fp$), 3.14 ($\Ann$ commutes with $S^{-1}$ for finitely generated $M$), and 3.16. Also $S^{-1}A=0\iff0\in S$.
+
+This chapter covers the unnumbered exercise on page 37 and the 30 end-of-chapter exercises. In Exercise 25 the formula for $h$ as printed is not additive; I explain this there.
+
+%=====================================================================
+\section*{In-text exercise}
+
+\exercise{p.~37}{Verify that the definitions of addition and multiplication of fractions $(a/s)+(b/t)=(at+bs)/st$, $(a/s)(b/t)=ab/st$ are independent of the choices of representatives $(a,s)$ and $(b,t)$, and that $S^{-1}A$ satisfies the axioms of a commutative ring with identity.}
+\pf
+Recall $(a,s)\equiv(b,t)\iff(at-bs)u=0$ for some $u\in S$. Suppose $a/s=a'/s'$ (witness $u$: $(as'-a's)u=0$) and $b/t=b'/t'$ (witness $v$). Then
+\[
+\bigl[(at+bs)s't'-(a't'+b's')st\bigr]uv=\bigl[(as'-a's)tt'+(bt'-b't)ss'\bigr]uv=0,
+\]
+so $(at+bs)/st=(a't'+b's')/s't'$. For products,
+\[
+ab\,s't'-a'b'\,st=(as'-a's)\,bt'+a's\,(bt'-b't),
+\]
+and multiplying by $uv$ gives $0$, so $ab/st=a'b'/s't'$.
+
+\emph{Ring axioms.} Addition and multiplication are commutative by the formulas. The element $0/1$ is a zero, $1/1$ an identity, and $-(a/s)=(-a)/s$. Associativity of $+$: both $(a/s+b/t)+c/u$ and $a/s+(b/t+c/u)$ equal $(atu+bsu+cst)/stu$; associativity of $\cdot$ is similar. Distributivity: $(a/s)(b/t+c/u)=a(bu+ct)/stu$ while $(a/s)(b/t)+(a/s)(c/u)=(abus+acts)/s^2tu=s\,a(bu+ct)/(s\cdot stu)$, and these agree because $sx/sy=x/y$ for $s\in S$ (take $u=1$: $(sx\,y-x\,sy)\cdot1=0$). Finally $f:A\to S^{-1}A$ is a ring homomorphism. \hfill$\square$
+
+%=====================================================================
+\section*{End-of-chapter exercises}
+
+%---------------------------------------------------------------- 1
+\exercise{1}{Let $S$ be a multiplicatively closed subset of a ring $A$, and let $M$ be a finitely generated $A$-module. Prove that $S^{-1}M=0$ if and only if there exists $s\in S$ such that $sM=0$.}
+\pf
+($\Leftarrow$) $m/t=sm/st=0$ for all $m/t\in S^{-1}M$.
+($\Rightarrow$) Let $x_1,\dots,x_n$ generate $M$. Since $x_i/1=0$ there is $s_i\in S$ with $s_ix_i=0$. Then $s=s_1\cdots s_n\in S$ kills every $x_i$, hence $sM=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 2
+\exercise{2}{Let $\fa$ be an ideal of a ring $A$, and let $S=1+\fa$. Show that $S^{-1}\fa$ is contained in the Jacobson radical of $S^{-1}A$. Use this result and Nakayama's lemma to give a proof of (2.5) which does not depend on determinants. [If $M=\fa M$, then $S^{-1}M=(S^{-1}\fa)(S^{-1}M)$, hence by Nakayama we have $S^{-1}M=0$. Now use Exercise 1.]}
+\pf
+\emph{$S^{-1}\fa\subseteq\Jac(S^{-1}A)$.} Let $x/s$ with $x\in\fa$, $s\in S$, and let $b/t\in S^{-1}A$ be arbitrary ($b\in A$, $t\in S$). By 1.9 it suffices to show $1-(x/s)(b/t)=(st-xb)/st$ is a unit. Now $st\in1+\fa$ (product of elements of $1+\fa$) and $xb\in\fa$, so $st-xb\in1+\fa=S$. Hence $(st-xb)/st$ has numerator and denominator in $S$, and its inverse is $st/(st-xb)$.
+
+\emph{Proof of 2.5 (Cor.): $M$ finitely generated, $\fa M=M\Rightarrow\exists x\equiv1\pmod\fa$ with $xM=0$.} Put $S=1+\fa$. Applying $S^{-1}$ to $M=\fa M$ gives $S^{-1}M=S^{-1}(\fa M)=(S^{-1}\fa)(S^{-1}M)$ (elements of $\fa M$ are sums $\sum a_im_i$ and $S^{-1}$ commutes with this). $S^{-1}M$ is a finitely generated $S^{-1}A$-module and $S^{-1}\fa\subseteq\Jac(S^{-1}A)$, so Nakayama's lemma (2.6) gives $S^{-1}M=0$. By Exercise 1 there is $x\in S=1+\fa$ with $xM=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 3
+\exercise{3}{Let $A$ be a ring, let $S$ and $T$ be two multiplicatively closed subsets of $A$, and let $U$ be the image of $T$ in $S^{-1}A$. Show that the rings $(ST)^{-1}A$ and $U^{-1}(S^{-1}A)$ are isomorphic.}
+\pf
+Let $g:A\to U^{-1}(S^{-1}A)$, $g(a)=(a/1)/1$. We check the three conditions of Cor.\ 3.2 for $ST=\{st\}$.
+
+(i) $g(st)=((s/1)(t/1))/1$. Here $s/1$ is a unit of $S^{-1}A$, hence of $U^{-1}(S^{-1}A)$, and $t/1\in U$ is a unit of $U^{-1}(S^{-1}A)$. So $g(st)$ is a unit.
+
+(ii) If $g(a)=0$, there is $u=t/1\in U$ with $(t/1)(a/1)=0$ in $S^{-1}A$, i.e.\ $s\,ta=0$ for some $s\in S$; and $st\in ST$.
+
+(iii) A general element of $U^{-1}(S^{-1}A)$ is $\xi=(a/s)/(t/1)$. Then $\xi\,g(st)=\bigl((a/s)(st/1)\bigr)/(t/1)=(at/1)/(t/1)=(a/1)/1=g(a)$ (as $(at/1)\cdot1-(a/1)(t/1)=0$). Since $g(st)$ is a unit, $\xi=g(a)g(st)^{-1}$.
+
+By Cor.\ 3.2 there is a unique isomorphism $(ST)^{-1}A\to U^{-1}(S^{-1}A)$ compatible with the maps from $A$. \hfill$\square$
+
+%---------------------------------------------------------------- 4
+\exercise{4}{Let $f:A\to B$ be a homomorphism of rings and let $S$ be a multiplicatively closed subset of $A$. Let $T=f(S)$. Show that $S^{-1}B$ and $T^{-1}B$ are isomorphic as $S^{-1}A$-modules.}
+\pf
+$S^{-1}B$ means the localization of $B$ regarded as an $A$-module ($s$ acts as $f(s)$). Define $\varphi:S^{-1}B\to T^{-1}B$, $b/s\mapsto b/f(s)$. For $b,b'\in B$, $s,s'\in S$:
+\[
+b/s=b'/s'\ \text{in }S^{-1}B\iff\exists t\in S:\ t(s'b-sb')=0\iff\exists t\in S:\ f(t)\bigl(f(s')b-f(s)b'\bigr)=0\iff b/f(s)=b'/f(s')\ \text{in }T^{-1}B,
+\]
+because every element of $T$ has the form $f(t)$. So $\varphi$ is well defined and injective; it is clearly surjective, additive, and $S^{-1}A$-linear: $(a/s_1)\cdot(b/s)=f(a)b/f(s_1s)\mapsto f(a)b/f(s_1)f(s)$, which is the action of $a/s_1$ on $b/f(s)$ via the homomorphism $S^{-1}A\to T^{-1}B$ induced by $f$. (In fact $\varphi$ is a ring isomorphism.) \hfill$\square$
+
+%---------------------------------------------------------------- 5
+\exercise{5}{Let $A$ be a ring. Suppose that, for each prime ideal $\fp$, the local ring $A_\fp$ has no nilpotent element $\ne0$. Show that $A$ has no nilpotent element $\ne0$. If each $A_\fp$ is an integral domain, is $A$ necessarily an integral domain?}
+\pf
+Let $x\in A$ be nilpotent. For each prime $\fp$, $x/1\in A_\fp$ is nilpotent, hence $0$, so $sx=0$ for some $s\notin\fp$, i.e.\ $\Ann(x)\not\subseteq\fp$. Thus $\Ann(x)$ lies in no prime ideal, so $\Ann(x)=(1)$ and $x=0$.
+
+\emph{No, $A$ need not be an integral domain.} Let $k$ be a field and $A=k\times k$. Its primes are $\fp_1=0\times k$ and $\fp_2=k\times0$. For $S=A-\fp_1\ni e_1=(1,0)$ we have $e_1e_2=0$ with $e_2=(0,1)$, so $e_2/1=0$ in $A_{\fp_1}$ and $A_{\fp_1}\cong S^{-1}(A/(e_2))\cong S^{-1}k=k$ (the image of $S$ in $A/(e_2)\cong k$ consists of non-zero scalars), a field. Likewise $A_{\fp_2}\cong k$. So every $A_\fp$ is a domain, but $A=k\times k$ has zero-divisors. \hfill$\square$
+
+%---------------------------------------------------------------- 6
+\exercise{6}{Let $A$ be a ring $\ne0$ and let $\Sigma$ be the set of all multiplicatively closed subsets $S$ of $A$ such that $0\notin S$. Show that $\Sigma$ has maximal elements, and that $S\in\Sigma$ is maximal if and only if $A-S$ is a minimal prime ideal of $A$.}
+\pf
+$\Sigma\ni\{1\}$ is non-empty, and the union of a chain in $\Sigma$ is multiplicatively closed and does not contain $0$; by Zorn's lemma $\Sigma$ has maximal elements.
+
+First, for $S\in\Sigma$ we have $S^{-1}A\ne0$, so it has a maximal ideal, whose contraction is a prime $\fq$ of $A$ with $\fq\cap S=\emptyset$ (3.11(iv)).
+
+($\Rightarrow$) Let $S$ be maximal and $\fq$ a prime with $\fq\cap S=\emptyset$ as above. Then $A-\fq$ is multiplicatively closed, contains $S$ and not $0$, so $A-\fq\in\Sigma$ and by maximality $A-\fq=S$, i.e.\ $A-S=\fq$ is prime. If $\fq'\subseteq\fq$ is a prime, then $A-\fq'\in\Sigma$ contains $S$, hence equals $S$, so $\fq'=\fq$. Thus $A-S$ is a minimal prime.
+
+($\Leftarrow$) Let $\fp$ be a minimal prime and $S=A-\fp$; $S\in\Sigma$ since $0\in\fp$. If $S\subseteq S'\in\Sigma$, there is a prime $\fq$ with $\fq\cap S'=\emptyset$, so $\fq\subseteq A-S'\subseteq A-S=\fp$; by minimality $\fq=\fp$, so $A-S'\supseteq\fp=A-S$, i.e.\ $S'\subseteq S$. Hence $S'=S$ and $S$ is maximal. \hfill$\square$
+
+%---------------------------------------------------------------- 7
+\exercise{7}{A multiplicatively closed subset $S$ of a ring $A$ is said to be \emph{saturated} if $xy\in S\iff x\in S$ and $y\in S$. Prove that
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $S$ is saturated $\iff A-S$ is a union of prime ideals.
+\item If $S$ is any multiplicatively closed subset of $A$, there is a unique smallest saturated multiplicatively closed subset $\bar S$ containing $S$, and $\bar S$ is the complement in $A$ of the union of the prime ideals which do not meet $S$. ($\bar S$ is called the \emph{saturation} of $S$.)
+\end{enumerate}
+If $S=1+\fa$, where $\fa$ is an ideal of $A$, find $\bar S$.}
+\pf
+(i) ($\Leftarrow$) If $A-S=\bigcup\fp_i$, then $S=\bigcap(A-\fp_i)$ and each $A-\fp_i$ is multiplicatively closed and saturated ($xy\notin\fp_i\iff x,y\notin\fp_i$, as $\fp_i$ is prime). An intersection of saturated multiplicatively closed sets is such a set.
+
+($\Rightarrow$) Let $S$ be saturated and $x\notin S$. Then $(x)\cap S=\emptyset$: if $ax\in S$ then $x\in S$. By 3.11(ii) $S^{-1}(x)\ne(1)$, so it lies in a maximal ideal of $S^{-1}A$ whose contraction $\fp$ is a prime with $x\in\fp$, $\fp\cap S=\emptyset$ (3.11(iv)). Hence $A-S\subseteq\bigcup\{\fp\text{ prime}:\fp\cap S=\emptyset\}\subseteq A-S$, so $A-S$ is a union of primes.
+
+(ii) Put $\bar S=A-\bigcup\{\fp\text{ prime}:\fp\cap S=\emptyset\}$. By (i) it is saturated; clearly $S\subseteq\bar S$. If $T\supseteq S$ is saturated, then $A-T=\bigcup\fq$ with $\fq\cap T=\emptyset$ (by the proof of (i)), so $\fq\cap S=\emptyset$ and $\fq\subseteq A-\bar S$. Hence $A-T\subseteq A-\bar S$, i.e.\ $\bar S\subseteq T$. So $\bar S$ is the unique smallest saturated set containing $S$.
+
+\emph{The case $S=1+\fa$:} $\bar S=\{x\in A:\ x+\fa\text{ is a unit of }A/\fa\}$. Indeed, let $S'$ be this set; it is saturated (a product is a unit mod $\fa$ iff each factor is) and contains $1+\fa$, so $\bar S\subseteq S'$. Conversely if $x\in S'$ with $xy\in1+\fa$ and $x\in\fp$ for a prime $\fp$ disjoint from $1+\fa$, then $xy\in\fp\cap(1+\fa)$, a contradiction; so $x\in\bar S$. (For $A=\Z$, $\fa=(6)$: $\bar S=\{x:\gcd(x,6)=1\}$.) \hfill$\square$
+
+%---------------------------------------------------------------- 8
+\exercise{8}{Let $S,T$ be multiplicatively closed subsets of $A$, such that $S\subseteq T$. Let $\phi:S^{-1}A\to T^{-1}A$ be the homomorphism which maps each $a/s\in S^{-1}A$ to $a/s$ considered as an element of $T^{-1}A$. Show that the following statements are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $\phi$ is bijective.
+\item For each $t\in T$, $t/1$ is a unit in $S^{-1}A$.
+\item For each $t\in T$ there exists $x\in A$ such that $xt\in S$.
+\item $T$ is contained in the saturation of $S$ (Exercise 7).
+\item Every prime ideal which meets $T$ also meets $S$.
+\end{enumerate}}
+\pf
+(i)$\Rightarrow$(ii): $t/1$ is a unit of $T^{-1}A$ and $\phi(t/1)=t/1$; $\phi^{-1}$ is a ring homomorphism, so $t/1$ is a unit of $S^{-1}A$.
+
+(ii)$\Rightarrow$(i): By 3.1 applied to $A\to S^{-1}A$ (which sends $T$ to units) there is a homomorphism $\psi:T^{-1}A\to S^{-1}A$, $\psi(a/t)=(a/1)(t/1)^{-1}$. Then $\psi\phi(a/s)=(a/1)(s/1)^{-1}=a/s$ and $\phi\psi(a/t)=a/t$ in $T^{-1}A$. So $\phi$ is bijective.
+
+(ii)$\Leftrightarrow$(iii): $t/1$ is a unit in $S^{-1}A$ iff $(t/1)(x/s)=1$ for some $x\in A$, $s\in S$, iff $u(xt-s)=0$ for some $u\in S$. Then $(ux)t=us\in S$. Conversely if $x't=s\in S$ then $(t/1)(x'/s)=1$.
+
+(iii)$\Rightarrow$(iv): if $xt\in S\subseteq\bar S$ and $\bar S$ is saturated, then $t\in\bar S$.
+
+(iv)$\Rightarrow$(iii): Let $t\in T\subseteq\bar S$. If $(t)\cap S=\emptyset$, then as in Exercise 7 there is a prime $\fp\ni t$ with $\fp\cap S=\emptyset$, so $t\notin\bar S$, a contradiction. So $xt\in S$ for some $x$.
+
+(iv)$\Rightarrow$(v): if a prime $\fp$ contains $t\in T\subseteq\bar S$, then by definition of $\bar S$, $\fp$ meets $S$.
+
+(v)$\Rightarrow$(iv): if $t\in T$ were not in $\bar S$, then $t\in\fp$ for a prime $\fp$ disjoint from $S$; $\fp$ meets $T$, contradicting (v). \hfill$\square$
+
+%---------------------------------------------------------------- 9
+\exercise{9}{The set $S_0$ of all non-zero-divisors in $A$ is a saturated multiplicatively closed subset of $A$. Hence the set $D$ of zero-divisors in $A$ is a union of prime ideals (see Chapter 1, Exercise 14). Show that every minimal prime ideal of $A$ is contained in $D$. [Use Exercise 6.]
+
+The ring $S_0^{-1}A$ is called the \emph{total ring of fractions} of $A$. Prove that
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $S_0$ is the largest multiplicatively closed subset of $A$ for which the homomorphism $A\to S^{-1}A$ is injective.
+\item Every element in $S_0^{-1}A$ is either a zero-divisor or a unit.
+\item Every ring in which every non-unit is a zero-divisor is equal to its total ring of fractions (i.e., $A\to S_0^{-1}A$ is bijective).
+\end{enumerate}}
+\pf
+\emph{Minimal primes lie in $D$.} Let $\fp$ be a minimal prime and $x\in\fp$. By Exercise 6, $A-\fp$ is a maximal element of $\Sigma$; equivalently $A_\fp$ has exactly one prime ideal (3.13), so $\fp A_\fp$ is the nilradical of $A_\fp$ and $x/1$ is nilpotent: $s x^n=0$ for some $s\notin\fp$ and $n\ge1$ (note $s\ne0$ as $0\in\fp$). Take $n$ minimal with $sx^n=0$; then $y=sx^{n-1}\ne0$ ($n=1$: $y=s\ne0$) and $xy=0$. So $x\in D$.
+
+(i) $f:A\to S^{-1}A$ is injective iff ($sa=0$ with $s\in S\Rightarrow a=0$), i.e.\ iff no $s\in S$ is a zero-divisor, i.e.\ iff $S\subseteq S_0$.
+
+(ii) Let $a/s\in S_0^{-1}A$. If $a\in S_0$, $a/s$ is a unit with inverse $s/a$. If $a\notin S_0$, then $a$ is a zero-divisor: $ab=0$ with $b\ne0$. By (i) $b/1\ne0$, and $(a/s)(b/1)=0$, so $a/s$ is a zero-divisor.
+
+(iii) If every non-unit is a zero-divisor then $S_0\subseteq A^*$ (units). Then $a/s=(as^{-1})/1$, so $f$ is surjective; it is injective by (i). \hfill$\square$
+
+%---------------------------------------------------------------- 10
+\exercise{10}{Let $A$ be a ring.
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item If $A$ is absolutely flat (Chapter 2, Exercise 27) and $S$ is any multiplicatively closed subset of $A$, then $S^{-1}A$ is absolutely flat.
+\item $A$ is absolutely flat $\iff A_\fm$ is a field for each maximal ideal $\fm$.
+\end{enumerate}}
+\pf
+(i) By Ch.~2, Ex.~27, $A$ is absolutely flat iff $x=ax^2$ is solvable for each $x$. Given $\xi=x/s\in S^{-1}A$ pick $a$ with $x=ax^2$. Then $\xi^2\cdot(as/1)=ax^2s/s^2=x/s=\xi$, so $\xi\in(\xi^2)$, i.e.\ $(\xi)=(\xi^2)$. By Ch.~2, Ex.~27 again, $S^{-1}A$ is absolutely flat.
+
+(ii) ($\Rightarrow$) $A_\fm$ is absolutely flat by (i) and local, hence a field by Ch.~2, Ex.~28.
+($\Leftarrow$) Let $x\in A$ and $M=(x)/(x^2)$. For each maximal $\fm$, $M_\fm=(x/1)A_\fm/(x^2/1)A_\fm$ (3.3, 3.4) and in the field $A_\fm$ the ideals $(x/1)$ and $(x/1)^2=(x^2/1)$ coincide (both are $0$ or the whole field). So $M_\fm=0$ for all $\fm$, hence $M=0$ by 3.8, i.e.\ $(x)=(x^2)$. By Ch.~2, Ex.~27, $A$ is absolutely flat. \hfill$\square$
+
+%---------------------------------------------------------------- 11
+\exercise{11}{Let $A$ be a ring. Prove that the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $A/\Nil$ is absolutely flat ($\Nil$ being the nilradical of $A$).
+\item Every prime ideal of $A$ is maximal.
+\item $\Spec(A)$ is a $T_1$-space (i.e., every subset consisting of a single point is closed).
+\item $\Spec(A)$ is Hausdorff.
+\end{enumerate}
+If these conditions are satisfied, show that $\Spec(A)$ is compact and totally disconnected (i.e.\ the only connected subsets of $\Spec(A)$ are those consisting of a single point).}
+\pf
+Put $\bar A=A/\Nil$. Primes of $A$ correspond to primes of $\bar A$ (all primes contain $\Nil$), maximal to maximal, and $\Spec A\cong\Spec\bar A$ (Ch.~1, Ex.~21(iv)).
+
+(ii)$\Leftrightarrow$(iii): by Ch.~1, Ex.~18(i), $\{x\}$ is closed iff $\fp_x$ is maximal.
+
+(i)$\Rightarrow$(ii): Let $B=\bar A$ be absolutely flat, $\fq$ a prime of $B$, $\fm\supseteq\fq$ a maximal ideal. By Exercise 10(ii), $B_\fm$ is a field, so it has exactly one prime ideal; by 3.13 the primes of $B$ contained in $\fm$ correspond to the primes of $B_\fm$, so $\fm$ is the only prime contained in $\fm$. Hence $\fq=\fm$.
+
+(ii)$\Rightarrow$(i): Let all primes of $\bar A$ be maximal. For a maximal $\fm$ of $\bar A$, the local ring $\bar A_\fm$ has a unique prime (3.13, since every prime inside $\fm$ is $\fm$), so $\bar A_\fm/\Nil(\bar A_\fm)$ is a field (Ch.~1, Ex.~10). By 3.12, $\Nil(\bar A_\fm)=(\Nil\bar A)_\fm=0$. So $\bar A_\fm$ is a field for all $\fm$ and $\bar A$ is absolutely flat by Exercise 10(ii).
+
+(iv)$\Rightarrow$(iii): Hausdorff implies $T_1$.
+
+(i)--(iii)$\Rightarrow$(iv): Replace $A$ by the absolutely flat $\bar A$ (same spectrum). Let $\fp\ne\fq$ be primes; both are maximal, so there is $x\in\fp-\fq$. By Ch.~2, Ex.~27, $(x)=(e)$ with $e$ idempotent. Then $e\in\fp$ and $e\notin\fq$ (else $x\in(e)\subseteq\fq$). From $e(1-e)=0$ we get $1-e\in\fq$ and $1-e\notin\fp$. Thus $\fq\in X_e$, $\fp\in X_{1-e}$ and $X_e\cap X_{1-e}=X_{e(1-e)}=X_0=\emptyset$ (Ch.~1, Ex.~17). So $\Spec A$ is Hausdorff.
+
+\emph{Compact and totally disconnected.} $\Spec A$ is quasi-compact (Ch.~1, Ex.~17(v)) and Hausdorff, hence compact. For $\fp\ne\fq$ and $e$ as above, $X=X_e\sqcup X_{1-e}$: any prime contains exactly one of $e,1-e$ (their product is $0$, their sum $1$). So $X_e,X_{1-e}$ are disjoint open sets covering $X$, with $\fq\in X_e$, $\fp\in X_{1-e}$. A connected subset cannot contain both $\fp$ and $\fq$, so connected subsets are single points. \hfill$\square$
+
+%---------------------------------------------------------------- 12
+\exercise{12}{Let $A$ be an integral domain and $M$ an $A$-module. An element $x\in M$ is a \emph{torsion element} of $M$ if $\Ann(x)\ne0$, that is if $x$ is killed by some non-zero element of $A$. Show that the torsion elements of $M$ form a submodule of $M$. This submodule is called the \emph{torsion submodule} of $M$ and is denoted by $T(M)$. If $T(M)=0$, the module $M$ is said to be torsion-free. Show that
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item If $M$ is any $A$-module, then $M/T(M)$ is torsion-free.
+\item If $f:M\to N$ is a module homomorphism, then $f(T(M))\subseteq T(N)$.
+\item If $0\to M'\to M\to M''$ is an exact sequence, then the sequence $0\to T(M')\to T(M)\to T(M'')$ is exact.
+\item If $M$ is any $A$-module, then $T(M)$ is the kernel of the mapping $x\mapsto1\otimes x$ of $M$ into $K\otimes_AM$, where $K$ is the field of fractions of $A$.
+\end{enumerate}
+[For (iv), show that $K$ may be regarded as the direct limit of its submodules $A\xi$ $(\xi\in K)$; using Chapter 1, Exercise 15 and Exercise 20, show that if $1\otimes x=0$ in $K\otimes M$ then $1\otimes x=0$ in $A\xi\otimes M$ for some $\xi\ne0$. Deduce that $\xi^{-1}x=0$.]}
+\pf
+\emph{$T(M)$ is a submodule.} $0\in T(M)$ since $\Ann(0)=A\ne0$. If $ax=0$, $by=0$ with $a,b\ne0$, then $ab\ne0$ ($A$ a domain) and $ab(x+y)=0$; and $a(cx)=0$ for $c\in A$.
+
+(i) Suppose $a\bar x=0$ in $M/T(M)$ with $a\ne0$. Then $ax\in T(M)$, so $bax=0$ for some $b\ne0$; $ba\ne0$, so $x\in T(M)$, $\bar x=0$.
+
+(ii) If $ax=0$ with $a\ne0$ then $af(x)=0$.
+
+(iii) Let $u:M'\to M$, $v:M\to M''$ be the maps; by (ii) they restrict to $T(\cdot)$. The restriction of $u$ is injective. $vu=0$ gives $v(u(T(M')))=0$. If $x\in T(M)$ with $v(x)=0$, then $x=u(x')$ for some $x'\in M'$; if $ax=0$ ($a\ne0$) then $u(ax')=0$ so $ax'=0$ ($u$ injective), i.e.\ $x'\in T(M')$.
+
+(iv) Let $S=A-\{0\}$. Then $K=S^{-1}A$ and $K\otimes_AM\cong S^{-1}M$ by 3.5, with $1\otimes x\mapsto x/1$. Now $x/1=0$ in $S^{-1}M$ iff $sx=0$ for some $s\in S$ iff $x\in T(M)$. \hfill$\square$
+
+%---------------------------------------------------------------- 13
+\exercise{13}{Let $S$ be a multiplicatively closed subset of an integral domain $A$. In the notation of Exercise 12, show that $T(S^{-1}M)=S^{-1}(TM)$. Deduce that the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $M$ is torsion-free.
+\item $M_\fp$ is torsion-free for all prime ideals $\fp$.
+\item $M_\fm$ is torsion-free for all maximal ideals $\fm$.
+\end{enumerate}}
+\pf
+Assume $0\notin S$ (otherwise both sides are $0$); then $S^{-1}A\subseteq K$ is a domain. By 3.3, $S^{-1}(TM)\subseteq S^{-1}M$.
+
+($\supseteq$) If $m\in T(M)$, $am=0$ with $a\ne0$, then $(a/1)(m/s)=0$ and $a/1\ne0$, so $m/s\in T(S^{-1}M)$.
+
+($\subseteq$) If $m/s$ is torsion, $(a/t)(m/s)=0$ with $a/t\ne0$ (so $a\ne0$). Then $uam=0$ for some $u\in S$ and $ua\ne0$, so $m\in T(M)$ and $m/s\in S^{-1}T(M)$.
+
+(i)$\Rightarrow$(ii): $T(M_\fp)=(TM)_\fp=0$. (ii)$\Rightarrow$(iii): trivial. (iii)$\Rightarrow$(i): $(TM)_\fm=T(M_\fm)=0$ for all $\fm$, so $TM=0$ by 3.8. \hfill$\square$
+
+%---------------------------------------------------------------- 14
+\exercise{14}{Let $M$ be an $A$-module and $\fa$ an ideal of $A$. Suppose that $M_\fm=0$ for all maximal ideals $\fm\supseteq\fa$. Prove that $M=\fa M$. [Pass to the $A/\fa$-module $M/\fa M$ and use (3.8).]}
+\pf
+Let $N=M/\fa M$, so $\fa N=0$. For a maximal ideal $\fm\supseteq\fa$: $N_\fm$ is a quotient of $M_\fm=0$ (3.3), so $N_\fm=0$. For a maximal $\fm\not\supseteq\fa$: pick $s\in\fa-\fm$; then $sN=0$, so $n/t=sn/st=0$ for all $n/t\in N_\fm$, i.e.\ $N_\fm=0$. Thus $N_\fm=0$ for every maximal $\fm$ of $A$, hence $N=0$ by 3.8, i.e.\ $M=\fa M$. \hfill$\square$
+
+%---------------------------------------------------------------- 15
+\exercise{15}{Let $A$ be a ring, and let $F$ be the $A$-module $A^n$. Show that every set of $n$ generators of $F$ is a basis of $F$. [Let $x_1,\dots,x_n$ be a set of generators and $e_1,\dots,e_n$ the canonical basis of $F$. Define $\phi:F\to F$ by $\phi(e_i)=x_i$. Then $\phi$ is surjective and we have to prove that it is an isomorphism. By (3.9) we may assume that $A$ is a local ring. Let $N$ be the kernel of $\phi$ and let $k=A/\fm$ be the residue field of $A$. Since $F$ is a flat $A$-module, the exact sequence $0\to N\to F\xrightarrow{\phi}F\to0$ gives an exact sequence $0\longrightarrow k\otimes N\longrightarrow k\otimes F\xrightarrow{1\otimes\phi}k\otimes F\longrightarrow0$. Now $k\otimes F=k^n$ is an $n$-dimensional vector space over $k$; $1\otimes\phi$ is surjective, hence bijective, hence $k\otimes N=0$. Also $N$ is finitely generated, by Chapter 2, Exercise 12, hence $N=0$ by Nakayama's lemma. Hence $\phi$ is an isomorphism.] Deduce that every set of generators of $F$ has at least $n$ elements.}
+\pf
+Let $x_1,\dots,x_n$ generate $F=A^n$ and $\phi:F\to F$, $\phi(e_i)=x_i$; $\phi$ is surjective. The $x_i$ form a basis iff $\phi$ is an isomorphism, i.e.\ injective. By 3.9, $\phi$ is injective iff $\phi_\fm:F_\fm\to F_\fm$ is injective for all maximal $\fm$; $\phi_\fm$ is again surjective and $F_\fm\cong A_\fm^n$, so we may assume $A$ is local with maximal ideal $\fm$ and residue field $k$.
+
+Let $N=\Ker\phi$. Since $F$ is free, $\phi$ splits: there is $\sigma:F\to F$ with $\phi\sigma=1$, and $F=N\oplus\sigma(F)$. Tensoring with $k$: $k\otimes F\cong(k\otimes N)\oplus(k\otimes\sigma F)$, and $1\otimes\phi:k^n\to k^n$ is surjective, hence bijective (equal finite dimension), with kernel $k\otimes N$ (the splitting makes the sequence $0\to k\otimes N\to k\otimes F\to k\otimes F\to0$ exact). So $k\otimes N=N/\fm N=0$. $N$ is finitely generated (Ch.~2, Ex.~12), so $N=0$ by Nakayama. Hence $\phi$ is an isomorphism.
+
+\emph{Consequence.} Let $A\ne0$ and suppose $y_1,\dots,y_r$ generate $F$ with $r<n$. Then $y_1,\dots,y_r,0,\dots,0$ ($n$ elements) generate $F$, so form a basis; but a basis cannot contain $0$ (since $1\cdot0=0$ is a non-trivial relation). Contradiction; so $r\ge n$. \hfill$\square$
+
+%---------------------------------------------------------------- 16
+\exercise{16}{Let $B$ be a flat $A$-algebra. Then the following conditions are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $\fa^{ec}=\fa$ for all ideals $\fa$ of $A$.
+\item $\Spec(B)\to\Spec(A)$ is surjective.
+\item For every maximal ideal $\fm$ of $A$ we have $\fm^e\ne(1)$.
+\item If $M$ is any non-zero $A$-module, then $M_B\ne0$.
+\item For every $A$-module $M$, the mapping $x\mapsto1\otimes x$ of $M$ into $M_B$ is injective.
+\end{enumerate}
+($B$ is said to be \emph{faithfully flat} over $A$.) [For (i)$\Rightarrow$(ii), use (3.16). (ii)$\Rightarrow$(iii) is clear. (iii)$\Rightarrow$(iv): Let $x$ be a non-zero element of $M$ and let $M'=Ax$. Since $B$ is flat over $A$ it is enough to show that $M'_B\ne0$. We have $M'\cong A/\fa$ for some ideal $\fa\ne(1)$, hence $M'_B\cong B/\fa^e$. Now $\fa\subseteq\fm$ for some maximal ideal $\fm$, hence $\fa^e\subseteq\fm^e\ne(1)$. Hence $M'_B\ne0$. (iv)$\Rightarrow$(v): Let $M'$ be the kernel of $M\to M_B$. Since $B$ is flat over $A$, the sequence $0\to M'_B\to M_B\to(M_B)_B$ is exact. But (Chapter 2, Exercise 13, with $N=M_B$) the mapping $M_B\to(M_B)_B$ is injective, hence $M'_B=0$ and therefore $M'=0$. (v)$\Rightarrow$(i): Take $M=A/\fa$.]}
+\pf
+Let $f:A\to B$ be the structure map.
+
+(i)$\Rightarrow$(ii). If $\fp$ is a prime of $A$, then $\fp^{ec}=\fp$, so by 3.16 $\fp$ is the contraction of a prime of $B$.
+
+(ii)$\Rightarrow$(iii). If $\fm=\fq^c$ for a prime $\fq$ of $B$, then $\fm^e=(\fq^c)^e\subseteq\fq\ne(1)$.
+
+(iii)$\Rightarrow$(iv). Let $0\ne x\in M$, $M'=Ax\cong A/\fa$ with $\fa=\Ann(x)\ne(1)$. As $B$ is flat, $M'_B\to M_B$ is injective, so it suffices to show $M'_B\ne0$. By Ch.~2, Ex.~2, $M'_B\cong B\otimes A/\fa\cong B/\fa^e$. Choose a maximal $\fm\supseteq\fa$; then $\fa^e\subseteq\fm^e\ne(1)$, so $B/\fa^e\ne0$.
+
+(iv)$\Rightarrow$(v). Let $M'=\Ker(M\to M_B)$, $x\mapsto1\otimes x$. Since $B$ is flat, $0\to M'_B\to M_B\to(M_B)_B$ is exact, where $M_B\to(M_B)_B$ is $b\otimes x\mapsto b\otimes(1\otimes x)$, i.e.\ $b\otimes1\otimes x$. This map equals $\tau\circ g$, where $g:N\to N_B$ is the injection $y\mapsto1\otimes y$ of Ch.~2, Ex.~13 (with $N=M_B$), and $\tau$ is the isomorphism of $B\otimes_AB\otimes_AM$ exchanging the first two factors. So it is injective, hence $M'_B=0$, hence $M'=0$ by (iv).
+
+(v)$\Rightarrow$(i). Take $M=A/\fa$. The map $A/\fa\to B\otimes A/\fa=B/\fa^e$, $\bar x\mapsto\overline{f(x)}$, has kernel $\fa^{ec}/\fa$. It is injective, so $\fa^{ec}=\fa$. \hfill$\square$
+
+%---------------------------------------------------------------- 17
+\exercise{17}{Let $A\xrightarrow{f}B\xrightarrow{g}C$ be ring homomorphisms. If $g\circ f$ is flat and $g$ is faithfully flat, then $f$ is flat.}
+\pf
+Let $u:M'\to M$ be an injective homomorphism of $A$-modules; we must show $1\otimes u:N'\to N$ is injective, where $N'=B\otimes_AM'$, $N=B\otimes_AM$ (this map is $B$-linear). Consider
+\[
+N'\longrightarrow N\longrightarrow C\otimes_BN,\qquad N'\longrightarrow C\otimes_BN'\longrightarrow C\otimes_BN,
+\]
+which agree (both send $y\mapsto1\otimes(1\otimes u)(y)$). The map $N'\to C\otimes_BN'$ is injective because $g$ is faithfully flat (Ex.~16(v)). By 2.15 and 2.14, $C\otimes_BN'=C\otimes_B(B\otimes_AM')\cong C\otimes_AM'$ (with $A$ acting through $gf$) naturally, and similarly for $M$; so the map $C\otimes_BN'\to C\otimes_BN$ is identified with $1\otimes u:C\otimes_AM'\to C\otimes_AM$, injective because $gf$ is flat. Thus the composite $N'\to C\otimes_BN$ is injective, which forces $N'\to N$ to be injective. Hence $B$ is a flat $A$-algebra, i.e.\ $f$ is flat. \hfill$\square$
+
+%---------------------------------------------------------------- 18
+\exercise{18}{Let $f:A\to B$ be a flat homomorphism of rings, let $\fq$ be a prime ideal of $B$ and let $\fp=\fq^c$. Then $f^*:\Spec(B_\fq)\to\Spec(A_\fp)$ is surjective. [For $B_\fp$ is flat over $A_\fp$ by (3.10), and $B_\fq$ is a local ring of $B_\fp$, hence is flat over $B_\fp$. Hence $B_\fq$ is flat over $A_\fp$ and satisfies condition (3) of Exercise 16.]}
+\pf
+Let $S=A-\fp$. Since $\fq^c=\fp$, $f(S)\cap\fq=\emptyset$, so $B_\fq$ is a localization of $B_\fp=S^{-1}B$ (at the prime $\fq B_\fp$) and $A_\fp\to B_\fq$ is defined.
+
+$B_\fp\cong A_\fp\otimes_AB$ is a flat $A_\fp$-algebra (Ch.~2, Ex.~20: base change of the flat $A$-module $B$). $B_\fq$ is a flat $B_\fp$-module (3.6, a localization), so by Ch.~2, Ex.~8(ii), $B_\fq$ is a flat $A_\fp$-algebra. The maximal ideal of $A_\fp$ is $\fp A_\fp$, and its extension to $B_\fq$ is contained in $\fq B_\fq\ne(1)$ since $f(\fp)\subseteq\fq$. So condition (iii) of Ex.~16 holds for the flat $A_\fp$-algebra $B_\fq$, hence (Ex.~16) $\Spec(B_\fq)\to\Spec(A_\fp)$ is surjective. \hfill$\square$
+
+%---------------------------------------------------------------- 19
+\exercise{19}{Let $A$ be a ring, $M$ an $A$-module. The \emph{support} of $M$ is defined to be the set $\Supp(M)$ of prime ideals $\fp$ of $A$ such that $M_\fp\ne0$. Prove the following results:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $M\ne0\iff\Supp(M)\ne\emptyset$.
+\item $V(\fa)=\Supp(A/\fa)$.
+\item If $0\to M'\to M\to M''\to0$ is an exact sequence, then $\Supp(M)=\Supp(M')\cup\Supp(M'')$.
+\item If $M=\sum M_i$, then $\Supp(M)=\bigcup\Supp(M_i)$.
+\item If $M$ is finitely generated, then $\Supp(M)=V(\Ann(M))$ (and is therefore a closed subset of $\Spec(A)$).
+\item If $M,N$ are finitely generated, then $\Supp(M\otimes_AN)=\Supp(M)\cap\Supp(N)$. [Use Chapter 2, Exercise 3.]
+\item If $M$ is finitely generated and $\fa$ is an ideal of $A$, then $\Supp(M/\fa M)=V(\fa+\Ann(M))$.
+\item If $f:A\to B$ is a ring homomorphism and $M$ is a finitely generated $A$-module, then $\Supp(B\otimes_AM)=f^{*-1}(\Supp(M))$.
+\end{enumerate}}
+\pf
+(i) If $M\ne0$, then $M_\fm\ne0$ for some maximal $\fm$ (3.8), so $\fm\in\Supp M$. Conversely $M=0\Rightarrow M_\fp=0$ for all $\fp$.
+
+(ii) $(A/\fa)_\fp\cong A_\fp/\fa^e$ (3.4), which is $\ne0$ iff $\fa^e\ne(1)$ iff $\fa\cap(A-\fp)=\emptyset$ (3.11(ii)) iff $\fa\subseteq\fp$.
+
+(iii) Localization is exact: $0\to M'_\fp\to M_\fp\to M''_\fp\to0$. If $M_\fp=0$ then $M'_\fp$ and $M''_\fp$ vanish; conversely if both vanish then so does $M_\fp$.
+
+(iv) $(\sum M_i)_\fp=\sum(M_i)_\fp$ (3.4(i), valid for arbitrary sums, which are unions of finite sums). It is $0$ iff every $(M_i)_\fp=0$.
+
+(v) If $\fp\in\Supp M$ and there were $s\in\Ann(M)-\fp$ then $M_\fp=0$ (as $m/t=sm/st=0$); so $\Ann M\subseteq\fp$. Conversely if $\Ann(M)\subseteq\fp$, then $\Ann(M_\fp)=(\Ann M)_\fp\subseteq\fp A_\fp\ne A_\fp$ by 3.14 ($M$ f.g.), so $M_\fp\ne0$.
+
+(vi) By 3.7, $(M\otimes N)_\fp\cong M_\fp\otimes_{A_\fp}N_\fp$, and $M_\fp,N_\fp$ are finitely generated over the local ring $A_\fp$. By Ch.~2, Ex.~3 this is $\ne0$ iff $M_\fp\ne0$ and $N_\fp\ne0$.
+
+(vii) $M/\fa M\cong(A/\fa)\otimes M$, with both factors finitely generated, so by (vi), (ii), (v): $\Supp(M/\fa M)=V(\fa)\cap V(\Ann M)=V(\fa+\Ann M)$.
+
+(viii) Let $\fq\in\Spec B$, $\fp=f^{-1}(\fq)$. $(B\otimes_AM)_\fq\cong B_\fq\otimes_AM\cong B_\fq\otimes_{A_\fp}M_\fp$ (note $B_\fq$ is an $A_\fp$-algebra, since $f(A-\fp)\subseteq B-\fq$, and $f(\fp)\subseteq\fq$). If $M_\fp=0$, this is $0$. If $M_\fp\ne0$: $M_\fp$ is finitely generated over the local ring $A_\fp$, so $\bar M=M_\fp/\fp M_\fp=\kappa\otimes M_\fp\ne0$ by Nakayama, where $\kappa=A_\fp/\fp A_\fp$. Let $k(\fq)=B_\fq/\fq B_\fq$, a $\kappa$-algebra (because $f(\fp)\subseteq\fq$). The module $B_\fq\otimes_{A_\fp}M_\fp$ maps onto $k(\fq)\otimes_{A_\fp}M_\fp\cong k(\fq)\otimes_\kappa(\kappa\otimes_{A_\fp}M_\fp)=k(\fq)\otimes_\kappa\bar M$, which is non-zero (tensor of two non-zero vector spaces over the field $\kappa$). So $(B\otimes M)_\fq\ne0$. Hence $\fq\in\Supp(B\otimes M)\iff f^*(\fq)\in\Supp(M)$. \hfill$\square$
+
+%---------------------------------------------------------------- 20
+\exercise{20}{Let $f:A\to B$ be a ring homomorphism, $f^*:\Spec(B)\to\Spec(A)$ the associated mapping. Show that
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item Every prime ideal of $A$ is a contracted ideal $\iff f^*$ is surjective.
+\item Every prime ideal of $B$ is an extended ideal $\Rightarrow f^*$ is injective.
+\end{enumerate}
+Is the converse of (ii) true?}
+\pf
+(i) By 1.17(iii) a prime $\fp$ of $A$ is a contracted ideal iff $\fp^{ec}=\fp$, which by 3.16 holds iff $\fp$ is the contraction of a prime of $B$, i.e.\ iff $\fp\in f^*(\Spec B)$.
+
+(ii) Suppose all primes of $B$ are extended. If $\fq$ is extended, $\fq^{ce}=\fq$ (1.17). Let $\fq_1,\fq_2$ be primes with $\fq_1^c=\fq_2^c$. Then $\fq_1=(\fq_1^c)^e=(\fq_2^c)^e=\fq_2$.
+
+\emph{The converse of (ii) is false.} Let $k$ be a field, $A=k$ and $B=k[t]/(t^2)$, $f$ the inclusion. $\Spec B$ is a single point (its only prime is $(t)$), so $f^*$ is injective. But the only extended ideals of $B$ are $0^e=0$ and $k^e=B$, so the prime $(t)$ is not an extended ideal. \hfill$\square$
+
+%---------------------------------------------------------------- 21
+\exercise{21}{\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item Let $A$ be a ring, $S$ a multiplicatively closed subset of $A$, and $\phi:A\to S^{-1}A$ the canonical homomorphism. Show that $\phi^*:\Spec(S^{-1}A)\to\Spec(A)$ is a homeomorphism of $\Spec(S^{-1}A)$ onto its image in $X=\Spec(A)$. Let this image be denoted by $S^{-1}X$. In particular, if $f\in A$, the image of $\Spec(A_f)$ in $X$ is the basic open set $X_f$ (Chapter 1, Exercise 17).
+\item Let $f:A\to B$ be a ring homomorphism. Let $X=\Spec(A)$ and $Y=\Spec(B)$, and let $f^*:Y\to X$ be the mapping associated with $f$. Identifying $\Spec(S^{-1}B)$ ($=\Spec(f(S)^{-1}B)$) with its canonical image $S^{-1}Y$ in $Y$, and $\Spec(S^{-1}A)$ with its image $S^{-1}X$ in $X$, show that $\Spec(S^{-1}f):\Spec(S^{-1}B)\to\Spec(S^{-1}A)$ is the restriction of $f^*$ to $S^{-1}Y$, and that $S^{-1}Y=f^{*-1}(S^{-1}X)$.
+\item Let $\fa$ be an ideal of $A$ and let $\fb=\fa^e$ be its extension in $B$. Let $\bar f:A/\fa\to B/\fb$ be the homomorphism induced by $f$. If $\Spec(A/\fa)$ is identified with its canonical image $V(\fa)$ in $X$, and $\Spec(B/\fb)$ with its image $V(\fb)$ in $Y$, show that $\bar f^*$ is the restriction of $f^*$ to $V(\fb)$.
+\item Let $\fp$ be a prime ideal of $A$. Take $S=A-\fp$ in (ii) and then reduce mod $S^{-1}\fp$ as in (iii). Deduce that the subspace $f^{*-1}(\fp)$ of $Y$ is naturally homeomorphic to $\Spec(B_\fp/\fp B_\fp)=\Spec(k(\fp)\otimes_AB)$, where $k(\fp)$ is the residue field of the local ring $A_\fp$. $\Spec(k(\fp)\otimes_AB)$ is called the \emph{fiber} of $f^*$ over $\fp$.
+\end{enumerate}}
+\pf
+(i) By 3.11(iv), $\phi^*$ is injective with image $S^{-1}X=\{\fp:\fp\cap S=\emptyset\}$ ($\fq\mapsto\fq^c$, inverse $\fp\mapsto\fp^e=S^{-1}\fp$). It is continuous (Ch.~1, Ex.~21). Closed sets of $\Spec(S^{-1}A)$ are $V(\fb)$ with $\fb=\fa^e$ for some ideal $\fa$ of $A$ (3.11(i)). Now $\phi^*(V(\fa^e))=V(\fa)\cap S^{-1}X$: if $\fq\supseteq\fa^e$ then $\fq^c\supseteq\fa$; conversely if $\fp\in S^{-1}X$, $\fp\supseteq\fa$, then $\fp^e\supseteq\fa^e$ and $\fp=(\fp^e)^c$. So $\phi^*$ maps closed sets onto the closed sets of the subspace $S^{-1}X$; thus it is a homeomorphism onto its image. For $S=\{f^n\}$: $S^{-1}X=\{\fp:f\notin\fp\}=X_f$.
+
+(ii) For $\fq\in Y$: $\fq\cap f(S)=\emptyset\iff f(s)\notin\fq\ \forall s\iff s\notin f^{-1}(\fq)\ \forall s\iff f^*(\fq)\cap S=\emptyset$. So $S^{-1}Y=f^{*-1}(S^{-1}X)$. Let $\phi_A:A\to S^{-1}A$, $\phi_B:B\to S^{-1}B$ be canonical, so $S^{-1}f\circ\phi_A=\phi_B\circ f$ (with $S^{-1}B\cong f(S)^{-1}B$, Ex.~4). Then $\phi_A^*\circ(S^{-1}f)^*=f^*\circ\phi_B^*$. Under the identifications by $\phi_A^*,\phi_B^*$ (homeomorphisms onto $S^{-1}X$, $S^{-1}Y$ by (i)) this says $(S^{-1}f)^*$ is the restriction of $f^*$ to $S^{-1}Y$.
+
+(iii) Let $\pi_A:A\to A/\fa$, $\pi_B:B\to B/\fb$; then $\bar f\pi_A=\pi_Bf$ (well defined because $f(\fa)\subseteq\fb$). Dually $\pi_A^*\bar f^*=f^*\pi_B^*$. By Ch.~1, Ex.~21(iv), $\pi_A^*,\pi_B^*$ are homeomorphisms onto $V(\fa)$, $V(\fb)$; so $\bar f^*$ is the restriction of $f^*$ to $V(\fb)$ (and $f^*(V(\fb))\subseteq V(\fa)$).
+
+(iv) Take $S=A-\fp$ and $f_\fp=S^{-1}f:A_\fp\to B_\fp$. By (ii) the fibre of $f_\fp^*$ over the closed point $\fp A_\fp$ of $\Spec A_\fp$ is identified with $f^{*-1}(\fp)\subseteq S^{-1}Y$ (note $f^{*-1}(\fp)\subseteq S^{-1}Y$ since $\fp\cap S=\emptyset$). A prime $Q$ of $B_\fp$ lies over $\fp A_\fp$ iff $Q^c=\fp A_\fp$ iff $Q\supseteq(\fp A_\fp)^e=\fp B_\fp$ (since $\fp A_\fp$ is maximal). So the fibre is $V(\fp B_\fp)\cong\Spec(B_\fp/\fp B_\fp)$ by (iii) (Ch.~1, Ex.~21(iv)); and the topology is the subspace topology throughout. Finally $B_\fp/\fp B_\fp\cong(A_\fp/\fp A_\fp)\otimes_{A_\fp}B_\fp=k(\fp)\otimes_{A_\fp}(A_\fp\otimes_AB)\cong k(\fp)\otimes_AB$. \hfill$\square$
+
+%---------------------------------------------------------------- 22
+\exercise{22}{Let $A$ be a ring and $\fp$ a prime ideal of $A$. Then the canonical image of $\Spec(A_\fp)$ in $\Spec(A)$ is equal to the intersection of all the open neighborhoods of $\fp$ in $\Spec(A)$.}
+\pf
+By 3.13 (or Ex.~21(i)) the image is $\{\fq:\fq\subseteq\fp\}$. Every open neighbourhood of $\fp$ contains a basic open set $X_f\ni\fp$, i.e.\ with $f\notin\fp$ (Ch.~1, Ex.~17); so the intersection of all neighbourhoods is $\bigcap_{f\notin\fp}X_f=\{\fq:\ f\notin\fq\text{ for all }f\notin\fp\}$. And ``$f\notin\fp\Rightarrow f\notin\fq$'' for all $f$ is equivalent to $\fq\subseteq\fp$ (contrapositive: $f\in\fq\Rightarrow f\in\fp$). \hfill$\square$
+
+%---------------------------------------------------------------- 23
+\exercise{23}{Let $A$ be a ring, let $X=\Spec(A)$ and let $U$ be a basic open set in $X$ (i.e., $U=X_f$ for some $f\in A$: Chapter 1, Exercise 17).
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item If $U=X_f$, show that the ring $A(U)=A_f$ depends only on $U$ and not on $f$.
+\item Let $U'=X_g$ be another basic open set such that $U'\subseteq U$. Show that there is an equation of the form $g^n=uf$ for some integer $n>0$ and some $u\in A$, and use this to define a homomorphism $\rho:A(U)\to A(U')$ (i.e., $A_f\to A_g$) by mapping $a/f^m$ to $au^m/g^{mn}$. Show that $\rho$ depends only on $U$ and $U'$. This homomorphism is called the \emph{restriction} homomorphism.
+\item If $U=U'$, then $\rho$ is the identity map.
+\item If $U\supseteq U'\supseteq U''$ are basic open sets in $X$, show that the triangle of restriction homomorphisms commutes: $\rho_{UU''}=\rho_{U'U''}\circ\rho_{UU'}$, where $\rho_{UU''}:A(U)\to A(U'')$ is the direct arrow and the other two compose through $A(U')$.
+\item Let $x$ $(=\fp)$ be a point of $X$. Show that $\varinjlim_{U\ni x}A(U)\cong A_\fp$.
+\end{enumerate}
+The assignment of the ring $A(U)$ to each basic open set $U$ of $X$, and the restriction homomorphisms $\rho$, satisfying the conditions (iii) and (iv) above, constitutes a \emph{presheaf of rings} on the basis of open sets $(X_f)_{f\in A}$. (v) says that the stalk of this presheaf at $x\in X$ is the corresponding local ring $A_\fp$.}
+\pf
+\emph{Key fact.} For $f,g\in A$: $X_g\subseteq X_f\iff V(f)\subseteq V(g)\iff g\in\bigcap_{\fp\ni f}\fp=\rad((f))\iff g^n\in(f)$ for some $n>0$ (1.14).
+
+(i) Let $X_f=X_g$. Then $g^n=uf$ and $f^m=vg$ for some $n,m,u,v$. In $A_f$ the element $f$ is a unit, and $f^m=vg$ gives $g\cdot(vf^{-m})=1$, so $g$ is a unit of $A_f$; symmetrically $f$ is a unit of $A_g$. By 3.1 the canonical maps $A\to A_f,A_g$ induce $A$-algebra homomorphisms $A_f\to A_g\to A_f$ whose composite is the identity (uniqueness in 3.1). So $A_f\cong A_g$ by a unique $A$-algebra isomorphism, i.e.\ $A(U)$ is determined by $U$ up to unique canonical isomorphism.
+
+(ii) $U'\subseteq U$ gives $g^n=uf$ by the key fact. Then $f\cdot u=g^n$ is a unit in $A_g$, so $f$ is a unit of $A_g$ and by 3.1 there is a unique $A$-algebra homomorphism $\rho:A_f\to A_g$, with $\rho(a/f^m)=(a/1)(f/1)^{-m}$. In $A_g$, $f^{-1}=u\,g^{-n}$, so $\rho(a/f^m)=au^m/g^{mn}$, as stated. Because $\rho$ is characterized as the unique $A$-algebra homomorphism $A_f\to A_g$, it does not depend on the choices of $n,u$ (nor, by (i), on $f,g$ beyond $U,U'$).
+
+(iii) If $U=U'$ the identity is an $A$-algebra homomorphism $A(U)\to A(U)$, so $\rho=\mathrm{id}$ by uniqueness.
+
+(iv) $\rho_{U'U''}\circ\rho_{UU'}$ and $\rho_{UU''}$ are both $A$-algebra homomorphisms $A(U)\to A(U'')$; by uniqueness (3.1) they are equal.
+
+(v) The neighbourhoods $U=X_f\ni\fp$ (i.e.\ $f\notin\fp$) form a directed system ($X_f\cap X_{f'}=X_{ff'}$), with the maps $\rho$. For $f\notin\fp$ the canonical $A_f\to A_\fp$ exists by 3.1 and is compatible with the $\rho$'s (all are $A$-algebra homomorphisms), so by Ch.~2, Ex.~16 there is $\lambda:\varinjlim A(U)\to A_\fp$. It is surjective: $a/s\in A_\fp$ ($s\notin\fp$) is the image of $a/s\in A_s$. It is injective: an element of the limit is the class of some $\xi=a/f^m\in A_f$ (Ch.~2, Ex.~15), and $\lambda(\xi)=0$ means $a/f^m=0$ in $A_\fp$, so $sa=0$ for some $s\notin\fp$. Then in $A_{fs}=A(X_f\cap X_s)$, with $X_{fs}\ni\fp$, the image of $\xi$ is $a/f^m=0$ ($s$ is a unit there and $sa=0$). So $\xi$ is $0$ in the limit. Hence $\varinjlim_{U\ni x}A(U)\cong A_\fp$. \hfill$\square$
+
+%---------------------------------------------------------------- 24
+\exercise{24}{Show that the presheaf of Exercise 23 has the following property. Let $(U_i)_{i\in I}$ be a covering of $X$ by basic open sets. For each $i\in I$ let $s_i\in A(U_i)$ be such that, for each pair of indices $i,j$, the images of $s_i$ and $s_j$ in $A(U_i\cap U_j)$ are equal. Then there exists a unique $s\in A$ ($=A(X)$) whose image in $A(U_i)$ is $s_i$, for all $i\in I$. (This essentially implies that the presheaf is a \emph{sheaf}.)}
+\pf
+Write $U_i=X_{f_i}$, so $s_i\in A_{f_i}$.
+
+\emph{Finiteness.} $\bigcup X_{f_i}=X$ means no prime contains all $f_i$, so the $f_i$ generate $(1)$: $1=\sum_{i\in J}g_if_i$ with $J\subseteq I$ finite (Ch.~1, Ex.~17(v)). Raising to powers, for every $N$ the elements $f_i^N$ ($i\in J$) also generate $(1)$ (otherwise a maximal ideal would contain all $f_i$).
+
+\emph{Normalizing.} For $i\in J$ write $s_i=b_i/f_i^{n}$ with a common $n$. The hypothesis says $b_i/f_i^n=b_j/f_j^n$ in $A_{f_if_j}$, so $(f_if_j)^m(b_if_j^n-b_jf_i^n)=0$ in $A$ for some $m$ (taking the maximum over the finitely many pairs). Put $h_i=f_i^{n+m}$ and $b_i'=b_if_i^m$; then $s_i=b_i'/h_i$ in $A_{f_i}$ and $b'_ih_j-b'_jh_i=(f_if_j)^m(b_if_j^n-b_jf_i^n)=0$ for $i,j\in J$. Choose $g_i'$ with $\sum_{i\in J}g'_ih_i=1$.
+
+\emph{Existence.} Let $s=\sum_{j\in J}g'_jb'_j\in A$. For $i\in J$:
+\[
+s\,h_i=\sum_jg'_jb'_jh_i=\sum_jg'_jb'_ih_j=b'_i\sum_jg'_jh_j=b'_i,
+\]
+so the image of $s$ in $A_{f_i}$ is $b'_i/h_i=s_i$. Now let $i\in I$ be arbitrary and put $t=s_i-s\in A_{f_i}$. For $j\in J$ the image of $t$ in $A_{f_if_j}$ is $(s_i)|-(s)|=(s_j)|-(s)|=0$ by the hypothesis and the previous step. Since $A_{f_if_j}=(A_{f_i})_{f_j}$, there is $k$ with $f_j^kt=0$ in $A_{f_i}$ (for all $j\in J$, with a common $k$). As the $f_j^k$ ($j\in J$) generate $(1)$, $t=0$. So $s\mapsto s_i$ for every $i\in I$.
+
+\emph{Uniqueness.} If $s,s'\in A$ both map to $s_i$ for all $i$, then $t=s-s'$ maps to $0$ in each $A_{f_i}$, so for $i\in J$ there is $k$ with $f_i^kt=0$ in $A$; the $f_i^k$ generate $(1)$, so $t=0$. \hfill$\square$
+
+%---------------------------------------------------------------- 25
+\exercise{25}{Let $f:A\to B$, $g:A\to C$ be ring homomorphisms and let $h:A\to B\otimes_AC$ be defined by $h(x)=f(x)\otimes g(x)$. Let $X,Y,Z,T$ be the prime spectra of $A,B,C,B\otimes_AC$ respectively. Then $h^*(T)=f^*(Y)\cap g^*(Z)$. [Let $\fp\in X$, and let $k=k(\fp)$ be the residue field at $\fp$. By Exercise 21, the fiber $h^{*-1}(\fp)$ is the spectrum of $(B\otimes_AC)\otimes_Ak\cong(B\otimes_Ak)\otimes_k(C\otimes_Ak)$. Hence $\fp\in h^*(T)\iff(B\otimes_Ak)\otimes_k(C\otimes_Ak)\ne0\iff B\otimes_Ak\ne0$ and $C\otimes_Ak\ne0\iff\fp\in f^*(Y)\cap g^*(Z)$.]}
+\pf
+\emph{Remark on the formula for $h$.} In $B\otimes_AC$ one has $f(x)\otimes1=1\otimes g(x)=x\cdot(1\otimes1)$, so $f(x)\otimes g(x)=x^2(1\otimes1)$, which is not additive. The intended homomorphism is $h(x)=f(x)\otimes1=1\otimes g(x)$ (this is the structure map of the $A$-algebra $B\otimes_AC$), and that is what I use.
+
+Let $\fp\in X$, $k=k(\fp)$. By Ex.~21(iv) the fibres are
+\[
+h^{*-1}(\fp)=\Spec\bigl((B\otimes_AC)\otimes_Ak\bigr),\quad f^{*-1}(\fp)=\Spec(B\otimes_Ak),\quad g^{*-1}(\fp)=\Spec(C\otimes_Ak).
+\]
+A spectrum is non-empty iff the ring is non-zero. By the canonical isomorphisms of Ch.~2,
+\[
+(B\otimes_AC)\otimes_Ak\cong B\otimes_Ak\otimes_AC\cong(B\otimes_Ak)\otimes_k(C\otimes_Ak),
+\]
+a tensor product of two $k$-algebras, i.e.\ of two $k$-vector spaces, over the field $k$; it is non-zero iff both factors are non-zero ($\dim(V\otimes_kW)=\dim V\dim W$). Hence
+$\fp\in h^*(T)\iff B\otimes_Ak\ne0$ and $C\otimes_Ak\ne0\iff\fp\in f^*(Y)\cap g^*(Z)$. \hfill$\square$
+
+%---------------------------------------------------------------- 26
+\exercise{26}{Let $(B_\alpha,g_{\alpha\beta})$ be a direct system of rings and $B$ the direct limit. For each $\alpha$, let $f_\alpha:A\to B_\alpha$ be a ring homomorphism such that $g_{\alpha\beta}\circ f_\alpha=f_\beta$ whenever $\alpha\le\beta$ (i.e.\ the $B_\alpha$ form a direct system of $A$-algebras). The $f_\alpha$ induce $f:A\to B$. Show that
+\[
+f^*(\Spec(B))=\bigcap_\alpha f_\alpha^*(\Spec(B_\alpha)).
+\]
+[Let $\fp\in\Spec(A)$. Then $f^{*-1}(\fp)$ is the spectrum of $B\otimes_Ak(\fp)\cong\varinjlim(B_\alpha\otimes_Ak(\fp))$ (since tensor products commute with direct limits: Chapter 2, Exercise 20). By Exercise 21 of Chapter 2 it follows that $f^{*-1}(\fp)=\emptyset$ if and only if $B_\alpha\otimes_Ak(\fp)=0$ for some $\alpha$, i.e.\ if and only if $f_\alpha^{*-1}(\fp)=\emptyset$.]}
+\pf
+Let $g_\alpha:B_\alpha\to B$ be the canonical maps, so $f=g_\alpha f_\alpha$ and $f^*=f_\alpha^*g_\alpha^*$; hence $f^*(\Spec B)\subseteq f^*_\alpha(\Spec B_\alpha)$ for all $\alpha$, giving $\subseteq$.
+
+For $\supseteq$ let $\fp\in\bigcap_\alpha f_\alpha^*(\Spec B_\alpha)$, $k=k(\fp)$. By Ex.~21(iv), $f_\alpha^{*-1}(\fp)=\Spec(B_\alpha\otimes_Ak)\ne\emptyset$, i.e.\ $B_\alpha\otimes_Ak\ne0$ for every $\alpha$. The ring homomorphisms $B_\alpha\otimes_Ak\to B\otimes_Ak$ induce a ring homomorphism $\varinjlim(B_\alpha\otimes_Ak)\to B\otimes_Ak$, bijective by Ch.~2, Ex.~20; so it is a ring isomorphism. If $B\otimes_Ak$ were $0$, then $\varinjlim(B_\alpha\otimes_Ak)=0$ and by Ch.~2, Ex.~21 some $B_\alpha\otimes_Ak=0$, a contradiction. So $B\otimes_Ak\ne0$, i.e.\ $f^{*-1}(\fp)\ne\emptyset$ and $\fp\in f^*(\Spec B)$. \hfill$\square$
+
+%---------------------------------------------------------------- 27
+\exercise{27}{\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item Let $f_\alpha:A\to B_\alpha$ be any family of $A$-algebras and let $f:A\to B$ be their tensor product over $A$ (Chapter 2, Exercise 23). Then $f^*(\Spec(B))=\bigcap_\alpha f_\alpha^*(\Spec(B_\alpha))$. [Use Examples 25 and 26.]
+\item Let $f_\alpha:A\to B_\alpha$ be any finite family of $A$-algebras and let $B=\prod_\alpha B_\alpha$. Define $f:A\to B$ by $f(x)=(f_\alpha(x))$. Then $f^*(\Spec(B))=\bigcup_\alpha f_\alpha^*(\Spec(B_\alpha))$.
+\item Hence the subsets of $X=\Spec(A)$ of the form $f^*(\Spec(B))$, where $f:A\to B$ is a ring homomorphism, satisfy the axioms for closed sets in a topological space. The associated topology is the \emph{constructible topology} on $X$. It is finer than the Zariski topology (i.e., there are more open sets, or equivalently more closed sets).
+\item Let $X_C$ denote the set $X$ endowed with the constructible topology. Show that $X_C$ is quasi-compact.
+\end{enumerate}}
+\pf
+(i) $B=\varinjlim_JB_J$, where $J$ runs over the finite subsets of the index set and $B_J=\bigotimes_{\alpha\in J}B_\alpha$ (Ch.~2, Ex.~23). Let $f_J:A\to B_J$. By Ex.~26, $f^*(\Spec B)=\bigcap_Jf_J^*(\Spec B_J)$. By Ex.~25 and induction on $|J|$ (with $B_{J\cup\{\alpha\}}=B_J\otimes_AB_\alpha$), $f_J^*(\Spec B_J)=\bigcap_{\alpha\in J}f_\alpha^*(\Spec B_\alpha)$ (for $J=\emptyset$, $B_\emptyset=A$ and the image is $X$). Since every $\alpha$ lies in some $J$, $\bigcap_J\bigcap_{\alpha\in J}=\bigcap_\alpha$.
+
+(ii) $\Spec(\prod B_\alpha)=\bigsqcup\Spec B_\alpha$ (Ch.~1, Ex.~22): the primes of $B$ are $\pi_\alpha^{-1}(\fq)$ for $\fq\in\Spec B_\alpha$, $\pi_\alpha:B\to B_\alpha$ the projection. And $f^{-1}(\pi_\alpha^{-1}\fq)=f_\alpha^{-1}(\fq)$ since $\pi_\alpha f=f_\alpha$. So $f^*(\Spec B)=\bigcup_\alpha f_\alpha^*(\Spec B_\alpha)$.
+
+(iii) $\emptyset=f^*(\Spec0)$ (for $A\to0$) and $X=f^*(\Spec A)$ (identity). Arbitrary intersections are of the required form by (i), finite unions by (ii). So these sets are the closed sets of a topology. Every Zariski closed set $V(\fa)=f^*(\Spec(A/\fa))$ (Ch.~1, Ex.~21(iv)) is constructible-closed; so the constructible topology is finer.
+
+(iv) The closed sets of $X_C$ are exactly the sets $f^*(\Spec B)$, so quasi-compactness means: any family $E_\alpha=f_\alpha^*(\Spec B_\alpha)$ of closed sets with the finite intersection property has non-empty intersection. By (i), $\bigcap E_\alpha=f^*(\Spec B)$ with $B=\varinjlim B_J$. If $\bigcap E_\alpha=\emptyset$, then $B=0$, so by Ch.~2, Ex.~21 some $B_J=0$ and then $\bigcap_{\alpha\in J}E_\alpha=f_J^*(\Spec B_J)=\emptyset$, contradicting the finite intersection property. \hfill$\square$
+
+%---------------------------------------------------------------- 28
+\exercise{28}{(Continuation of Exercise 27.)
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item For each $g\in A$, the set $X_g$ (Chapter 1, Exercise 17) is both open and closed in the constructible topology.
+\item Let $C'$ denote the smallest topology on $X$ for which the sets $X_g$ are both open and closed, and let $X_{C'}$ denote the set $X$ endowed with this topology. Show that $X_{C'}$ is Hausdorff.
+\item Deduce that the identity mapping $X_C\to X_{C'}$ is a homeomorphism. Hence a subset $E$ of $X$ is of the form $f^*(\Spec(B))$ for some $f:A\to B$ if and only if it is closed in the topology $C'$.
+\item The topological space $X_C$ is compact, Hausdorff and totally disconnected.
+\end{enumerate}}
+\pf
+(i) $X_g$ is Zariski open, hence open in the finer constructible topology. It is also closed there: $X_g=f^*(\Spec A_g)$ for $f:A\to A_g$ (Ex.~21(i)).
+
+(ii) Let $\fp\ne\fq$ be primes. Then there is $g$ in one but not the other, say $g\in\fp-\fq$ (or $\fq-\fp$). Then $\fq\in X_g$ and $\fp\in X\setminus X_g$; both $X_g$ and its complement are open in $C'$ (as $X_g$ is clopen in $C'$) and they are disjoint. So $X_{C'}$ is Hausdorff.
+
+(iii) By (i), $C'\subseteq C$ (every $C'$-open set is $C$-open), so the identity $X_C\to X_{C'}$ is a continuous bijection. $X_C$ is quasi-compact (Ex.~27(iv)) and $X_{C'}$ is Hausdorff by (ii); a continuous bijection from a compact space to a Hausdorff space is closed, hence a homeomorphism. So $C=C'$, and the closed sets of $C'$ are exactly the sets $f^*(\Spec B)$.
+
+(iv) $X_C=X_{C'}$ is quasi-compact (Ex.~27(iv)) and Hausdorff (ii), i.e.\ compact Hausdorff. For $\fp\ne\fq$ choose $g$ as in (ii): $X_g$ is clopen in $C$ and contains exactly one of the two points. So no connected subset contains two points: $X_C$ is totally disconnected. \hfill$\square$
+
+%---------------------------------------------------------------- 29
+\exercise{29}{Let $f:A\to B$ be a ring homomorphism. Show that $f^*:\Spec(B)\to\Spec(A)$ is a continuous \emph{closed} mapping (i.e., maps closed sets to closed sets) for the constructible topology.}
+\pf
+\emph{Closed.} A closed set of $Y_C=\Spec(B)_C$ is $F=h^*(\Spec D')$ with $h:B\to D'$. Then $f^*(F)=f^*h^*(\Spec D')=(h\circ f)^*(\Spec D')$ is closed in $X_C$.
+
+\emph{Continuous.} Let $E=h^*(\Spec D)$ be closed in $X_C$, $h:A\to D$. Put $h':B\to B\otimes_AD$, $y\mapsto y\otimes1$. We claim $f^{*-1}(E)=h'^*(\Spec(B\otimes_AD))$, which is closed in $Y_C$. For $\fq\in\Spec B$, $\fp=f^*(\fq)$:
+\[
+\fq\in h'^*(\Spec(B\otimes_AD))\iff k(\fq)\otimes_B(B\otimes_AD)\ne0\iff k(\fq)\otimes_AD\ne0
+\]
+(Ex.~21(iv) for $h'$), and
+$k(\fq)\otimes_AD\cong k(\fq)\otimes_{k(\fp)}\bigl(k(\fp)\otimes_AD\bigr)$ because $k(\fq)$ is a field extension of $k(\fp)$; this is $\ne0$ iff $k(\fp)\otimes_AD\ne0$ (a field extension is faithfully flat: $V\ne0\Rightarrow k(\fq)\otimes_{k(\fp)}V\ne0$), i.e.\ iff $\fp\in h^*(\Spec D)=E$ (Ex.~21(iv) for $h$). \hfill$\square$
+
+%---------------------------------------------------------------- 30
+\exercise{30}{Show that the Zariski topology and the constructible topology on $\Spec(A)$ are the same if and only if $A/\Nil$ is absolutely flat (where $\Nil$ is the nilradical of $A$). [Use Exercise 11.]}
+\pf
+($\Leftarrow$) If $A/\Nil$ is absolutely flat, $\Spec A$ with the Zariski topology is Hausdorff (Ex.~11). The identity $X_C\to X_Z$ is a continuous bijection (the constructible topology is finer, Ex.~27(iii)) from a compact space $X_C$ (Ex.~27(iv)) to a Hausdorff space, hence a homeomorphism. So the two topologies agree.
+
+($\Rightarrow$) If they agree, the Zariski topology equals $X_C$, which is Hausdorff by Ex.~28. Then $\Spec A$ is Hausdorff, so $A/\Nil$ is absolutely flat by Ex.~11. \hfill$\square$
+
+%=====================================================================
+\section*{Notes}
+All page references are to the Addison--Wesley (1969) edition scanned in this repository. Exercise 25: the formula for $h$ as printed in the scan is $h(x)=f(x)\otimes g(x)$; as explained in the solution, the intended (and only meaningful) homomorphism is $h(x)=f(x)\otimes1$. The remaining exercises are solved as stated.
+
+\end{document}

@@ -18,11 +18,13 @@
     },
     {
       "n": 3,
-      "title": "Rings and Modules of Fractions"
+      "title": "Rings and Modules of Fractions",
+      "tex": "chapter-3.tex"
     },
     {
       "n": 4,
-      "title": "Primary Decomposition"
+      "title": "Primary Decomposition",
+      "tex": "chapter-4.tex"
     },
     {
       "n": 5,
