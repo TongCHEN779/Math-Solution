@@ -6,10 +6,27 @@
   "description": "Graduate Texts in Mathematics 52. Varieties, schemes, cohomology, curves and surfaces; the standard modern introduction to algebraic geometry.",
   "pdf": "hartshorne.pdf",
   "chapters": [
-    {"n": 1, "title": "Varieties", "tex": "chapter-1.tex"},
-    {"n": 2, "title": "Schemes"},
-    {"n": 3, "title": "Cohomology"},
-    {"n": 4, "title": "Curves"},
-    {"n": 5, "title": "Surfaces"}
+    {
+      "n": 1,
+      "title": "Varieties",
+      "tex": "chapter-1.tex"
+    },
+    {
+      "n": 2,
+      "title": "Schemes",
+      "tex": "chapter-2.tex"
+    },
+    {
+      "n": 3,
+      "title": "Cohomology"
+    },
+    {
+      "n": 4,
+      "title": "Curves"
+    },
+    {
+      "n": 5,
+      "title": "Surfaces"
+    }
   ]
 }
