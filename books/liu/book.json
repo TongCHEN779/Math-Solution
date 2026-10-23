@@ -1,0 +1,60 @@
+{
+  "title": "Algebraic Geometry and Arithmetic Curves",
+  "short": "Liu",
+  "authors": "Qing Liu",
+  "year": 2002,
+  "description": "Oxford Graduate Texts in Mathematics 6. Schemes, morphisms, cohomology, divisors, surfaces and reduction of curves, with arithmetic applications.",
+  "pdf": "liu.pdf",
+  "chapters": [
+    {
+      "n": 1,
+      "title": "Some topics in commutative algebra",
+      "tex": "chapter-1.tex"
+    },
+    {
+      "n": 2,
+      "title": "General properties of schemes",
+      "tex": "chapter-2.tex"
+    },
+    {
+      "n": 3,
+      "title": "Morphisms and base change",
+      "tex": "chapter-3.tex"
+    },
+    {
+      "n": 4,
+      "title": "Some local properties",
+      "tex": "chapter-4.tex"
+    },
+    {
+      "n": 5,
+      "title": "Coherent sheaves and Cech cohomology",
+      "tex": "chapter-5.tex"
+    },
+    {
+      "n": 6,
+      "title": "Sheaves of differentials",
+      "tex": "chapter-6.tex"
+    },
+    {
+      "n": 7,
+      "title": "Divisors and applications to curves",
+      "tex": "chapter-7.tex"
+    },
+    {
+      "n": 8,
+      "title": "Birational geometry of surfaces",
+      "tex": "chapter-8.tex"
+    },
+    {
+      "n": 9,
+      "title": "Regular surfaces",
+      "tex": "chapter-9.tex"
+    },
+    {
+      "n": 10,
+      "title": "Reduction of algebraic curves",
+      "tex": "chapter-10.tex"
+    }
+  ]
+}

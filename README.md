@@ -10,6 +10,7 @@ Site: <https://tongchen779.github.io/Math-Solution/> (GitHub Pages, served from 
 |------|--------|
 | Atiyah–Macdonald, *Introduction to Commutative Algebra* | Chapters 1–11 (all) |
 | Hartshorne, *Algebraic Geometry* | Chapters I–V (all): Varieties 90, Schemes 134, Cohomology 88, Curves 67, Surfaces 63 exercises |
+| Liu, *Algebraic Geometry and Arithmetic Curves* | Chapter 1 (all 41 exercises: 1.1–1.7, 2.1–2.19, 3.1–3.15) |
 
 ## Layout
 
