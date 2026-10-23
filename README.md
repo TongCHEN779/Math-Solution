@@ -8,7 +8,8 @@ Site: <https://tongchen779.github.io/Math-Solution/> (GitHub Pages, served from 
 
 | Book | Solved |
 |------|--------|
-| Atiyah–Macdonald, *Introduction to Commutative Algebra* | Chapter 1 |
+| Atiyah–Macdonald, *Introduction to Commutative Algebra* | Chapters 1–11 (all) |
+| Hartshorne, *Algebraic Geometry* | Chapter I (Varieties), all 90 exercises of §1–§7 |
 
 ## Layout
 
