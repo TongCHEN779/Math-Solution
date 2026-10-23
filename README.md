@@ -9,7 +9,7 @@ Site: <https://tongchen779.github.io/Math-Solution/> (GitHub Pages, served from 
 | Book | Solved |
 |------|--------|
 | Atiyah–Macdonald, *Introduction to Commutative Algebra* | Chapters 1–11 (all) |
-| Hartshorne, *Algebraic Geometry* | Chapter I (Varieties, 90 exercises) and Chapter II (Schemes, 134 exercises) |
+| Hartshorne, *Algebraic Geometry* | Chapters I (Varieties, 90 exercises), II (Schemes, 134) and III (Cohomology, 88) |
 
 ## Layout
 
