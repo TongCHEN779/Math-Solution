@@ -10,7 +10,7 @@ Site: <https://tongchen779.github.io/Math-Solution/> (GitHub Pages, served from 
 |------|--------|
 | Atiyah–Macdonald, *Introduction to Commutative Algebra* | Chapters 1–11 (all) |
 | Hartshorne, *Algebraic Geometry* | Chapters I–V (all): Varieties 90, Schemes 134, Cohomology 88, Curves 67, Surfaces 63 exercises |
-| Liu, *Algebraic Geometry and Arithmetic Curves* | Chapters 1–7: Commutative algebra 41, General properties of schemes 72, Morphisms and base change 59, Some local properties 64, Coherent sheaves and Cech cohomology 65, Sheaves of differentials 39, Divisors and applications to curves 52 exercises (Chapters 6–7 include counterexamples, corrected hypotheses, and explicitly marked proof scopes; see their opening notes) |
+| Liu, *Algebraic Geometry and Arithmetic Curves* | Chapters 1–8: Commutative algebra 41, General properties of schemes 72, Morphisms and base change 59, Some local properties 64, Coherent sheaves and Cech cohomology 65, Sheaves of differentials 39, Divisors and applications to curves 52, Birational geometry of surfaces 54 exercises (Chapters 6–8 include counterexamples, corrected hypotheses, and explicitly marked proof scopes; see their opening notes) |
 
 ## Layout
 
